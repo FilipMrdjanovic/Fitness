@@ -1,6 +1,6 @@
-package com.example.demo.repository;
+package com.example.fitness.repository;
 
-import com.example.demo.entity.Project;
+import com.example.fitness.entity.Project;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface ProjectRepository extends JpaRepository<Project, Long> {

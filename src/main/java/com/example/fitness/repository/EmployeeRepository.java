@@ -1,6 +1,6 @@
-package com.example.demo.repository;
+package com.example.fitness.repository;
 
-import com.example.demo.entity.Employee;
+import com.example.fitness.entity.Employee;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

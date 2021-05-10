@@ -6,6 +6,7 @@
     <link rel="stylesheet" th:href="@{/css/employees.css}"/>
 </head>
 <body>
+<h3 th:inline="text">Welcome [[${#httpServletRequest.remoteUser}]]</h3>
 <h2 style="text-align:center">Employee Profile</h2>
 <div class="card">
     <img alt="User" src="/images/user.png"/>

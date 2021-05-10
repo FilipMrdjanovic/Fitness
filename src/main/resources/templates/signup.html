@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Employees</title>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Employees</title>
         <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet" />
         <link href="https://fonts.googleapis.com/css?family=Oswald:400,700" rel="stylesheet" type="text/css" />
         <!-- Icons -->
@@ -11,13 +11,8 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <!-- Css -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-    <script type="text/javascript">
-            /***********************************************
-             * Drop Down Date select script- by JavaScriptKit.com
-             * This notice MUST stay intact for use
-             * Visit JavaScript Kit at http://www.javascriptkit.com/ for this script and more
-             ***********************************************/
-
+        <link rel="stylesheet" th:href="@{/css/form.css}" />
+        <script type="text/javascript">
             var monthtext = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sept", "Oct", "Nov", "Dec"];
 
             function populatedropdown(dayfield, monthfield, yearfield) {
@@ -29,129 +24,73 @@
                 dayfield.options[today.getDate()] = new Option(today.getDate(), today.getDate(), true, true); //select today's day
                 for (var m = 0; m < 12; m++) monthfield.options[m] = new Option(monthtext[m], monthtext[m]);
                 monthfield.options[today.getMonth()] = new Option(monthtext[today.getMonth()], monthtext[today.getMonth()], true, true); //select today's month
-                var thisyear = today.getFullYear()-18;
+                var thisyear = today.getFullYear() - 18;
                 for (var y = 60; y > 0; y--) {
-                    yearfield.options[60-y] = new Option(thisyear, thisyear);
+                    yearfield.options[60 - y] = new Option(thisyear, thisyear);
                     thisyear -= 1;
                 }
-                yearfield.options[0] = new Option(today.getFullYear()-18, today.getFullYear(), true, true); //select today's year
+                yearfield.options[0] = new Option(today.getFullYear() - 18, today.getFullYear(), true, true); //select today's year
             }
         </script>
-<!--         <style>
-            select{
-                background-color: transparent;
-                font-size: 16px;
-                color: black;
-                border: none;
-                outline: none;
-                scroll-behavior: smooth;
-                padding: 0.5rem 0;
-            }
-            select option{
-                color: black;
-            }
-            .form-input-material .form-control-material:focus ~ label,
-            .form-input-material .form-control-material:not(:placeholder-shown) ~ label {
-                transform: none !important;
-            }
-            input:-webkit-autofill,
-            input:-webkit-autofill:hover,
-            input:-webkit-autofill:focus,
-            textarea:-webkit-autofill,
-            textarea:-webkit-autofill:hover,
-            textarea:-webkit-autofill:focus,
-            select:-webkit-autofill,
-            select:-webkit-autofill:hover,
-            select:-webkit-autofill:focus {
-                border: none;
-              -webkit-text-fill-color: var(--primary-color);
-              -webkit-box-shadow: 0 0 0px rgba(0, 0, 0, 0);
-              transition: background-color 5000s ease-in-out 0s;
-            }
-        </style> -->
-</head>
-<body>
-<form class="login-form" th:action="@{/save-employee}" th:object="${employee}" method="post" enctype="multipart/form-data" onsubmit="return confSubmit()">
-                <h1>Register</h1>
-                <div class="form-input-material">
-                    <input type="text" name="username" id="username" placeholder=" " autocomplete="off" required class="form-control-material" th:field="*{username}" />
-                    <label for="username">Username</label>
+    </head>
+    <body>
+        <div class="container">
+            <h1>SIGN UP</h1>
+            <form th:action="@{/save-employee}" th:object="${employee}" method="post" enctype="multipart/form-data" onsubmit="return confSubmit()">
+                <input type="text" name="username" id="username" placeholder="USERNAME" autocomplete="false" required th:field="*{username}" />
+                <input type="text" name="name" id="name" placeholder="FIRST NAME" autocomplete="false" required th:field="*{firstName}" />
+                <input type="text" name="lastName" id="lastName" placeholder="LAST NAME" autocomplete="false" required th:field="*{lastName}" />
+                <input type="password" name="password" id="password" placeholder="PASSWORD" autocomplete="false" required th:field="*{password}" />
+                <input type="text" name="email" id="email" placeholder="EMAIL" autocomplete="false" required class="form-control-material" th:field="*{email}" />
+                <input type="text" name="mobileNumber" id="mobileNumber" placeholder="MOBILE NUMBER" autocomplete="false" required class="form-control-material" th:field="*{mobileNumber}" />
+                <div class="combo-box">
+                    <select required id="daydropdown"> </select>
+                    <select required id="monthdropdown"> </select>
+                    <select required id="yeardropdown"> </select>
                 </div>
-                <div class="form-input-material">
-                    <input type="text" name="name" id="name" placeholder=" " autocomplete="off" required class="form-control-material" th:field="*{firstName}" />
-                    <label for="name">First Name</label>
-                </div>
-                <div class="form-input-material">
-                    <input type="text" name="lastName" id="lastName" placeholder=" " autocomplete="off" required class="form-control-material" th:field="*{lastName}" />
-                    <label for="lastName">Last Name</label>
-                </div>
-                <div class="form-input-material">
-                    <input type="password" name="password" id="password" placeholder=" " autocomplete="off" required class="form-control-material" th:field="*{password}" />
-                    <label for="password">Password</label>
-                </div>
-                <div class="form-input-material">
-                    <input type="text" name="email" id="email" placeholder=" " autocomplete="off" required class="form-control-material" th:field="*{email}" />
-                    <label for="email">Email</label>
-                </div>
-                <div class="form-input-material">
-                    <input type="text" name="mobileNumber" id="mobileNumber" placeholder=" " autocomplete="off" required class="form-control-material" th:field="*{mobileNumber}" />
-                    <label for="mobileNumber">Mobile Number</label>
-                </div>
-                <div class="form-input-material">
-                    <select id="daydropdown"> </select>
-                    <select id="monthdropdown"> </select>
-                    <select id="yeardropdown"> </select>
-                    <label>Birth Date</label>
-                    <input id="birthDate" type="text" th:field="*{birthDate}" style="display: none;" />
-                </div>
-                <div class="form-input-material">
-                    <select id="membership">
+                <input id="birthDate" type="text" th:field="*{birthDate}" style="display: none;" />
+                <div class="combo-box">
+                    <select required id="membership">
                         <option value="Trainer">Trainer</option>
                         <option value="User">User</option>
                     </select>
-                    <label>Membership</label>
-                    <input id="role" type="text" th:field="*{position}" style="display: none;" />
                 </div>
-                <button id="myform" type="submit" class="btn btn-ghost">Register</button>
-                <h3>
-                    Already have account?
-                    <a href="/login">
-                        <br />
-                        Login here!
-                    </a>
-                </h3>
+                <input id="role" type="text" th:field="*{position}" style="display: none;" />
+                <div class="form-actions">
+                    <button type="submit" class="btn">Sign up</button>
+                    <p>Already have account? <a href="/login">Login here</a></p>
+                </div>
             </form>
-<script type="text/javascript">
-    function confSubmit() {
-        var year = [], month = [], day = [], role = [];
-        $.each($("#yeardropdown option:selected"), function(){            
-            year.push($(this).val());
-        });        
-        $.each($("#monthdropdown option:selected"), function(){            
-            month.push($(this).val());
-        });        
-        $.each($("#daydropdown option:selected"), function(){            
-            day.push($(this).val());
-        });        
-        $.each($("#membership option:selected"), function(){            
-            role.push($(this).val());
-        });
-		// var birthDate = $("#yeardropdown option:selected").text() + '-'+ $("#monthdropdown option:selected").text() + '-'+ $("#daydropdown option:selected").text();
-		// $("#birthDate").value = birthDate;
-		var data = year+'-'+month+'-'+day;
-		$("#birthDate").val(data);
-        $("#role").val(role);
-		alert($("#role").val());
-    }
-</script>
-<script type="text/javascript">
-	
-</script>
+        </div>
         <script type="text/javascript">
-            //populatedropdown(id_of_day_select, id_of_month_select, id_of_year_select)
-            window.onload=function(){
-                populatedropdown("daydropdown", "monthdropdown", "yeardropdown")
+            function confSubmit() {
+                var year = [],
+                    month = [],
+                    day = [],
+                    role = [];
+                $.each($("#yeardropdown option:selected"), function () {
+                    year.push($(this).val());
+                });
+                $.each($("#monthdropdown option:selected"), function () {
+                    month.push($(this).val());
+                });
+                $.each($("#daydropdown option:selected"), function () {
+                    day.push($(this).val());
+                });
+                $.each($("#membership option:selected"), function () {
+                    role.push($(this).val());
+                });
+                var data = year + "-" + month + "-" + day;
+                $("#birthDate").val(data);
+                $("#role").val(role);
+                alert($("#role").val());
             }
         </script>
-</body>
+
+        <script type="text/javascript">
+            window.onload = function () {
+                populatedropdown("daydropdown", "monthdropdown", "yeardropdown");
+            };
+        </script>
+    </body>
 </html>

@@ -1,12 +1,12 @@
-package com.example.demo.service;
+package com.example.fitness.service;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.demo.entity.Employee;
-import com.example.demo.repository.EmployeeRepository;
+import com.example.fitness.entity.Employee;
+import com.example.fitness.repository.EmployeeRepository;
 
 @Service
 public class EmployeeService {
