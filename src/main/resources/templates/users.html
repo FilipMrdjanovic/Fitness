@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8" />
+        <title>FITNESS | USER CONTROLL</title>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+        <style>
+            body {
+                background: #181818;
+                margin: 0;
+
+                font-family: "Montserrat", sans-serif;
+            }
+
+            h1 {
+                font-size: 20pt;
+                font-family: "Dosis", sans-serif;
+                color: white;
+            }
+            .container {
+                min-height: 100vh;
+                display: flex;
+                flex-direction: column;
+                margin: auto;
+                align-items: center;
+                text-align: center;
+                /*padding: 0 30px;*/
+            }
+
+            .container .combo-box {
+                width: 20px;
+                padding: 0 3px;
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            }
+
+            th {
+                background: #5c0000;
+                font-size: 14px;
+                padding: 8px;
+                color: white;
+            }
+
+            th:first-of-type {
+                padding: 8px 20px;
+            }
+
+            tr {
+                font-size: 14px;
+                background-color: gray;
+                color: white;
+            }
+            table tr:nth-child(odd) td {
+                background: #7d7d7d;
+            }
+            table tr:nth-child(even) td {
+                background: #5c5c5c;
+            }
+        </style>
+    </head>
+    <body onLoad="buildHtmlTable('#excelDataTable')">
+        <div class="container">
+            <h1>USERS</h1>
+            <table id="excelDataTable"></table>
+        </div>
+
+        <script>
+            "'test','test','test','test','test','test','test','test',true,1,1";
+            var myList = [
+                { ID: "test", USERNAME: "test", "FIRST NAME": "test", "LAST NAME": "test", EMAIL: "test", PASSWORD: "test", "MOBILE NUMBER": "test", "BIRTH DATE": "test", ACTIVE: "test" },
+                { ID: "test", USERNAME: "test", "FIRST NAME": "test", "LAST NAME": "test", EMAIL: "test", PASSWORD: "test", "MOBILE NUMBER": "test", "BIRTH DATE": "test", ACTIVE: "test" },
+                { ID: "test", USERNAME: "test", "FIRST NAME": "test", "LAST NAME": "test", EMAIL: "test", PASSWORD: "test", "MOBILE NUMBER": "test", "BIRTH DATE": "test", ACTIVE: "test" },
+                { ID: "test", USERNAME: "test", "FIRST NAME": "test", "LAST NAME": "test", EMAIL: "test", PASSWORD: "test", "MOBILE NUMBER": "test", "BIRTH DATE": "test", ACTIVE: "test" },
+                { ID: "test", USERNAME: "test", "FIRST NAME": "test", "LAST NAME": "test", EMAIL: "test", PASSWORD: "test", "MOBILE NUMBER": "test", "BIRTH DATE": "test", ACTIVE: "test" },
+            ];
+
+            // Builds the HTML Table out of myList.
+            function buildHtmlTable(selector) {
+                var columns = addAllColumnHeaders(myList, selector);
+
+                for (var i = 0; i < myList.length; i++) {
+                    var row$ = $("<tr/>");
+                    for (var colIndex = 0; colIndex < columns.length; colIndex++) {
+                        var cellValue = myList[i][columns[colIndex]];
+                        if (cellValue == null) cellValue = "";
+                        row$.append($("<td/>").html(cellValue));
+                    }
+                    row$.append($("<td/>").html('<div class="combo-box"> <select required id="membership"> <option value="allow">ALLOW</option> <option value="deny">DENY</option> </select></div>'));
+
+                    $(selector).append(row$);
+                }
+            }
+
+            // Adds a header row to the table and returns the set of columns.
+            // Need to do union of keys from all records as some records may not contain
+            // all records.
+            function addAllColumnHeaders(myList, selector) {
+                var columnSet = [];
+                var headerTr$ = $("<tr/>");
+
+                for (var i = 0; i < myList.length; i++) {
+                    var rowHash = myList[i];
+                    for (var key in rowHash) {
+                        if ($.inArray(key, columnSet) == -1) {
+                            columnSet.push(key);
+                            headerTr$.append($("<th/>").html(key));
+                        }
+                    }
+                }
+                headerTr$.append('<th style="padding:8px 10px";>CONFIRMED</th>');
+                $(selector).append(headerTr$);
+
+                return columnSet;
+            }
+        </script>
+    </body>
+</html>

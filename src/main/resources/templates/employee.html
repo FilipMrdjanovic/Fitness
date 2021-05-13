@@ -9,7 +9,8 @@
 <h3 th:inline="text">Welcome [[${#httpServletRequest.remoteUser}]]</h3>
 <h2 style="text-align:center">Employee Profile</h2>
 <div class="card">
-    <img alt="User" src="/images/user.png"/>
+<!--    <img alt="User" src="/images/user.png"/>-->
+    <img alt="User" src="static/images/background.jpg"/>
     <h1 th:text="${employee.firstName}"></h1>
     <h1 th:text="${employee.lastName}"></h1>
     <p class="title" th:text="${employee.position}"></p>

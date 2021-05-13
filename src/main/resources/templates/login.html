@@ -1,18 +1,132 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-    <link rel="stylesheet" th:href="@{/css/form.css}" />
+    <link rel="stylesheet" type="text/css" href="../static/css/styles.css" th:href="@{/css/form.css}" />
+    <!--    <link rel="stylesheet" th:href="@{/css/form.css}" />-->
+    <style>
+        body {
+            background: #181818;
+            margin: 0;
+        }
+
+        h1 {
+            font-size: 20pt;
+            font-family: "Dosis", sans-serif;
+            color: white;
+        }
+
+        img {
+            max-width: 300px;
+            height: auto;
+            top: 50%;
+            transform: translateX(-50%);
+        }
+
+        .container {
+            width: 400px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            margin: auto;
+            align-items: center;
+            text-align: center;
+            padding: 0 80px;
+        }
+        form {
+            padding: 0 30px;
+        }
+        input,
+        button {
+            height: 40px;
+            font-size: 14pt;
+            padding: 0 20px;
+        }
+
+        input {
+            width: 400px;
+            margin: 10px 0;
+            -webkit-appearance: none;
+            font-family: "Dosis", sans-serif;
+            font-weight: 800;
+            color: white;
+            letter-spacing: 3pt;
+            text-align: center;
+            padding: 15px 30px;
+            background: rgba(0, 0, 0, 0.7);
+            outline: none;
+            border: none;
+        }
+
+        .container .combo-box {
+            width: 460px;
+            padding: 0 30px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+        }
+
+        select {
+            width: 100%;
+            margin: 10px 0;
+            -webkit-appearance: none;
+            font-family: "Dosis", sans-serif;
+            font-size: 14pt;
+            font-weight: 800;
+            color: white;
+            letter-spacing: 3pt;
+            text-transform: uppercase;
+            padding: 21.5px 30px;
+            background: rgba(0, 0, 0, 0.7);
+            outline: none;
+            cursor: pointer;
+            border: none;
+            text-align: center;
+            text-align-last: center;
+            -moz-text-align-last: center;
+        }
+
+        button {
+            width: 300px;
+            text-transform: uppercase;
+            border: none;
+            background: #5c0000;
+            color: #aaa;
+            margin: 20px 0;
+        }
+
+        p {
+            font-family: "Roboto", sans-serif;
+            margin: 5px auto;
+            color: #aaa;
+        }
+        a {
+            text-decoration: none;
+            color: #6e6e6e;
+        }            
+        button {
+            width: 300px;
+            text-transform: uppercase;
+            border: none;
+            background: #5c0000;
+            color: #aaa;
+            margin: 20px 0;
+            transition: .3s;
+            border-radius: 20px;
+        } 
+        button:hover {
+          background: #a10000
+        }
+    </style>
     <head>
         <meta charset="UTF-8" />
-        <title>Login</title>
+        <title>FITNESS | SIGN IN</title>
     </head>
     <body>
         <div class="container">
             <h1>SIGN IN</h1>
             <form th:action="@{/login}" method="post">
-                <input type="text" id="username" name="username" placeholder="Username" required autocomplete="false" />
-                <input type="password" id="password" name="password" placeholder="Password" required autocomplete="false" />
+                <input type="text" id="username" name="username" placeholder="USERNAME" required autocomplete="false" />
+                <input type="password" id="password" name="password" placeholder="PASSWORD" required autocomplete="false" />
                 <div class="form-actions">
-                    <button type="submit" class="btn">Sign in</button>
+                    <button class="raise" type="submit" class="btn">Sign in</button>
                     <p>Don't have account? <a href="/signup">Sign up here</a></p>
                 </div>
             </form>

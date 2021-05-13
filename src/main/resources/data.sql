@@ -1,16 +1,29 @@
-INSERT INTO COMPANY (name, address) VALUES ('FTN', 'Trg Dositeja Obradovića 6');
+INSERT INTO TRAINING (name, description, type, duration) VALUES
+    ('MASTER ABS', 'HOME WORKOUT FOR ABS (6 EXERCISES X 3 SETS)', 'ENDURANCE', 45),
+    ('MASTER CHEST', 'HOME WORKOUT FOR CHEST (6 EXERCISES X 3 SETS)', 'ENDURANCE', 45),
+    ('MASTER BICEPS', 'HOME WORKOUT FOR BICEPS (6 EXERCISES X 3 SETS)', 'ENDURANCE', 45),
+    ('MASTER TRICEPS', 'HOME WORKOUT FOR TRICEPS (6 EXERCISES X 3 SETS)', 'ENDURANCE', 45),
+    ('MASTER LEGS', 'HOME WORKOUT FOR LEGS (6 EXERCISES X 3 SETS)', 'ENDURANCE', 45);
 
-INSERT INTO DEPARTMENT (name, company_id) VALUES ('Menadžment', 1);
-INSERT INTO DEPARTMENT (name, company_id) VALUES ('Računarski centar', 1);
+INSERT INTO trainer (username, first_name, last_name, password, email, birth_date, mobile_number, role, active, training, rating) VALUES
+    ('test','test','test','test','test','test','test','test',true,1,1),
+    ('test','test','test','test','test','test','test','test',true,1,1),
+    ('test','test','test','test','test','test','test','test',true,1,1),
+    ('test','test','test','test','test','test','test','test',true,1,1),
+    ('test','test','test','test','test','test','test','test',true,1,1);
 
-INSERT INTO EMPLOYEE (username, first_name, last_name, email, password, mobile_number, birth_date, position) VALUES ('admin', 'Tdmin', 'admin', 'admin@admin.admin', 'admin', '000000000', '00-00-00', 'Administrator');
-INSERT INTO EMPLOYEE (username, first_name, last_name, email, password, mobile_number, birth_date, position) VALUES ('trainer', 'trainer', 'trainer', 'trainer@trainer.trainer', 'trainer', '000000000', '00-00-00', 'Trainer');
-INSERT INTO EMPLOYEE (username, first_name, last_name, email, password, mobile_number, birth_date, position) VALUES ('user', 'user', 'user', 'user@user.user', 'user', '000000000', '00-00-00', 'User');
+INSERT INTO MEMBER (username, first_name, last_name, password, email, birth_date, mobile_number, role, active, completed_training, signed_training, rated_training) VALUES
+    ('test','test','test','test','test','test','test','test',true, 1, 1, 1),
+    ('test','test','test','test','test','test','test','test',true, 1, 1, 1),
+    ('test','test','test','test','test','test','test','test',true, 1, 1, 1),
+    ('test','test','test','test','test','test','test','test',true, 1, 1, 1),
+    ('test','test','test','test','test','test','test','test',true, 1, 1, 1),
+    ('test','test','test','test','test','test','test','test',true, 1, 1, 1);
 
+INSERT INTO FITNESS (name, address, central_number, email, trainers, halls) VALUES ('FITNESS CENTRE', 'Bulevar Oslobodjenja 1', '0123456879', 'fitness.centre@centre.com', 1, 1);
 
-INSERT INTO PROJECT (name, deadline) VALUES ('Biću student FTN', '2019-02-10');
-INSERT INTO PROJECT (name, deadline) VALUES ('Podizanje sistema', '2019-05-1');
+INSERT INTO FITNESS_TIMETABLE (training_id, price_id) VALUES (1, 1);
 
-INSERT INTO WORKING (project_id, employee_id) VALUES (1, 1);
-INSERT INTO WORKING (project_id, employee_id) VALUES (1, 2);
-INSERT INTO WORKING (project_id, employee_id) VALUES (2, 3);
+INSERT INTO HALL (capacity) VALUES (50),(54),(60),(30),(45),(75),(78),(24);
+
+INSERT INTO HALL_TIMETABLE (training_id, price_id) VALUES (1, 1);
