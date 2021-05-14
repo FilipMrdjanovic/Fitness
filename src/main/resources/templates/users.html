@@ -5,77 +5,17 @@
         <title>FITNESS | USER CONTROLL</title>
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet" />
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-
-        <style>
-            body {
-                background: #181818;
-                margin: 0;
-
-                font-family: "Montserrat", sans-serif;
-            }
-
-            h1 {
-                font-size: 20pt;
-                font-family: "Dosis", sans-serif;
-                color: white;
-            }
-            .container {
-                min-height: 100vh;
-                display: flex;
-                flex-direction: column;
-                margin: auto;
-                align-items: center;
-                text-align: center;
-                /*padding: 0 30px;*/
-            }
-
-            .container .combo-box {
-                width: 20px;
-                padding: 0 3px;
-                display: grid;
-                grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-            }
-
-            th {
-                background: #5c0000;
-                font-size: 14px;
-                padding: 8px;
-                color: white;
-            }
-
-            th:first-of-type {
-                padding: 8px 20px;
-            }
-
-            tr {
-                font-size: 14px;
-                background-color: gray;
-                color: white;
-            }
-            table tr:nth-child(odd) td {
-                background: #7d7d7d;
-            }
-            table tr:nth-child(even) td {
-                background: #5c5c5c;
-            }
-        </style>
+        <link rel="stylesheet" type="text/css" href="../static/css/table.css"  />
     </head>
     <body onLoad="buildHtmlTable('#excelDataTable')">
+    <img src="https://wallpapercave.com/wp/wp2482989.jpg" alt="">
         <div class="container">
             <h1>USERS</h1>
             <table id="excelDataTable"></table>
         </div>
 
         <script>
-            "'test','test','test','test','test','test','test','test',true,1,1";
-            var myList = [
-                { ID: "test", USERNAME: "test", "FIRST NAME": "test", "LAST NAME": "test", EMAIL: "test", PASSWORD: "test", "MOBILE NUMBER": "test", "BIRTH DATE": "test", ACTIVE: "test" },
-                { ID: "test", USERNAME: "test", "FIRST NAME": "test", "LAST NAME": "test", EMAIL: "test", PASSWORD: "test", "MOBILE NUMBER": "test", "BIRTH DATE": "test", ACTIVE: "test" },
-                { ID: "test", USERNAME: "test", "FIRST NAME": "test", "LAST NAME": "test", EMAIL: "test", PASSWORD: "test", "MOBILE NUMBER": "test", "BIRTH DATE": "test", ACTIVE: "test" },
-                { ID: "test", USERNAME: "test", "FIRST NAME": "test", "LAST NAME": "test", EMAIL: "test", PASSWORD: "test", "MOBILE NUMBER": "test", "BIRTH DATE": "test", ACTIVE: "test" },
-                { ID: "test", USERNAME: "test", "FIRST NAME": "test", "LAST NAME": "test", EMAIL: "test", PASSWORD: "test", "MOBILE NUMBER": "test", "BIRTH DATE": "test", ACTIVE: "test" },
-            ];
-
+            var myList = [{"ID":"609e179edb63e983fb1287af","USERNAME":"Bridgette","FIRST NAME":"Leann","LAST NAME":"Buckley","EMAIL":"leannbuckley@frosnex.com","PASSWORD":"test","MOBILE NUMBER":"+381 (874) 413-3000","BIRTH DATE":"2014-12-05T03:58:46 -01:00","ACTIVE":true},{"ID":"609e179e3f804a9fb92b81d5","USERNAME":"Russell","FIRST NAME":"Bullock","LAST NAME":"Mcgee","EMAIL":"bullockmcgee@frosnex.com","PASSWORD":"test","MOBILE NUMBER":"+381 (833) 542-3897","BIRTH DATE":"2020-05-27T09:05:11 -02:00","ACTIVE":true},{"ID":"609e179e480c57fe50cc7f94","USERNAME":"Luella","FIRST NAME":"Stafford","LAST NAME":"Sanford","EMAIL":"staffordsanford@frosnex.com","PASSWORD":"test","MOBILE NUMBER":"+381 (972) 420-2815","BIRTH DATE":"2019-05-16T09:24:28 -02:00","ACTIVE":true},{"ID":"609e179e7e34e1b4fb3247c3","USERNAME":"Valerie","FIRST NAME":"French","LAST NAME":"Woodard","EMAIL":"frenchwoodard@frosnex.com","PASSWORD":"test","MOBILE NUMBER":"+381 (984) 521-3604","BIRTH DATE":"2014-03-26T11:04:14 -01:00","ACTIVE":true},{"ID":"609e179e0de57fe3186b9f23","USERNAME":"Iris","FIRST NAME":"Richards","LAST NAME":"Grimes","EMAIL":"richardsgrimes@frosnex.com","PASSWORD":"test","MOBILE NUMBER":"+381 (992) 437-3035","BIRTH DATE":"2020-02-29T06:10:16 -01:00","ACTIVE":true},{"ID":"609e179eb668b667e8ca20fd","USERNAME":"Sonya","FIRST NAME":"Cain","LAST NAME":"Lawson","EMAIL":"cainlawson@frosnex.com","PASSWORD":"test","MOBILE NUMBER":"+381 (813) 494-3120","BIRTH DATE":"2020-06-20T03:57:22 -02:00","ACTIVE":true},{"ID":"609e179e6f22d29f340efce2","USERNAME":"Mildred","FIRST NAME":"Mcgee","LAST NAME":"Blackburn","EMAIL":"mcgeeblackburn@frosnex.com","PASSWORD":"test","MOBILE NUMBER":"+381 (854) 438-3986","BIRTH DATE":"2016-02-09T10:57:39 -01:00","ACTIVE":true},{"ID":"609e179e0530c69c6fd859d9","USERNAME":"Wong","FIRST NAME":"Cornelia","LAST NAME":"Simon","EMAIL":"corneliasimon@frosnex.com","PASSWORD":"test","MOBILE NUMBER":"+381 (935) 584-2703","BIRTH DATE":"2019-06-22T05:11:28 -02:00","ACTIVE":true},{"ID":"609e179e0f2fcc70c25d1c95","USERNAME":"Cecelia","FIRST NAME":"Janette","LAST NAME":"Sims","EMAIL":"janettesims@frosnex.com","PASSWORD":"test","MOBILE NUMBER":"+381 (890) 406-2408","BIRTH DATE":"2016-02-01T08:36:37 -01:00","ACTIVE":true},{"ID":"609e179e36d19e25a1c7fa1b","USERNAME":"Ewing","FIRST NAME":"Katherine","LAST NAME":"Byers","EMAIL":"katherinebyers@frosnex.com","PASSWORD":"test","MOBILE NUMBER":"+381 (843) 463-2782","BIRTH DATE":"2017-07-10T10:40:16 -02:00","ACTIVE":true},{"ID":"609e179e0bc19fa46aa54558","USERNAME":"Kim","FIRST NAME":"Workman","LAST NAME":"Cunningham","EMAIL":"workmancunningham@frosnex.com","PASSWORD":"test","MOBILE NUMBER":"+381 (836) 519-2978","BIRTH DATE":"2017-04-02T09:53:25 -02:00","ACTIVE":true},{"ID":"609e179ecf2a048ea9e27a21","USERNAME":"Conley","FIRST NAME":"Franks","LAST NAME":"Howe","EMAIL":"frankshowe@frosnex.com","PASSWORD":"test","MOBILE NUMBER":"+381 (813) 550-3558","BIRTH DATE":"2015-08-20T12:02:50 -02:00","ACTIVE":true},{"ID":"609e179e52fcc357dbf9eedb","USERNAME":"Colette","FIRST NAME":"Roberta","LAST NAME":"English","EMAIL":"robertaenglish@frosnex.com","PASSWORD":"test","MOBILE NUMBER":"+381 (907) 429-2605","BIRTH DATE":"2015-11-14T05:36:10 -01:00","ACTIVE":true},{"ID":"609e179ee6e1b6a2b4f3577a","USERNAME":"Chang","FIRST NAME":"Hardin","LAST NAME":"Lane","EMAIL":"hardinlane@frosnex.com","PASSWORD":"test","MOBILE NUMBER":"+381 (865) 420-2574","BIRTH DATE":"2020-08-31T06:56:50 -02:00","ACTIVE":true},{"ID":"609e179e595dba0b7460944e","USERNAME":"Tonya","FIRST NAME":"Eva","LAST NAME":"Dale","EMAIL":"evadale@frosnex.com","PASSWORD":"test","MOBILE NUMBER":"+381 (902) 479-2050","BIRTH DATE":"2017-10-14T04:23:39 -02:00","ACTIVE":true},{"ID":"609e179ea44531d299a82980","USERNAME":"Yesenia","FIRST NAME":"Durham","LAST NAME":"Mcpherson","EMAIL":"durhammcpherson@frosnex.com","PASSWORD":"test","MOBILE NUMBER":"+381 (951) 444-3894","BIRTH DATE":"2015-04-12T03:20:45 -02:00","ACTIVE":true},{"ID":"609e179ecf6821a30b66f023","USERNAME":"Scott","FIRST NAME":"Powers","LAST NAME":"Wilkins","EMAIL":"powerswilkins@frosnex.com","PASSWORD":"test","MOBILE NUMBER":"+381 (803) 526-3235","BIRTH DATE":"2017-03-25T01:47:49 -01:00","ACTIVE":true},{"ID":"609e179eeaa6ab9d06bd65b8","USERNAME":"Patricia","FIRST NAME":"Jeanie","LAST NAME":"Whitley","EMAIL":"jeaniewhitley@frosnex.com","PASSWORD":"test","MOBILE NUMBER":"+381 (926) 577-3059","BIRTH DATE":"2017-12-15T10:52:02 -01:00","ACTIVE":true},{"ID":"609e179e06bbc02d0d512777","USERNAME":"Amparo","FIRST NAME":"Janell","LAST NAME":"Turner","EMAIL":"janellturner@frosnex.com","PASSWORD":"test","MOBILE NUMBER":"+381 (879) 447-2628","BIRTH DATE":"2019-09-30T02:13:48 -02:00","ACTIVE":true},{"ID":"609e179eef30accbb0bcb1f1","USERNAME":"Jill","FIRST NAME":"Huber","LAST NAME":"Steele","EMAIL":"hubersteele@frosnex.com","PASSWORD":"test","MOBILE NUMBER":"+381 (831) 479-2866","BIRTH DATE":"2020-07-06T06:21:41 -02:00","ACTIVE":true},{"ID":"609e179eeed1eb682cb0387a","USERNAME":"Lina","FIRST NAME":"Bertha","LAST NAME":"Shields","EMAIL":"berthashields@frosnex.com","PASSWORD":"test","MOBILE NUMBER":"+381 (881) 544-3996","BIRTH DATE":"2017-07-07T04:54:27 -02:00","ACTIVE":true},{"ID":"609e179ed0ddeca6a6b778fd","USERNAME":"Woods","FIRST NAME":"Holland","LAST NAME":"Hunter","EMAIL":"hollandhunter@frosnex.com","PASSWORD":"test","MOBILE NUMBER":"+381 (893) 450-2095","BIRTH DATE":"2020-11-11T08:59:40 -01:00","ACTIVE":true},{"ID":"609e179eb27006517e44acf5","USERNAME":"Nichole","FIRST NAME":"Justice","LAST NAME":"Owens","EMAIL":"justiceowens@frosnex.com","PASSWORD":"test","MOBILE NUMBER":"+381 (889) 438-2332","BIRTH DATE":"2019-11-22T08:11:36 -01:00","ACTIVE":true},{"ID":"609e179e0872c3e021c7e213","USERNAME":"Gayle","FIRST NAME":"Woodward","LAST NAME":"Berry","EMAIL":"woodwardberry@frosnex.com","PASSWORD":"test","MOBILE NUMBER":"+381 (935) 403-2332","BIRTH DATE":"2016-10-02T12:12:59 -02:00","ACTIVE":true},{"ID":"609e179e4d015045a4544b92","USERNAME":"Barnett","FIRST NAME":"Cabrera","LAST NAME":"Wall","EMAIL":"cabrerawall@frosnex.com","PASSWORD":"test","MOBILE NUMBER":"+381 (829) 503-2862","BIRTH DATE":"2015-11-27T08:48:58 -01:00","ACTIVE":true},{"ID":"609e179e8b5fb4ee46ec9914","USERNAME":"Lara","FIRST NAME":"Hill","LAST NAME":"Potter","EMAIL":"hillpotter@frosnex.com","PASSWORD":"test","MOBILE NUMBER":"+381 (868) 592-3502","BIRTH DATE":"2016-04-10T03:51:16 -02:00","ACTIVE":true},{"ID":"609e179eec6f187790ddd83e","USERNAME":"Adrienne","FIRST NAME":"Joy","LAST NAME":"Bullock","EMAIL":"joybullock@frosnex.com","PASSWORD":"test","MOBILE NUMBER":"+381 (910) 422-2640","BIRTH DATE":"2014-08-16T03:49:09 -02:00","ACTIVE":true},{"ID":"609e179e35e4924c3f95541d","USERNAME":"Baker","FIRST NAME":"Cara","LAST NAME":"Sheppard","EMAIL":"carasheppard@frosnex.com","PASSWORD":"test","MOBILE NUMBER":"+381 (920) 410-3418","BIRTH DATE":"2018-05-04T11:00:33 -02:00","ACTIVE":true},{"ID":"609e179e2268b7a16de797f3","USERNAME":"Watts","FIRST NAME":"Bertie","LAST NAME":"Welch","EMAIL":"bertiewelch@frosnex.com","PASSWORD":"test","MOBILE NUMBER":"+381 (934) 444-3279","BIRTH DATE":"2019-02-21T07:56:29 -01:00","ACTIVE":true},{"ID":"609e179e72f60893f5956310","USERNAME":"Joanna","FIRST NAME":"Dickson","LAST NAME":"Jacobs","EMAIL":"dicksonjacobs@frosnex.com","PASSWORD":"test","MOBILE NUMBER":"+381 (872) 536-2252","BIRTH DATE":"2017-07-16T12:05:47 -02:00","ACTIVE":true},{"ID":"609e179eb4496e7f42bcba66","USERNAME":"Gay","FIRST NAME":"Rosario","LAST NAME":"Hardin","EMAIL":"rosariohardin@frosnex.com","PASSWORD":"test","MOBILE NUMBER":"+381 (903) 544-3171","BIRTH DATE":"2016-04-20T08:42:44 -02:00","ACTIVE":true},{"ID":"609e179e296a2057d19f3a3b","USERNAME":"Hodges","FIRST NAME":"Carey","LAST NAME":"Oneal","EMAIL":"careyoneal@frosnex.com","PASSWORD":"test","MOBILE NUMBER":"+381 (803) 459-2520","BIRTH DATE":"2019-11-11T01:08:59 -01:00","ACTIVE":true},{"ID":"609e179e7358539ba939ccd7","USERNAME":"Albert","FIRST NAME":"Paula","LAST NAME":"Tran","EMAIL":"paulatran@frosnex.com","PASSWORD":"test","MOBILE NUMBER":"+381 (851) 405-3461","BIRTH DATE":"2015-04-07T09:00:31 -02:00","ACTIVE":true},{"ID":"609e179e5c3d8b5e4633bcb8","USERNAME":"Henderson","FIRST NAME":"Carole","LAST NAME":"Baird","EMAIL":"carolebaird@frosnex.com","PASSWORD":"test","MOBILE NUMBER":"+381 (887) 422-3289","BIRTH DATE":"2016-09-29T10:10:54 -02:00","ACTIVE":true}];
             // Builds the HTML Table out of myList.
             function buildHtmlTable(selector) {
                 var columns = addAllColumnHeaders(myList, selector);
@@ -109,7 +49,7 @@
                         }
                     }
                 }
-                headerTr$.append('<th style="padding:8px 10px";>CONFIRMED</th>');
+                headerTr$.append('<th style="padding:8px 9px";>CONFIRMED</th>');
                 $(selector).append(headerTr$);
 
                 return columnSet;

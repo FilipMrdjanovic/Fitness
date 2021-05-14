@@ -1,0 +1,69 @@
+body {
+    background: #181818;
+    margin: 0;
+    font-family: "Montserrat", sans-serif;
+}
+
+img {
+    position: fixed;
+    object-fit: cover;
+    height: auto;
+    margin: 0;
+    z-index: -1;
+    filter: blur(8px);
+}
+
+h1 {
+    font-size: 20pt;
+    font-family: "Dosis", sans-serif;
+    color: white;
+}
+.container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    align-items: center;
+    text-align: center;
+    z-index: 1;
+    background: rgba(0,0,0,.8);
+    /*padding: 0 30px;*/
+}
+
+.container .combo-box {
+    width: 20px;
+    padding: 0 3px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+}
+table{
+    background: rgba(0,0,0,.8);
+    box-shadow: 4px 4px 6px -1px rgba(0,0,0,0.65);
+}
+th {
+    background: #5c0000;
+    font-size: 14px;
+    padding: 8px;
+    color: white;
+}
+
+th:first-of-type {
+    border-top-left-radius: 20px;
+    padding: 8px 20px;
+}
+th:last-of-type {
+    border-top-right-radius: 20px;
+    padding: 8px 20px;
+}
+
+tr {
+    font-size: 14px;
+    background-color: gray;
+    color: white;
+}
+table tr:nth-child(odd) td {
+    background: #7d7d7d;
+}
+table tr:nth-child(even) td {
+    background: #5c5c5c;
+}

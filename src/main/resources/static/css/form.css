@@ -10,10 +10,12 @@ h1 {
 }
 
 img {
-    max-width: 300px;
+    position: fixed;
+    object-fit: cover;
     height: auto;
-    top: 50%;
-    transform: translateX(-50%);
+    margin: 0;
+    z-index: -1;
+    filter: blur(8px);
 }
 
 .container {
