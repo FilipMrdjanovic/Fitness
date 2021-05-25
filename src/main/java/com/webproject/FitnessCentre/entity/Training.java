@@ -23,6 +23,9 @@ public class Training implements Serializable {
     @Column
     private int duration;
 
+    @OneToMany(mappedBy = "training", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<Appointment> appointments = new HashSet<>();
+
 //    @JoinColumn(name = "price")
 //    @OneToOne(fetch = FetchType.LAZY)
 //    private Fitness price;

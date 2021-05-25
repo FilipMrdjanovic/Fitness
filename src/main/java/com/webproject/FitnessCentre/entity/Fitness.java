@@ -22,19 +22,11 @@ public class Fitness implements Serializable {
     @Column
     private String email;
 
-    @ManyToOne(targetEntity = com.webproject.FitnessCentre.entity.Training.class)
-    @JoinColumn(name="trainers", nullable=true)
+    @OneToMany(mappedBy = "fitness", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Trainer> trainers = new HashSet<>();
 
-    @ManyToOne(targetEntity = com.webproject.FitnessCentre.entity.Training.class)
-    @JoinColumn(name="halls", nullable=true)
+    @OneToMany(mappedBy = "fitness", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Hall> halls = new HashSet<>();
-
-    @OneToMany
-    @JoinTable(name = "FITNESS_TIMETABLE",
-            joinColumns = {@JoinColumn(name = "training_id", referencedColumnName = "id")},
-            inverseJoinColumns = {@JoinColumn(name = "price_id", referencedColumnName = "id")})
-    private Set<Fitness> timetable = new HashSet<>();
 
 }
 

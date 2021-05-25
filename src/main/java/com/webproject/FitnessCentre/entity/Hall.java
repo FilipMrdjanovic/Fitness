@@ -14,15 +14,10 @@ public class Hall implements Serializable {
     @Column
     private int capacity;
 
-    @OneToMany(cascade = CascadeType.ALL,
-            mappedBy = "fitness", orphanRemoval = true)
-    private Set<Hall> fitness = new HashSet<>();
+    @ManyToOne(fetch = FetchType.EAGER)
+    private Fitness fitness;
 
-
-    @OneToMany
-    @JoinTable(name = "HALL_TIMETABLE",
-            joinColumns = {@JoinColumn(name = "training_id", referencedColumnName = "id")},
-            inverseJoinColumns = {@JoinColumn(name = "price_id", referencedColumnName = "id")})
-    private Set<Hall> timetable = new HashSet<>();
+    @OneToMany(mappedBy = "hall", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<Appointment> appointment = new HashSet<>();
 
 }

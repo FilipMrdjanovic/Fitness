@@ -8,16 +8,19 @@ import java.util.Set;
 @Entity
 public class Member extends User {
 
-    @ManyToOne(targetEntity = com.webproject.FitnessCentre.entity.Training.class)
-    @JoinColumn(name="completed_training", nullable=true)
-    private Set<Training> completedTraining = new HashSet<>();
+    @ManyToMany
+    @JoinTable(name = "assigned",
+            joinColumns = @JoinColumn(name = "member_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "appointment_id", referencedColumnName = "id"))
+    private Set<Appointment> assignedTrainings = new HashSet<>();
 
-    @ManyToOne(targetEntity = com.webproject.FitnessCentre.entity.Training.class)
-    @JoinColumn(name="signed_training", nullable=true)
-    private Set<Training> signedTraining = new HashSet<>();
+    @ManyToMany
+    @JoinTable(name = "completed",
+            joinColumns = @JoinColumn(name = "member_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "appointment_id", referencedColumnName = "id"))
+    private Set<Appointment> completedTrainings = new HashSet<>();
 
-    @ManyToOne(targetEntity = com.webproject.FitnessCentre.entity.Training.class)
-    @JoinColumn(name="rated_training", nullable=true)
-    private Set<Training> ratedTraining = new HashSet<>();
+    @OneToMany(mappedBy = "member", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<Grade> grade = new HashSet<>();
 
 }

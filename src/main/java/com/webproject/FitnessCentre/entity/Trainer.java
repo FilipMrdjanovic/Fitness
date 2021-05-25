@@ -1,5 +1,6 @@
 package com.webproject.FitnessCentre.entity;
 
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -7,19 +8,20 @@ import java.util.Set;
 @Entity
 public class Trainer extends User {
 
-    @ManyToOne(targetEntity = com.webproject.FitnessCentre.entity.Training.class)
-    @JoinColumn(name="training", nullable=true)
-    private Set<Training> training = new HashSet<>();
+    @Column
+    private float grade;
 
-    @ManyToOne(targetEntity = com.webproject.FitnessCentre.entity.Training.class)
-    @JoinColumn(name="rating", nullable=true)
-    private int rating;
+    @ManyToOne(fetch = FetchType.EAGER)
+    private Fitness fitness;
+
+    @OneToMany(mappedBy = "trainer", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<Appointment> appointments = new HashSet<>();
 
 
 
 
-    @OneToMany(cascade = CascadeType.ALL,
-            mappedBy = "fitness", orphanRemoval = true)
-    private Set<Trainer> fitness = new HashSet<>();
+//    @OneToMany(cascade = CascadeType.ALL,
+//            mappedBy = "fitness", orphanRemoval = true)
+//    private Set<Trainer> fitness = new HashSet<>();
 
 }
