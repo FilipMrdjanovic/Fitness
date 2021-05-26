@@ -17,11 +17,27 @@ public class Trainer extends User {
     @OneToMany(mappedBy = "trainer", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Appointment> appointments = new HashSet<>();
 
+    public float getGrade() {
+        return grade;
+    }
 
+    public void setGrade(float grade) {
+        this.grade = grade;
+    }
 
+    public Fitness getFitness() {
+        return fitness;
+    }
 
-//    @OneToMany(cascade = CascadeType.ALL,
-//            mappedBy = "fitness", orphanRemoval = true)
-//    private Set<Trainer> fitness = new HashSet<>();
+    public void setFitness(Fitness fitness) {
+        this.fitness = fitness;
+    }
 
+    public Set<Appointment> getAppointments() {
+        return appointments;
+    }
+
+    public void setAppointments(Set<Appointment> appointments) {
+        this.appointments = appointments;
+    }
 }

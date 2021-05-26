@@ -12,32 +12,48 @@ public class User implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "username")
+    @Column(name = "username", unique = true)
     private String username;
 
-    @Column
+    @Column(name = "first_name")
     private String firstName;
 
-    @Column
+    @Column(name = "last_name")
     private String lastName;
 
-    @Column
+    @Column(name = "password")
     private String password;
 
-    @Column
+    @Column(name = "email", unique = true)
     private String email;
 
-    @Column
+    @Column(name = "birth_date")
     private String birthDate;
 
-    @Column
+    @Column(name = "mobile_number")
     private String mobileNumber;
 
-    @Column
+    @Column(name = "role")
     private String role;
 
-    @Column
+    @Column(name = "active")
     private boolean active;
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", password='" + password + '\'' +
+                ", email='" + email + '\'' +
+                ", birthDate='" + birthDate + '\'' +
+                ", mobileNumber='" + mobileNumber + '\'' +
+                ", role='" + role + '\'' +
+                ", active=" + active +
+                '}';
+    }
 
     public Long getId() {
         return id;
@@ -111,7 +127,7 @@ public class User implements Serializable {
         this.role = role;
     }
 
-    public boolean getActive() {
+    public boolean isActive() {
         return active;
     }
 

@@ -26,17 +26,60 @@ public class Training implements Serializable {
     @OneToMany(mappedBy = "training", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Appointment> appointments = new HashSet<>();
 
-//    @JoinColumn(name = "price")
-//    @OneToOne(fetch = FetchType.LAZY)
-//    private Fitness price;
+    public Training(Long id, String name, String description, String type, int duration, Set<Appointment> appointments) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.type = type;
+        this.duration = duration;
+        this.appointments = appointments;
+    }
 
-//    @OneToOne(cascade = CascadeType.ALL,
-//            mappedBy = "fitness_timetable", orphanRemoval = true)
-//    private Set<Fitness> price = new HashSet<>();
+    public Long getId() {
+        return id;
+    }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-//    @OneToMany(cascade = CascadeType.ALL,
-//            mappedBy = "fitness", orphanRemoval = true)
-//    private Set<Hall> fitness = new HashSet<>();
+    public String getName() {
+        return name;
+    }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public int getDuration() {
+        return duration;
+    }
+
+    public void setDuration(int duration) {
+        this.duration = duration;
+    }
+
+    public Set<Appointment> getAppointments() {
+        return appointments;
+    }
+
+    public void setAppointments(Set<Appointment> appointments) {
+        this.appointments = appointments;
+    }
 }

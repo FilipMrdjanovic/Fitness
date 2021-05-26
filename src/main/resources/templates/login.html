@@ -5,18 +5,17 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>FITNESS | SIGN IN</title>
-<!--        <link rel="stylesheet" type="text/css" href="../static/css/styles.css" th:href="@{/css/form.css}" />-->
-        <link rel="stylesheet" type="text/css" href="../static/css/form.css"  />
+        <link rel="stylesheet" th:href="@{/css/form.css}"/>
     </head>
     <body>
     <img src="https://wallpapercave.com/wp/wp2482989.jpg" alt="">
         <div class="container">
             <h1>SIGN IN</h1>
-            <form th:action="@{/login}" method="post">
-                <input type="text" id="username" name="username" placeholder="USERNAME" required autocomplete="false" />
-                <input type="password" id="password" name="password" placeholder="PASSWORD" required autocomplete="false" />
+            <form th:action="@{/login}" th:object="${user}" method="get">
+                <input type="text" id="username" name="username" placeholder="USERNAME" required autocomplete="false" th:field="*{username}" />
+                <input type="password" id="password" name="password" placeholder="PASSWORD" required autocomplete="false" th:field="*{password}" />
                 <div class="form-actions">
-                    <button class="raise" type="submit" class="btn">Sign in</button>
+                    <button type="submit" class="btn">Sign in</button>
                     <p>Don't have account? <a href="/signup">Sign up here</a></p>
                 </div>
             </form>

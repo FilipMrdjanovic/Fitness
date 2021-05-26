@@ -6,20 +6,20 @@ INSERT INTO TRAINING (name, description, type, duration) VALUES
     ('MASTER LEGS', 'HOME WORKOUT FOR LEGS (6 EXERCISES X 3 SETS)', 'ENDURANCE', 45);
 
 INSERT INTO TRAINER (username, first_name, last_name, password, email, birth_date, mobile_number, role, active, grade, fitness_id) VALUES
-    ('test','test','test','test','test','test','test','test',true, 5, (SELECT ID from FITNESS LIMIT 1)),
-    ('test','test','test','test','test','test','test','test',true, 5, (SELECT ID from FITNESS LIMIT 1)),
-    ('test','test','test','test','test','test','test','test',true, 5, (SELECT ID from FITNESS LIMIT 1)),
-    ('test','test','test','test','test','test','test','test',true, 5, (SELECT ID from FITNESS LIMIT 1)),
-    ('test','test','test','test','test','test','test','test',true, 5, (SELECT ID from FITNESS LIMIT 1)),
-    ('test','test','test','test','test','test','test','test',true, 5, (SELECT ID from FITNESS LIMIT 1));
+    ('test1','test','test','test','test1','test','test','test',true, 5, (SELECT ID from FITNESS LIMIT 1)),
+    ('test2','test','test','test','test2','test','test','test',true, 5, (SELECT ID from FITNESS LIMIT 1)),
+    ('test3','test','test','test','test3','test','test','test',true, 5, (SELECT ID from FITNESS LIMIT 1)),
+    ('test4','test','test','test','test4','test','test','test',true, 5, (SELECT ID from FITNESS LIMIT 1)),
+    ('test5','test','test','test','test5','test','test','test',true, 5, (SELECT ID from FITNESS LIMIT 1)),
+    ('test6','test','test','test','test6','test','test','test',true, 5, (SELECT ID from FITNESS LIMIT 1));
 
 INSERT INTO MEMBER (username, first_name, last_name, password, email, birth_date, mobile_number, role, active) VALUES
-    ('test','test','test','test','test','test','test','test',true),
-    ('test','test','test','test','test','test','test','test',true),
-    ('test','test','test','test','test','test','test','test',true),
-    ('test','test','test','test','test','test','test','test',true),
-    ('test','test','test','test','test','test','test','test',true),
-    ('test','test','test','test','test','test','test','test',true);
+    ('test1','test','test','test','test1','test','test','test',true),
+    ('test2','test','test','test','test2','test','test','test',true),
+    ('test3','test','test','test','test3','test','test','test',true),
+    ('test4','test','test','test','test4','test','test','test',true),
+    ('test5','test','test','test','test5','test','test','test',true),
+    ('test6','test','test','test','test6','test','test','test',true);
 
 INSERT INTO FITNESS (name, address, central_number, email) VALUES
     ('FITNESS CENTRE', 'Bulevar Oslobodjenja 1', '0123456879', 'fitness.centre@centre.com'),

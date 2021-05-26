@@ -12,7 +12,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <!-- Css -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-    <link rel="stylesheet" type="text/css" href="../static/css/form.css" />
+    <link rel="stylesheet" th:href="@{/css/form.css}"/>
     <script type="text/javascript">
             var monthtext = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sept", "Oct", "Nov", "Dec"];
 
@@ -38,7 +38,7 @@
     <img src="https://wallpapercave.com/wp/wp2482989.jpg" alt="">
     <div class="container">
         <h1>SIGN UP</h1>
-        <form th:action="@{/save-employee}" th:object="${employee}" method="post" enctype="multipart/form-data" onsubmit="return confSubmit()">
+        <form id="form" name="form" th:action="@{/signup-member}" th:object="${member}" method="post">
             <input type="text" name="username" id="username" placeholder="USERNAME" autocomplete="false" required th:field="*{username}" />
             <input type="text" name="name" id="name" placeholder="FIRST NAME" autocomplete="false" required th:field="*{firstName}" />
             <input type="text" name="lastName" id="lastName" placeholder="LAST NAME" autocomplete="false" required th:field="*{lastName}" />
@@ -50,49 +50,54 @@
                 <select required id="monthdropdown"> </select>
                 <select required id="yeardropdown"> </select>
             </div>
-            <input id="birthDate" type="text" th:field="*{birthDate}" style="display: none;" />
+            <input id="birthDate" name="birthDate" type="hidden" th:field="*{birthDate}" value="" />
             <div class="combo-box">
                 <select required id="membership">
                     <option value="Trainer">Trainer</option>
-                    <option value="User">User</option>
+                    <option value="Member">Member</option>
                 </select>
             </div>
-            <input id="role" type="text" th:field="*{position}" style="display: none;" />
+            <input id="role" name="role" type="hidden" th:field="*{role}" value="" />
             <div class="form-actions">
-                <button class="raise" type="submit" class="btn">Sign up</button>
+                <input type="submit" value="SUBMIT">
+                <!-- <button class="raise" onclick="confSubmit()" class="btn">Sign up</button> -->
                 <p>Already have account? <a href="/login">Login here</a></p>
             </div>
         </form>
     </div>
     <script type="text/javascript">
-            function confSubmit() {
-                var year = [],
-                    month = [],
-                    day = [],
-                    role = [];
-                $.each($("#yeardropdown option:selected"), function () {
-                    year.push($(this).val());
-                });
-                $.each($("#monthdropdown option:selected"), function () {
-                    month.push($(this).val());
-                });
-                $.each($("#daydropdown option:selected"), function () {
-                    day.push($(this).val());
-                });
-                $.each($("#membership option:selected"), function () {
-                    role.push($(this).val());
-                });
-                var data = year + "-" + month + "-" + day;
-                $("#birthDate").val(data);
-                $("#role").val(role);
-                alert($("#role").val());
-            }
-        </script>
+        function confSubmit() {
+            var year = [],
+                month = [],
+                day = [],
+                role = [];
+            $.each($("#yeardropdown option:selected"), function () {
+                year.push($(this).val());
+            });
+            $.each($("#monthdropdown option:selected"), function () {
+                month.push($(this).val());
+            });
+            $.each($("#daydropdown option:selected"), function () {
+                day.push($(this).val());
+            });
+            $.each($("#membership option:selected"), function () {
+                role.push($(this).val());
+            });
+            var data = day + "-" + month + "-" + year;
+            $("#birthDate").val(String(data));
+            $("#role").val(String(role));
+        }
+        $('#form').submit(function(e) {
+            confSubmit();
+            return true;
+        });
 
-<script type="text/javascript">
-            window.onload = function () {
-                populatedropdown("daydropdown", "monthdropdown", "yeardropdown");
-            };
-        </script>
+    </script>
+
+    <script type="text/javascript">
+        window.onload = function () {
+            populatedropdown("daydropdown", "monthdropdown", "yeardropdown");
+        };
+    </script>
 </body>
 </html>

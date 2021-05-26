@@ -28,16 +28,69 @@ public class Fitness implements Serializable {
     @OneToMany(mappedBy = "fitness", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Hall> halls = new HashSet<>();
 
+    public Fitness(Long id, String name, String address, String centralNumber, String email, Set<Trainer> trainers, Set<Hall> halls) {
+        this.id = id;
+        this.name = name;
+        this.address = address;
+        this.centralNumber = centralNumber;
+        this.email = email;
+        this.trainers = trainers;
+        this.halls = halls;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getCentralNumber() {
+        return centralNumber;
+    }
+
+    public void setCentralNumber(String centralNumber) {
+        this.centralNumber = centralNumber;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public Set<Trainer> getTrainers() {
+        return trainers;
+    }
+
+    public void setTrainers(Set<Trainer> trainers) {
+        this.trainers = trainers;
+    }
+
+    public Set<Hall> getHalls() {
+        return halls;
+    }
+
+    public void setHalls(Set<Hall> halls) {
+        this.halls = halls;
+    }
 }
-
-//    @ManyToMany
-//    @JoinTable(name = "FITNESS_TIMETABLE",
-//            joinColumns = {@JoinColumn(name = "id", referencedColumnName = "id")},
-//            inverseJoinColumns = {@JoinColumn(name = "price", referencedColumnName = "id")})
-//    private Set<Fitness> timetable = new HashSet<>();
-
-//@ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-//@JoinTable(name = "USER_ROLES", joinColumns = {@JoinColumn(name = "USER_ID"),
-//        @JoinColumn(name = "COMPANY_ID"), @JoinColumn(name="PRODUCT_ID")}, inverseJoinColumns =
-//        {@JoinColumn(name = "ROLE_ID"), @JoinColumn(name = "COMPANY_ID"),
-//                @JoinColumn(name="PRODUCT_ID")})
