@@ -1,11 +1,13 @@
+@import url(https://fonts.googleapis.com/css?family=Quicksand:400,300,700);
+
 body {
+    font-family: "Quicksand", sans-serif;
     background: black;
     margin: 0;
 }
 
 h1 {
     font-size: 20pt;
-    font-family: "Dosis", sans-serif;
     color: white;
 }
 
@@ -136,12 +138,12 @@ button {
     width: 300px;
     text-transform: uppercase;
     border: none;
-    background: #5c0000;
+    background: #524d3c;
     color: #aaa;
     margin: 20px 0;
     transition: 0.3s;
     border-radius: 20px;
 }
 button:hover {
-    background: #a10000;
+    background: #877f61;
 }

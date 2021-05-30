@@ -1,19 +1,15 @@
 package com.webproject.FitnessCentre.controller;
 
 
-import com.webproject.FitnessCentre.entity.Administrator;
-import com.webproject.FitnessCentre.entity.Member;
-import com.webproject.FitnessCentre.entity.Trainer;
-import com.webproject.FitnessCentre.entity.User;
-import com.webproject.FitnessCentre.service.AdminService;
-import com.webproject.FitnessCentre.service.MemberService;
-import com.webproject.FitnessCentre.service.TrainerService;
-import com.webproject.FitnessCentre.service.UserService;
+import com.webproject.FitnessCentre.entity.*;
+import com.webproject.FitnessCentre.repository.TrainingRepository;
+import com.webproject.FitnessCentre.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -27,17 +23,33 @@ public class UserController {
     private TrainerService trainerService;
     @Autowired
     private AdminService adminService;
+    @Autowired
+    private TrainingService trainingService;
 
     @GetMapping("/")
     public String home() { return "home.html"; }
     @GetMapping("/user")
     public String userPage() { return "user.html"; }
     @GetMapping("/member")
-    public String memberPage() { return "member.html"; }
+    public String memberPage(){ return "member.html"; }
     @GetMapping("/trainer")
     public String trainerPage() { return "trainer.html"; }
     @GetMapping("/admin")
     public String adminPage() { return "admin.html"; }
+
+    @GetMapping("/member/trainings")
+    public String getTrainings(Model model) {
+        List<Training> trainingList = this.trainingService.findAll();
+        model.addAttribute("list", trainingList);
+        return "trainings.html";
+    }
+
+
+//    @RequestMapping("/trainings")
+//    public String findTrainings(Model model) {
+//        model.addAttribute("trainings", this.trainingService.findAll());
+//        return "trainings.html";
+//    }
 
     @GetMapping("/signup")
     public String pre_signup(Model model) {
@@ -61,7 +73,6 @@ public class UserController {
             member.setActive(user.getActive());
             this.memberService.save(member);
         }
-
         else if(user.getRole().equals("TRAINER")){
             Trainer trainer = new Trainer();
             trainer.setId(user.getId());
@@ -108,7 +119,7 @@ public class UserController {
             if(user.getUsername().equals(myUser.getUsername())){
                 if(user.getPassword().equals(myUser.getPassword())){
                     if(myUser.getRole().equals("MEMBER")){
-                        return  "redirect:/member";
+                        return  "redirect:/member/trainings";
                     }
                     else if(myUser.getRole().equals("TRAINER")){
                         return  "redirect:/trainer";

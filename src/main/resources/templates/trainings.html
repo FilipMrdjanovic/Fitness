@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+      <title>MEMBER | TRAININGS</title>
+      <meta charset="utf-8" />
+      <link rel="stylesheet" th:href="@{/css/table.css}" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>TRAININGS</h1>
+      <table id="trainings">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>NAME</th>
+            <th>DESCRIPTION</th>
+            <th>TYPE</th>
+            <th>DURATION</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr th:each="training : ${list}">
+            <td th:text="${training.id}"></td>
+            <td th:text="${training.name}"></td>
+            <td th:text="${training.description}"></td>
+            <td th:text="${training.type}"></td>
+            <td th:text="${training.duration}"></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>

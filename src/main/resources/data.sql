@@ -72,12 +72,67 @@ INSERT INTO MEMBER(id) SELECT ID FROM USER WHERE role='MEMBER';
 
 INSERT INTO ADMINISTRATOR(id) SELECT ID FROM USER WHERE role='ADMIN';
 
-INSERT INTO TRAINING (name, description, type, duration) VALUES
-    ('MASTER ABS', 'HOME WORKOUT FOR ABS (6 EXERCISES X 3 SETS)', 'ENDURANCE', 45),
-    ('MASTER CHEST', 'HOME WORKOUT FOR CHEST (6 EXERCISES X 3 SETS)', 'ENDURANCE', 45),
-    ('MASTER BICEPS', 'HOME WORKOUT FOR BICEPS (6 EXERCISES X 3 SETS)', 'ENDURANCE', 45),
-    ('MASTER TRICEPS', 'HOME WORKOUT FOR TRICEPS (6 EXERCISES X 3 SETS)', 'ENDURANCE', 45),
-    ('MASTER LEGS', 'HOME WORKOUT FOR LEGS (6 EXERCISES X 3 SETS)', 'ENDURANCE', 45);
+--INSERT INTO TRAINING (name, description, type, duration) VALUES
+--    ('MASTER ABS', 'HOME WORKOUT FOR ABS (6 EXERCISES X 3 SETS)', 'ENDURANCE', 45),
+--    ('MASTER CHEST', 'HOME WORKOUT FOR CHEST (6 EXERCISES X 3 SETS)', 'ENDURANCE', 45),
+--    ('MASTER BICEPS', 'HOME WORKOUT FOR BICEPS (6 EXERCISES X 3 SETS)', 'ENDURANCE', 45),
+--    ('MASTER TRICEPS', 'HOME WORKOUT FOR TRICEPS (6 EXERCISES X 3 SETS)', 'ENDURANCE', 45),
+--    ('MASTER LEGS', 'HOME WORKOUT FOR LEGS (6 EXERCISES X 3 SETS)', 'ENDURANCE', 45);
+
+
+insert into TRAINING (name, description, type, duration) values
+	('Lunges', 'consequat in consequat ut nulla sed accumsan', 'Cardio', 49),
+	('Side planks', 'orci luctus et ultrices posuere', 'Endurence', 79),
+	('Dumbbell rows', 'mi in porttitor pede justo eu massa', 'Cardio', 40),
+	('Pushups', 'donec ut mauris eget massa tempor convallis', 'Cardio', 45),
+	('Squats', 'eu interdum eu tincidunt in leo', 'Weight loss', 86),
+	('Burpees', 'mauris sit amet eros suspendisse accumsan tortor', 'Yoga', 87),
+	('Dumbbell rows', 'donec semper sapien a libero nam dui', 'Yoga', 54),
+	('Squats', 'purus aliquet at feugiat non pretium', 'Crossfit', 43),
+	('Lunges', 'duis at velit eu est congue', 'Yoga', 57),
+	('Squats', 'iaculis justo in hac habitasse platea', 'Cardio', 84),
+	('Squats', 'lorem ipsum dolor sit amet consectetuer adipiscing', 'Endurence', 48),
+	('Squats', 'in libero ut massa volutpat convallis morbi', 'Cardio', 70),
+	('Burpees', 'ut massa quis augue luctus tincidunt', 'Yoga', 77),
+	('Lunges', 'habitasse platea dictumst aliquam augue quam sollicitudin', 'Endurence', 67),
+	('Pushups', 'posuere metus vitae ipsum aliquam non mauris', 'Endurence', 86),
+	('Burpees', 'quam sapien varius ut blandit non', 'Weight loss', 92),
+	('Pushups', 'a suscipit nulla elit ac nulla sed', 'Endurence', 73),
+	('Burpees', 'felis ut at dolor quis odio', 'Endurence', 68),
+	('Burpees', 'pede ac diam cras pellentesque volutpat', 'Yoga', 48),
+	('Single-leg deadlifts', 'lobortis est phasellus sit amet erat nulla', 'Cardio', 74),
+	('Lunges', 'malesuada in imperdiet et commodo vulputate justo', 'Cardio', 87),
+	('Single-leg deadlifts', 'interdum in ante vestibulum ante ipsum', 'Weight loss', 50),
+	('Dumbbell rows', 'justo morbi ut odio cras mi pede', 'Crossfit', 74),
+	('Dumbbell rows', 'integer ac leo pellentesque ultrices mattis odio', 'Crossfit', 84),
+	('Squats', 'vulputate nonummy maecenas tincidunt lacus at velit', 'Endurence', 61),
+	('Squats', 'sed justo pellentesque viverra pede', 'Endurence', 62),
+	('Burpees', 'feugiat non pretium quis lectus suspendisse potenti', 'Yoga', 90),
+	('Squats', 'purus sit amet nulla quisque', 'Weight loss', 41),
+	('Lunges', 'ipsum integer a nibh in', 'Weight loss', 62),
+	('Single-leg deadlifts', 'quam a odio in hac', 'Crossfit', 46),
+	('Overhead dumbbell presses', 'interdum mauris non ligula pellentesque ultrices phasellus', 'Yoga', 44),
+	('Lunges', 'eu tincidunt in leo maecenas', 'Yoga', 44),
+	('Lunges', 'eleifend pede libero quis orci nullam', 'Yoga', 47),
+	('Dumbbell rows', 'maecenas leo odio condimentum id', 'Weight loss', 65),
+	('Single-leg deadlifts', 'sit amet erat nulla tempus', 'Weight loss', 57),
+	('Burpees', 'blandit non interdum in ante vestibulum ante', 'Weight loss', 77),
+	('Single-leg deadlifts', 'sed accumsan felis ut at', 'Cardio', 73),
+	('Single-leg deadlifts', 'accumsan odio curabitur convallis duis consequat', 'Yoga', 61),
+	('Pushups', 'eu orci mauris lacinia sapien', 'Yoga', 72),
+	('Squats', 'arcu adipiscing molestie hendrerit at vulputate', 'Crossfit', 96),
+	('Single-leg deadlifts', 'ut at dolor quis odio consequat varius', 'Crossfit', 74),
+	('Single-leg deadlifts', 'in blandit ultrices enim lorem ipsum dolor', 'Endurence', 57),
+	('Overhead dumbbell presses', 'morbi porttitor lorem id ligula', 'Yoga', 56),
+	('Pushups', 'augue vel accumsan tellus nisi eu orci', 'Endurence', 87),
+	('Squats', 'odio condimentum id luctus nec molestie', 'Cardio', 95),
+	('Dumbbell rows', 'ipsum primis in faucibus orci luctus et', 'Cardio', 54),
+	('Burpees', 'vestibulum rutrum rutrum neque aenean', 'Endurence', 78),
+	('Overhead dumbbell presses', 'nunc commodo placerat praesent blandit', 'Yoga', 55),
+	('Lunges', 'velit eu est congue elementum', 'Weight loss', 95),
+	('Burpees', 'platea dictumst maecenas ut massa', 'Weight loss', 40);
+
+
 
 INSERT INTO FITNESS (name, address, central_number, email) VALUES
     ('FITNESS CENTRE', 'Bulevar Oslobodjenja 1', '0123456879', 'fitness.centre@centre.com'),

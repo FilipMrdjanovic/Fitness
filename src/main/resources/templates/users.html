@@ -5,55 +5,786 @@
         <title>FITNESS | USER CONTROLL</title>
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet" />
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-        <link rel="stylesheet" type="text/css" href="../static/css/table.css"  />
+        <link rel="stylesheet" type="text/css" href="../static/css/table.css" />
+        <style type="text/css">
+            /* Table styles. */
+            table{
+            	width: 1700px;
+            }
+            td,
+            th {
+                text-align: left;
+                padding: 0.5rem 1rem;
+            }
+
+            tbody tr:nth-child(odd) {
+                background-color: #ccc;
+            }
+
+            th {
+                background: #444;
+                color: #fff;
+            }
+
+            /* Pagination. */
+            .pagination {
+                background: #333;
+                padding: 1rem;
+                margin-bottom: 1rem;
+                text-align: center;
+                display: flex;
+                justify-content: center;
+            }
+
+            #numbers {
+                padding: 0;
+                margin: 0 2rem;
+                list-style-type: none;
+                display: flex;
+            }
+
+            #numbers li a {
+                color: #fff;
+                padding: 0.5rem 1rem;
+                text-decoration: none;
+                opacity: 0.7;
+            }
+
+            #numbers li a:hover {
+                opacity: 1;
+            }
+
+            #numbers li a.active {
+                opacity: 1;
+                background: #fff;
+                color: #333;
+            }
+        </style>
     </head>
-    <body onLoad="buildHtmlTable('#excelDataTable')">
-    <img src="https://wallpapercave.com/wp/wp2482989.jpg" alt="">
-        <div class="container">
-            <h1>USERS</h1>
-            <table id="excelDataTable"></table>
+    <body>
+        <div class="pagination">
+            <ol id="numbers"></ol>
         </div>
 
-        <script>
-            var myList = [{"ID":"609e179edb63e983fb1287af","USERNAME":"Bridgette","FIRST NAME":"Leann","LAST NAME":"Buckley","EMAIL":"leannbuckley@frosnex.com","PASSWORD":"test","MOBILE NUMBER":"+381 (874) 413-3000","BIRTH DATE":"2014-12-05T03:58:46 -01:00","ACTIVE":true},{"ID":"609e179e3f804a9fb92b81d5","USERNAME":"Russell","FIRST NAME":"Bullock","LAST NAME":"Mcgee","EMAIL":"bullockmcgee@frosnex.com","PASSWORD":"test","MOBILE NUMBER":"+381 (833) 542-3897","BIRTH DATE":"2020-05-27T09:05:11 -02:00","ACTIVE":true},{"ID":"609e179e480c57fe50cc7f94","USERNAME":"Luella","FIRST NAME":"Stafford","LAST NAME":"Sanford","EMAIL":"staffordsanford@frosnex.com","PASSWORD":"test","MOBILE NUMBER":"+381 (972) 420-2815","BIRTH DATE":"2019-05-16T09:24:28 -02:00","ACTIVE":true},{"ID":"609e179e7e34e1b4fb3247c3","USERNAME":"Valerie","FIRST NAME":"French","LAST NAME":"Woodard","EMAIL":"frenchwoodard@frosnex.com","PASSWORD":"test","MOBILE NUMBER":"+381 (984) 521-3604","BIRTH DATE":"2014-03-26T11:04:14 -01:00","ACTIVE":true},{"ID":"609e179e0de57fe3186b9f23","USERNAME":"Iris","FIRST NAME":"Richards","LAST NAME":"Grimes","EMAIL":"richardsgrimes@frosnex.com","PASSWORD":"test","MOBILE NUMBER":"+381 (992) 437-3035","BIRTH DATE":"2020-02-29T06:10:16 -01:00","ACTIVE":true},{"ID":"609e179eb668b667e8ca20fd","USERNAME":"Sonya","FIRST NAME":"Cain","LAST NAME":"Lawson","EMAIL":"cainlawson@frosnex.com","PASSWORD":"test","MOBILE NUMBER":"+381 (813) 494-3120","BIRTH DATE":"2020-06-20T03:57:22 -02:00","ACTIVE":true},{"ID":"609e179e6f22d29f340efce2","USERNAME":"Mildred","FIRST NAME":"Mcgee","LAST NAME":"Blackburn","EMAIL":"mcgeeblackburn@frosnex.com","PASSWORD":"test","MOBILE NUMBER":"+381 (854) 438-3986","BIRTH DATE":"2016-02-09T10:57:39 -01:00","ACTIVE":true},{"ID":"609e179e0530c69c6fd859d9","USERNAME":"Wong","FIRST NAME":"Cornelia","LAST NAME":"Simon","EMAIL":"corneliasimon@frosnex.com","PASSWORD":"test","MOBILE NUMBER":"+381 (935) 584-2703","BIRTH DATE":"2019-06-22T05:11:28 -02:00","ACTIVE":true},{"ID":"609e179e0f2fcc70c25d1c95","USERNAME":"Cecelia","FIRST NAME":"Janette","LAST NAME":"Sims","EMAIL":"janettesims@frosnex.com","PASSWORD":"test","MOBILE NUMBER":"+381 (890) 406-2408","BIRTH DATE":"2016-02-01T08:36:37 -01:00","ACTIVE":true},{"ID":"609e179e36d19e25a1c7fa1b","USERNAME":"Ewing","FIRST NAME":"Katherine","LAST NAME":"Byers","EMAIL":"katherinebyers@frosnex.com","PASSWORD":"test","MOBILE NUMBER":"+381 (843) 463-2782","BIRTH DATE":"2017-07-10T10:40:16 -02:00","ACTIVE":true},{"ID":"609e179e0bc19fa46aa54558","USERNAME":"Kim","FIRST NAME":"Workman","LAST NAME":"Cunningham","EMAIL":"workmancunningham@frosnex.com","PASSWORD":"test","MOBILE NUMBER":"+381 (836) 519-2978","BIRTH DATE":"2017-04-02T09:53:25 -02:00","ACTIVE":true},{"ID":"609e179ecf2a048ea9e27a21","USERNAME":"Conley","FIRST NAME":"Franks","LAST NAME":"Howe","EMAIL":"frankshowe@frosnex.com","PASSWORD":"test","MOBILE NUMBER":"+381 (813) 550-3558","BIRTH DATE":"2015-08-20T12:02:50 -02:00","ACTIVE":true},{"ID":"609e179e52fcc357dbf9eedb","USERNAME":"Colette","FIRST NAME":"Roberta","LAST NAME":"English","EMAIL":"robertaenglish@frosnex.com","PASSWORD":"test","MOBILE NUMBER":"+381 (907) 429-2605","BIRTH DATE":"2015-11-14T05:36:10 -01:00","ACTIVE":true},{"ID":"609e179ee6e1b6a2b4f3577a","USERNAME":"Chang","FIRST NAME":"Hardin","LAST NAME":"Lane","EMAIL":"hardinlane@frosnex.com","PASSWORD":"test","MOBILE NUMBER":"+381 (865) 420-2574","BIRTH DATE":"2020-08-31T06:56:50 -02:00","ACTIVE":true},{"ID":"609e179e595dba0b7460944e","USERNAME":"Tonya","FIRST NAME":"Eva","LAST NAME":"Dale","EMAIL":"evadale@frosnex.com","PASSWORD":"test","MOBILE NUMBER":"+381 (902) 479-2050","BIRTH DATE":"2017-10-14T04:23:39 -02:00","ACTIVE":true},{"ID":"609e179ea44531d299a82980","USERNAME":"Yesenia","FIRST NAME":"Durham","LAST NAME":"Mcpherson","EMAIL":"durhammcpherson@frosnex.com","PASSWORD":"test","MOBILE NUMBER":"+381 (951) 444-3894","BIRTH DATE":"2015-04-12T03:20:45 -02:00","ACTIVE":true},{"ID":"609e179ecf6821a30b66f023","USERNAME":"Scott","FIRST NAME":"Powers","LAST NAME":"Wilkins","EMAIL":"powerswilkins@frosnex.com","PASSWORD":"test","MOBILE NUMBER":"+381 (803) 526-3235","BIRTH DATE":"2017-03-25T01:47:49 -01:00","ACTIVE":true},{"ID":"609e179eeaa6ab9d06bd65b8","USERNAME":"Patricia","FIRST NAME":"Jeanie","LAST NAME":"Whitley","EMAIL":"jeaniewhitley@frosnex.com","PASSWORD":"test","MOBILE NUMBER":"+381 (926) 577-3059","BIRTH DATE":"2017-12-15T10:52:02 -01:00","ACTIVE":true},{"ID":"609e179e06bbc02d0d512777","USERNAME":"Amparo","FIRST NAME":"Janell","LAST NAME":"Turner","EMAIL":"janellturner@frosnex.com","PASSWORD":"test","MOBILE NUMBER":"+381 (879) 447-2628","BIRTH DATE":"2019-09-30T02:13:48 -02:00","ACTIVE":true},{"ID":"609e179eef30accbb0bcb1f1","USERNAME":"Jill","FIRST NAME":"Huber","LAST NAME":"Steele","EMAIL":"hubersteele@frosnex.com","PASSWORD":"test","MOBILE NUMBER":"+381 (831) 479-2866","BIRTH DATE":"2020-07-06T06:21:41 -02:00","ACTIVE":true},{"ID":"609e179eeed1eb682cb0387a","USERNAME":"Lina","FIRST NAME":"Bertha","LAST NAME":"Shields","EMAIL":"berthashields@frosnex.com","PASSWORD":"test","MOBILE NUMBER":"+381 (881) 544-3996","BIRTH DATE":"2017-07-07T04:54:27 -02:00","ACTIVE":true},{"ID":"609e179ed0ddeca6a6b778fd","USERNAME":"Woods","FIRST NAME":"Holland","LAST NAME":"Hunter","EMAIL":"hollandhunter@frosnex.com","PASSWORD":"test","MOBILE NUMBER":"+381 (893) 450-2095","BIRTH DATE":"2020-11-11T08:59:40 -01:00","ACTIVE":true},{"ID":"609e179eb27006517e44acf5","USERNAME":"Nichole","FIRST NAME":"Justice","LAST NAME":"Owens","EMAIL":"justiceowens@frosnex.com","PASSWORD":"test","MOBILE NUMBER":"+381 (889) 438-2332","BIRTH DATE":"2019-11-22T08:11:36 -01:00","ACTIVE":true},{"ID":"609e179e0872c3e021c7e213","USERNAME":"Gayle","FIRST NAME":"Woodward","LAST NAME":"Berry","EMAIL":"woodwardberry@frosnex.com","PASSWORD":"test","MOBILE NUMBER":"+381 (935) 403-2332","BIRTH DATE":"2016-10-02T12:12:59 -02:00","ACTIVE":true},{"ID":"609e179e4d015045a4544b92","USERNAME":"Barnett","FIRST NAME":"Cabrera","LAST NAME":"Wall","EMAIL":"cabrerawall@frosnex.com","PASSWORD":"test","MOBILE NUMBER":"+381 (829) 503-2862","BIRTH DATE":"2015-11-27T08:48:58 -01:00","ACTIVE":true},{"ID":"609e179e8b5fb4ee46ec9914","USERNAME":"Lara","FIRST NAME":"Hill","LAST NAME":"Potter","EMAIL":"hillpotter@frosnex.com","PASSWORD":"test","MOBILE NUMBER":"+381 (868) 592-3502","BIRTH DATE":"2016-04-10T03:51:16 -02:00","ACTIVE":true},{"ID":"609e179eec6f187790ddd83e","USERNAME":"Adrienne","FIRST NAME":"Joy","LAST NAME":"Bullock","EMAIL":"joybullock@frosnex.com","PASSWORD":"test","MOBILE NUMBER":"+381 (910) 422-2640","BIRTH DATE":"2014-08-16T03:49:09 -02:00","ACTIVE":true},{"ID":"609e179e35e4924c3f95541d","USERNAME":"Baker","FIRST NAME":"Cara","LAST NAME":"Sheppard","EMAIL":"carasheppard@frosnex.com","PASSWORD":"test","MOBILE NUMBER":"+381 (920) 410-3418","BIRTH DATE":"2018-05-04T11:00:33 -02:00","ACTIVE":true},{"ID":"609e179e2268b7a16de797f3","USERNAME":"Watts","FIRST NAME":"Bertie","LAST NAME":"Welch","EMAIL":"bertiewelch@frosnex.com","PASSWORD":"test","MOBILE NUMBER":"+381 (934) 444-3279","BIRTH DATE":"2019-02-21T07:56:29 -01:00","ACTIVE":true},{"ID":"609e179e72f60893f5956310","USERNAME":"Joanna","FIRST NAME":"Dickson","LAST NAME":"Jacobs","EMAIL":"dicksonjacobs@frosnex.com","PASSWORD":"test","MOBILE NUMBER":"+381 (872) 536-2252","BIRTH DATE":"2017-07-16T12:05:47 -02:00","ACTIVE":true},{"ID":"609e179eb4496e7f42bcba66","USERNAME":"Gay","FIRST NAME":"Rosario","LAST NAME":"Hardin","EMAIL":"rosariohardin@frosnex.com","PASSWORD":"test","MOBILE NUMBER":"+381 (903) 544-3171","BIRTH DATE":"2016-04-20T08:42:44 -02:00","ACTIVE":true},{"ID":"609e179e296a2057d19f3a3b","USERNAME":"Hodges","FIRST NAME":"Carey","LAST NAME":"Oneal","EMAIL":"careyoneal@frosnex.com","PASSWORD":"test","MOBILE NUMBER":"+381 (803) 459-2520","BIRTH DATE":"2019-11-11T01:08:59 -01:00","ACTIVE":true},{"ID":"609e179e7358539ba939ccd7","USERNAME":"Albert","FIRST NAME":"Paula","LAST NAME":"Tran","EMAIL":"paulatran@frosnex.com","PASSWORD":"test","MOBILE NUMBER":"+381 (851) 405-3461","BIRTH DATE":"2015-04-07T09:00:31 -02:00","ACTIVE":true},{"ID":"609e179e5c3d8b5e4633bcb8","USERNAME":"Henderson","FIRST NAME":"Carole","LAST NAME":"Baird","EMAIL":"carolebaird@frosnex.com","PASSWORD":"test","MOBILE NUMBER":"+381 (887) 422-3289","BIRTH DATE":"2016-09-29T10:10:54 -02:00","ACTIVE":true}];
-            // Builds the HTML Table out of myList.
-            function buildHtmlTable(selector) {
-                var columns = addAllColumnHeaders(myList, selector);
+        <div class="container">
+            <<!-- div class="pagination">
+                <ol id="numbers"></ol>
+            </div> -->
 
-                for (var i = 0; i < myList.length; i++) {
-                    var row$ = $("<tr/>");
-                    for (var colIndex = 0; colIndex < columns.length; colIndex++) {
-                        var cellValue = myList[i][columns[colIndex]];
-                        if (cellValue == null) cellValue = "";
-                        row$.append($("<td/>").html(cellValue));
-                    }
-                    row$.append($("<td/>").html('<div class="combo-box"> <select required id="membership"> <option value="allow">ALLOW</option> <option value="deny">DENY</option> </select></div>'));
+            <h1>USERS</h1>
+            <table id="excelDataTable">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>USERNAME</th>
+                        <th>FIRST NAME</th>
+                        <th>LAST NAME</th>
+                        <th>EMAIL</th>
+                        <th>PASSWORD</th>
+                        <th>MOBILE NUMBER</th>
+                        <th>BIRTH DATE</th>
+                        <th>ACTIVE</th>
+                        <th>CONFIRMED</th>
+                    </tr>
+                </thead>
+                <tbody >
+                    <tr>
+                        <td>609e179edb63e983fb1287af</td>
+                        <td>Bridgette</td>
+                        <td>Leann</td>
+                        <td>Buckley</td>
+                        <td>leannbuckley@frosnex.com</td>
+                        <td>test</td>
+                        <td>+381 (874) 413-3000</td>
+                        <td>2014-12-05T03:58:46 -01:00</td>
+                        <td>true</td>
+                        <td>
+                            <div class="combo-box">
+                                <select required="" id="membership">
+                                    <option value="allow">ALLOW</option>
+                                    <option value="deny">DENY</option>
+                                </select>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>609e179e3f804a9fb92b81d5</td>
+                        <td>Russell</td>
+                        <td>Bullock</td>
+                        <td>Mcgee</td>
+                        <td>bullockmcgee@frosnex.com</td>
+                        <td>test</td>
+                        <td>+381 (833) 542-3897</td>
+                        <td>2020-05-27T09:05:11 -02:00</td>
+                        <td>true</td>
+                        <td>
+                            <div class="combo-box">
+                                <select required="" id="membership">
+                                    <option value="allow">ALLOW</option>
+                                    <option value="deny">DENY</option>
+                                </select>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>609e179e480c57fe50cc7f94</td>
+                        <td>Luella</td>
+                        <td>Stafford</td>
+                        <td>Sanford</td>
+                        <td>staffordsanford@frosnex.com</td>
+                        <td>test</td>
+                        <td>+381 (972) 420-2815</td>
+                        <td>2019-05-16T09:24:28 -02:00</td>
+                        <td>true</td>
+                        <td>
+                            <div class="combo-box">
+                                <select required="" id="membership">
+                                    <option value="allow">ALLOW</option>
+                                    <option value="deny">DENY</option>
+                                </select>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>609e179e7e34e1b4fb3247c3</td>
+                        <td>Valerie</td>
+                        <td>French</td>
+                        <td>Woodard</td>
+                        <td>frenchwoodard@frosnex.com</td>
+                        <td>test</td>
+                        <td>+381 (984) 521-3604</td>
+                        <td>2014-03-26T11:04:14 -01:00</td>
+                        <td>true</td>
+                        <td>
+                            <div class="combo-box">
+                                <select required="" id="membership">
+                                    <option value="allow">ALLOW</option>
+                                    <option value="deny">DENY</option>
+                                </select>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>609e179e0de57fe3186b9f23</td>
+                        <td>Iris</td>
+                        <td>Richards</td>
+                        <td>Grimes</td>
+                        <td>richardsgrimes@frosnex.com</td>
+                        <td>test</td>
+                        <td>+381 (992) 437-3035</td>
+                        <td>2020-02-29T06:10:16 -01:00</td>
+                        <td>true</td>
+                        <td>
+                            <div class="combo-box">
+                                <select required="" id="membership">
+                                    <option value="allow">ALLOW</option>
+                                    <option value="deny">DENY</option>
+                                </select>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>609e179eb668b667e8ca20fd</td>
+                        <td>Sonya</td>
+                        <td>Cain</td>
+                        <td>Lawson</td>
+                        <td>cainlawson@frosnex.com</td>
+                        <td>test</td>
+                        <td>+381 (813) 494-3120</td>
+                        <td>2020-06-20T03:57:22 -02:00</td>
+                        <td>true</td>
+                        <td>
+                            <div class="combo-box">
+                                <select required="" id="membership">
+                                    <option value="allow">ALLOW</option>
+                                    <option value="deny">DENY</option>
+                                </select>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>609e179e6f22d29f340efce2</td>
+                        <td>Mildred</td>
+                        <td>Mcgee</td>
+                        <td>Blackburn</td>
+                        <td>mcgeeblackburn@frosnex.com</td>
+                        <td>test</td>
+                        <td>+381 (854) 438-3986</td>
+                        <td>2016-02-09T10:57:39 -01:00</td>
+                        <td>true</td>
+                        <td>
+                            <div class="combo-box">
+                                <select required="" id="membership">
+                                    <option value="allow">ALLOW</option>
+                                    <option value="deny">DENY</option>
+                                </select>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>609e179e0530c69c6fd859d9</td>
+                        <td>Wong</td>
+                        <td>Cornelia</td>
+                        <td>Simon</td>
+                        <td>corneliasimon@frosnex.com</td>
+                        <td>test</td>
+                        <td>+381 (935) 584-2703</td>
+                        <td>2019-06-22T05:11:28 -02:00</td>
+                        <td>true</td>
+                        <td>
+                            <div class="combo-box">
+                                <select required="" id="membership">
+                                    <option value="allow">ALLOW</option>
+                                    <option value="deny">DENY</option>
+                                </select>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>609e179e0f2fcc70c25d1c95</td>
+                        <td>Cecelia</td>
+                        <td>Janette</td>
+                        <td>Sims</td>
+                        <td>janettesims@frosnex.com</td>
+                        <td>test</td>
+                        <td>+381 (890) 406-2408</td>
+                        <td>2016-02-01T08:36:37 -01:00</td>
+                        <td>true</td>
+                        <td>
+                            <div class="combo-box">
+                                <select required="" id="membership">
+                                    <option value="allow">ALLOW</option>
+                                    <option value="deny">DENY</option>
+                                </select>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>609e179e36d19e25a1c7fa1b</td>
+                        <td>Ewing</td>
+                        <td>Katherine</td>
+                        <td>Byers</td>
+                        <td>katherinebyers@frosnex.com</td>
+                        <td>test</td>
+                        <td>+381 (843) 463-2782</td>
+                        <td>2017-07-10T10:40:16 -02:00</td>
+                        <td>true</td>
+                        <td>
+                            <div class="combo-box">
+                                <select required="" id="membership">
+                                    <option value="allow">ALLOW</option>
+                                    <option value="deny">DENY</option>
+                                </select>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>609e179e0bc19fa46aa54558</td>
+                        <td>Kim</td>
+                        <td>Workman</td>
+                        <td>Cunningham</td>
+                        <td>workmancunningham@frosnex.com</td>
+                        <td>test</td>
+                        <td>+381 (836) 519-2978</td>
+                        <td>2017-04-02T09:53:25 -02:00</td>
+                        <td>true</td>
+                        <td>
+                            <div class="combo-box">
+                                <select required="" id="membership">
+                                    <option value="allow">ALLOW</option>
+                                    <option value="deny">DENY</option>
+                                </select>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>609e179ecf2a048ea9e27a21</td>
+                        <td>Conley</td>
+                        <td>Franks</td>
+                        <td>Howe</td>
+                        <td>frankshowe@frosnex.com</td>
+                        <td>test</td>
+                        <td>+381 (813) 550-3558</td>
+                        <td>2015-08-20T12:02:50 -02:00</td>
+                        <td>true</td>
+                        <td>
+                            <div class="combo-box">
+                                <select required="" id="membership">
+                                    <option value="allow">ALLOW</option>
+                                    <option value="deny">DENY</option>
+                                </select>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>609e179e52fcc357dbf9eedb</td>
+                        <td>Colette</td>
+                        <td>Roberta</td>
+                        <td>English</td>
+                        <td>robertaenglish@frosnex.com</td>
+                        <td>test</td>
+                        <td>+381 (907) 429-2605</td>
+                        <td>2015-11-14T05:36:10 -01:00</td>
+                        <td>true</td>
+                        <td>
+                            <div class="combo-box">
+                                <select required="" id="membership">
+                                    <option value="allow">ALLOW</option>
+                                    <option value="deny">DENY</option>
+                                </select>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>609e179ee6e1b6a2b4f3577a</td>
+                        <td>Chang</td>
+                        <td>Hardin</td>
+                        <td>Lane</td>
+                        <td>hardinlane@frosnex.com</td>
+                        <td>test</td>
+                        <td>+381 (865) 420-2574</td>
+                        <td>2020-08-31T06:56:50 -02:00</td>
+                        <td>true</td>
+                        <td>
+                            <div class="combo-box">
+                                <select required="" id="membership">
+                                    <option value="allow">ALLOW</option>
+                                    <option value="deny">DENY</option>
+                                </select>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>609e179e595dba0b7460944e</td>
+                        <td>Tonya</td>
+                        <td>Eva</td>
+                        <td>Dale</td>
+                        <td>evadale@frosnex.com</td>
+                        <td>test</td>
+                        <td>+381 (902) 479-2050</td>
+                        <td>2017-10-14T04:23:39 -02:00</td>
+                        <td>true</td>
+                        <td>
+                            <div class="combo-box">
+                                <select required="" id="membership">
+                                    <option value="allow">ALLOW</option>
+                                    <option value="deny">DENY</option>
+                                </select>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>609e179ea44531d299a82980</td>
+                        <td>Yesenia</td>
+                        <td>Durham</td>
+                        <td>Mcpherson</td>
+                        <td>durhammcpherson@frosnex.com</td>
+                        <td>test</td>
+                        <td>+381 (951) 444-3894</td>
+                        <td>2015-04-12T03:20:45 -02:00</td>
+                        <td>true</td>
+                        <td>
+                            <div class="combo-box">
+                                <select required="" id="membership">
+                                    <option value="allow">ALLOW</option>
+                                    <option value="deny">DENY</option>
+                                </select>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>609e179ecf6821a30b66f023</td>
+                        <td>Scott</td>
+                        <td>Powers</td>
+                        <td>Wilkins</td>
+                        <td>powerswilkins@frosnex.com</td>
+                        <td>test</td>
+                        <td>+381 (803) 526-3235</td>
+                        <td>2017-03-25T01:47:49 -01:00</td>
+                        <td>true</td>
+                        <td>
+                            <div class="combo-box">
+                                <select required="" id="membership">
+                                    <option value="allow">ALLOW</option>
+                                    <option value="deny">DENY</option>
+                                </select>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>609e179eeaa6ab9d06bd65b8</td>
+                        <td>Patricia</td>
+                        <td>Jeanie</td>
+                        <td>Whitley</td>
+                        <td>jeaniewhitley@frosnex.com</td>
+                        <td>test</td>
+                        <td>+381 (926) 577-3059</td>
+                        <td>2017-12-15T10:52:02 -01:00</td>
+                        <td>true</td>
+                        <td>
+                            <div class="combo-box">
+                                <select required="" id="membership">
+                                    <option value="allow">ALLOW</option>
+                                    <option value="deny">DENY</option>
+                                </select>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>609e179e06bbc02d0d512777</td>
+                        <td>Amparo</td>
+                        <td>Janell</td>
+                        <td>Turner</td>
+                        <td>janellturner@frosnex.com</td>
+                        <td>test</td>
+                        <td>+381 (879) 447-2628</td>
+                        <td>2019-09-30T02:13:48 -02:00</td>
+                        <td>true</td>
+                        <td>
+                            <div class="combo-box">
+                                <select required="" id="membership">
+                                    <option value="allow">ALLOW</option>
+                                    <option value="deny">DENY</option>
+                                </select>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>609e179eef30accbb0bcb1f1</td>
+                        <td>Jill</td>
+                        <td>Huber</td>
+                        <td>Steele</td>
+                        <td>hubersteele@frosnex.com</td>
+                        <td>test</td>
+                        <td>+381 (831) 479-2866</td>
+                        <td>2020-07-06T06:21:41 -02:00</td>
+                        <td>true</td>
+                        <td>
+                            <div class="combo-box">
+                                <select required="" id="membership">
+                                    <option value="allow">ALLOW</option>
+                                    <option value="deny">DENY</option>
+                                </select>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>609e179eeed1eb682cb0387a</td>
+                        <td>Lina</td>
+                        <td>Bertha</td>
+                        <td>Shields</td>
+                        <td>berthashields@frosnex.com</td>
+                        <td>test</td>
+                        <td>+381 (881) 544-3996</td>
+                        <td>2017-07-07T04:54:27 -02:00</td>
+                        <td>true</td>
+                        <td>
+                            <div class="combo-box">
+                                <select required="" id="membership">
+                                    <option value="allow">ALLOW</option>
+                                    <option value="deny">DENY</option>
+                                </select>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>609e179ed0ddeca6a6b778fd</td>
+                        <td>Woods</td>
+                        <td>Holland</td>
+                        <td>Hunter</td>
+                        <td>hollandhunter@frosnex.com</td>
+                        <td>test</td>
+                        <td>+381 (893) 450-2095</td>
+                        <td>2020-11-11T08:59:40 -01:00</td>
+                        <td>true</td>
+                        <td>
+                            <div class="combo-box">
+                                <select required="" id="membership">
+                                    <option value="allow">ALLOW</option>
+                                    <option value="deny">DENY</option>
+                                </select>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>609e179eb27006517e44acf5</td>
+                        <td>Nichole</td>
+                        <td>Justice</td>
+                        <td>Owens</td>
+                        <td>justiceowens@frosnex.com</td>
+                        <td>test</td>
+                        <td>+381 (889) 438-2332</td>
+                        <td>2019-11-22T08:11:36 -01:00</td>
+                        <td>true</td>
+                        <td>
+                            <div class="combo-box">
+                                <select required="" id="membership">
+                                    <option value="allow">ALLOW</option>
+                                    <option value="deny">DENY</option>
+                                </select>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>609e179e0872c3e021c7e213</td>
+                        <td>Gayle</td>
+                        <td>Woodward</td>
+                        <td>Berry</td>
+                        <td>woodwardberry@frosnex.com</td>
+                        <td>test</td>
+                        <td>+381 (935) 403-2332</td>
+                        <td>2016-10-02T12:12:59 -02:00</td>
+                        <td>true</td>
+                        <td>
+                            <div class="combo-box">
+                                <select required="" id="membership">
+                                    <option value="allow">ALLOW</option>
+                                    <option value="deny">DENY</option>
+                                </select>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>609e179e4d015045a4544b92</td>
+                        <td>Barnett</td>
+                        <td>Cabrera</td>
+                        <td>Wall</td>
+                        <td>cabrerawall@frosnex.com</td>
+                        <td>test</td>
+                        <td>+381 (829) 503-2862</td>
+                        <td>2015-11-27T08:48:58 -01:00</td>
+                        <td>true</td>
+                        <td>
+                            <div class="combo-box">
+                                <select required="" id="membership">
+                                    <option value="allow">ALLOW</option>
+                                    <option value="deny">DENY</option>
+                                </select>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>609e179e8b5fb4ee46ec9914</td>
+                        <td>Lara</td>
+                        <td>Hill</td>
+                        <td>Potter</td>
+                        <td>hillpotter@frosnex.com</td>
+                        <td>test</td>
+                        <td>+381 (868) 592-3502</td>
+                        <td>2016-04-10T03:51:16 -02:00</td>
+                        <td>true</td>
+                        <td>
+                            <div class="combo-box">
+                                <select required="" id="membership">
+                                    <option value="allow">ALLOW</option>
+                                    <option value="deny">DENY</option>
+                                </select>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>609e179eec6f187790ddd83e</td>
+                        <td>Adrienne</td>
+                        <td>Joy</td>
+                        <td>Bullock</td>
+                        <td>joybullock@frosnex.com</td>
+                        <td>test</td>
+                        <td>+381 (910) 422-2640</td>
+                        <td>2014-08-16T03:49:09 -02:00</td>
+                        <td>true</td>
+                        <td>
+                            <div class="combo-box">
+                                <select required="" id="membership">
+                                    <option value="allow">ALLOW</option>
+                                    <option value="deny">DENY</option>
+                                </select>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>609e179e35e4924c3f95541d</td>
+                        <td>Baker</td>
+                        <td>Cara</td>
+                        <td>Sheppard</td>
+                        <td>carasheppard@frosnex.com</td>
+                        <td>test</td>
+                        <td>+381 (920) 410-3418</td>
+                        <td>2018-05-04T11:00:33 -02:00</td>
+                        <td>true</td>
+                        <td>
+                            <div class="combo-box">
+                                <select required="" id="membership">
+                                    <option value="allow">ALLOW</option>
+                                    <option value="deny">DENY</option>
+                                </select>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>609e179e2268b7a16de797f3</td>
+                        <td>Watts</td>
+                        <td>Bertie</td>
+                        <td>Welch</td>
+                        <td>bertiewelch@frosnex.com</td>
+                        <td>test</td>
+                        <td>+381 (934) 444-3279</td>
+                        <td>2019-02-21T07:56:29 -01:00</td>
+                        <td>true</td>
+                        <td>
+                            <div class="combo-box">
+                                <select required="" id="membership">
+                                    <option value="allow">ALLOW</option>
+                                    <option value="deny">DENY</option>
+                                </select>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>609e179e72f60893f5956310</td>
+                        <td>Joanna</td>
+                        <td>Dickson</td>
+                        <td>Jacobs</td>
+                        <td>dicksonjacobs@frosnex.com</td>
+                        <td>test</td>
+                        <td>+381 (872) 536-2252</td>
+                        <td>2017-07-16T12:05:47 -02:00</td>
+                        <td>true</td>
+                        <td>
+                            <div class="combo-box">
+                                <select required="" id="membership">
+                                    <option value="allow">ALLOW</option>
+                                    <option value="deny">DENY</option>
+                                </select>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>609e179eb4496e7f42bcba66</td>
+                        <td>Gay</td>
+                        <td>Rosario</td>
+                        <td>Hardin</td>
+                        <td>rosariohardin@frosnex.com</td>
+                        <td>test</td>
+                        <td>+381 (903) 544-3171</td>
+                        <td>2016-04-20T08:42:44 -02:00</td>
+                        <td>true</td>
+                        <td>
+                            <div class="combo-box">
+                                <select required="" id="membership">
+                                    <option value="allow">ALLOW</option>
+                                    <option value="deny">DENY</option>
+                                </select>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>609e179e296a2057d19f3a3b</td>
+                        <td>Hodges</td>
+                        <td>Carey</td>
+                        <td>Oneal</td>
+                        <td>careyoneal@frosnex.com</td>
+                        <td>test</td>
+                        <td>+381 (803) 459-2520</td>
+                        <td>2019-11-11T01:08:59 -01:00</td>
+                        <td>true</td>
+                        <td>
+                            <div class="combo-box">
+                                <select required="" id="membership">
+                                    <option value="allow">ALLOW</option>
+                                    <option value="deny">DENY</option>
+                                </select>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>609e179e7358539ba939ccd7</td>
+                        <td>Albert</td>
+                        <td>Paula</td>
+                        <td>Tran</td>
+                        <td>paulatran@frosnex.com</td>
+                        <td>test</td>
+                        <td>+381 (851) 405-3461</td>
+                        <td>2015-04-07T09:00:31 -02:00</td>
+                        <td>true</td>
+                        <td>
+                            <div class="combo-box">
+                                <select required="" id="membership">
+                                    <option value="allow">ALLOW</option>
+                                    <option value="deny">DENY</option>
+                                </select>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>609e179e5c3d8b5e4633bcb8</td>
+                        <td>Henderson</td>
+                        <td>Carole</td>
+                        <td>Baird</td>
+                        <td>carolebaird@frosnex.com</td>
+                        <td>test</td>
+                        <td>+381 (887) 422-3289</td>
+                        <td>2016-09-29T10:10:54 -02:00</td>
+                        <td>true</td>
+                        <td>
+                            <div class="combo-box">
+                                <select required="" id="membership">
+                                    <option value="allow">ALLOW</option>
+                                    <option value="deny">DENY</option>
+                                </select>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
 
-                    $(selector).append(row$);
+        <script type="text/javascript">
+            $(function () {
+                const rowsPerPage = 10;
+                const rows = $("#excelDataTable tbody tr");
+                const rowsCount = rows.length;
+                const pageCount = Math.ceil(rowsCount / rowsPerPage); // avoid decimals
+                const numbers = $("#numbers");
+
+                // Generate the pagination.
+                for (var i = 0; i < pageCount; i++) {
+                    numbers.append('<li><a href="#">' + (i + 1) + "</a></li>");
                 }
-            }
 
-            // Adds a header row to the table and returns the set of columns.
-            // Need to do union of keys from all records as some records may not contain
-            // all records.
-            function addAllColumnHeaders(myList, selector) {
-                var columnSet = [];
-                var headerTr$ = $("<tr/>");
+                // Mark the first page link as active.
+                $("#numbers li:first-child a").addClass("active");
 
-                for (var i = 0; i < myList.length; i++) {
-                    var rowHash = myList[i];
-                    for (var key in rowHash) {
-                        if ($.inArray(key, columnSet) == -1) {
-                            columnSet.push(key);
-                            headerTr$.append($("<th/>").html(key));
-                        }
-                    }
+                // Display the first set of rows.
+                displayRows(1);
+
+                // On pagination click.
+                $("#numbers li a").click(function (e) {
+                    var $this = $(this);
+
+                    e.preventDefault();
+
+                    // Remove the active class from the links.
+                    $("#numbers li a").removeClass("active");
+
+                    // Add the active class to the current link.
+                    $this.addClass("active");
+
+                    // Show the rows corresponding to the clicked page ID.
+                    displayRows($this.text());
+                });
+
+                // Function that displays rows for a specific page.
+                function displayRows(index) {
+                    var start = (index - 1) * rowsPerPage;
+                    var end = start + rowsPerPage;
+
+                    // Hide all rows.
+                    rows.hide();
+
+                    // Show the proper rows for this page.
+                    rows.slice(start, end).show();
                 }
-                headerTr$.append('<th style="padding:8px 9px";>CONFIRMED</th>');
-                $(selector).append(headerTr$);
-
-                return columnSet;
-            }
+            });
         </script>
     </body>
 </html>

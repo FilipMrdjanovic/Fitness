@@ -26,13 +26,16 @@ public class Training implements Serializable {
     @OneToMany(mappedBy = "training", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Appointment> appointments = new HashSet<>();
 
-    public Training(Long id, String name, String description, String type, int duration, Set<Appointment> appointments) {
-        this.id = id;
-        this.name = name;
-        this.description = description;
-        this.type = type;
-        this.duration = duration;
-        this.appointments = appointments;
+    @Override
+    public String toString() {
+        return "Training{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", type='" + type + '\'' +
+                ", duration=" + duration +
+                ", appointments=" + appointments +
+                '}';
     }
 
     public Long getId() {

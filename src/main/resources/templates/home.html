@@ -2,13 +2,21 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>FITNESS CENTRE</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
 </head>
 <body>
-    <a href="/signup">SIGN UP <br><br><br></a>
-
-    <a href="/signup-member">SIGN UP @$$ MEMBER</a>
-    <a href="/signup-trainer">SIGN UP @$$ TRAINER</a>
-    <a href="/login">LOGIN</a>
+    <div class="main">
+        <div id='content'>
+            <div class='title'>
+                <span>FITNESS CENTRE</span>
+            </div>
+            <div class="inline">
+                <a href="/login">LOGIN</a>
+                <a style="width: 50px;"></a>
+                <a href="/signup">REGISTER</a>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
