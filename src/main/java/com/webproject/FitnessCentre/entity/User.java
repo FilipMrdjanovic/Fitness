@@ -3,9 +3,11 @@ package com.webproject.FitnessCentre.entity;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
-@MappedSuperclass
+@Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 public class User implements Serializable {
 
     @Id
@@ -134,4 +136,5 @@ public class User implements Serializable {
     public void setActive(boolean active) {
         this.active = active;
     }
+
 }

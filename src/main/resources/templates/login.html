@@ -11,7 +11,7 @@
     <img src="https://wallpapercave.com/wp/wp2482989.jpg" alt="">
         <div class="container">
             <h1>SIGN IN</h1>
-            <form th:action="@{/login}" th:object="${user}" method="get">
+            <form id="form" th:action="@{/login-attempt}" th:object="${user}" method="get">
                 <input type="text" id="username" name="username" placeholder="USERNAME" required autocomplete="false" th:field="*{username}" />
                 <input type="password" id="password" name="password" placeholder="PASSWORD" required autocomplete="false" th:field="*{password}" />
                 <div class="form-actions">
@@ -20,5 +20,10 @@
                 </div>
             </form>
         </div>
+        <script>
+            $('#form').submit(function(e) {
+                return true;
+            });
+        </script>
     </body>
 </html>

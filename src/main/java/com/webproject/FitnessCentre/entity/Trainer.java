@@ -7,7 +7,6 @@ import java.util.Set;
 
 @Entity
 public class Trainer extends User {
-
     @Column
     private float grade;
 

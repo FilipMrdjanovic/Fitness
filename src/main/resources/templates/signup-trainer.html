@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FITNESS | SIGN UP</title>
+    <title>FITNESS | SIGN UP AS TRAINER</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Oswald:400,700" rel="stylesheet" type="text/css" />
     <!-- Icons -->
@@ -35,11 +35,11 @@
     </script>
 </head>
 <body>
-    <img src="https://wallpapercave.com/wp/wp2482989.jpg" alt="">
+     <img src="https://wallpapercave.com/wp/wp2482989.jpg" alt="">
     <div class="container">
         <h1>SIGN UP</h1>
         <div id="modifyForm">
-        	<form id="form" name="form" th:action="@{/signup}" th:object="${user}" method="post">
+        	<form id="form" name="form" th:action="@{/signup-trainer}" th:object="${trainer}" method="post">
 	            <input type="text" name="username" id="username" placeholder="USERNAME" autocomplete="false" required th:field="*{username}" />
 	            <input type="text" name="name" id="name" placeholder="FIRST NAME" autocomplete="false" required th:field="*{firstName}" />
 	            <input type="text" name="lastName" id="lastName" placeholder="LAST NAME" autocomplete="false" required th:field="*{lastName}" />
@@ -52,13 +52,7 @@
 	                <select required id="yeardropdown"> </select>
 	            </div>
 	            <input id="birthDate" name="birthDate" type="hidden" th:field="*{birthDate}" value="" />
-	            <div class="combo-box">
-	                <select required id="roleChoice">
-	                    <option value="TRAINER">Trainer</option>
-	                    <option value="MEMBER">Member</option>
-	                </select>
-	            </div>
-            	<input id="role" type="text" th:field="*{role}" style="display: none;" />
+	            <input id="role" name="role" type="hidden" th:field="*{role}" value="trainer" />
 	            <div class="form-actions">
 	                <button type="submit" class="btn">Sign up</button>
 	                <p>Already have account? <a href="/login">Login here</a></p>
@@ -70,8 +64,7 @@
         function confSubmit() {
             var year = [],
                 month = [],
-                day = [],
-                role = [];
+                day = [];
             $.each($("#yeardropdown option:selected"), function () {
                 year.push($(this).val());
             });
@@ -81,20 +74,15 @@
             $.each($("#daydropdown option:selected"), function () {
                 day.push($(this).val());
             });
-            $.each($("#roleChoice option:selected"), function () {
-                role.push($(this).val());
-            });
-            var dataRole = ""+role+"";
             var data = day + "-" + month + "-" + year;
             $("#birthDate").val(String(data));
-            $("#role").val(String(dataRole));
+            $("#role").val("TRAINER");
         }
         $('#form').submit(function(e) {
             confSubmit();
             return true;
         });
-	</script>
-    <script type="text/javascript">
+
         window.onload = function () {
             populatedropdown("daydropdown", "monthdropdown", "yeardropdown");
         };

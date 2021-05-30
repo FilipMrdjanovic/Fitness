@@ -17,6 +17,29 @@ public class UserService {
         return user;
     }
 
+    public User findOneUser(String username) {
+        User user = this.userRepository.getByUsername(username);
+        return  user;
+    }
+
+    public boolean checkPass(User user, String password) {
+        if(user.getPassword() == password)
+            return  true;
+        return false;
+    }
+
+    public boolean checkProfile(String username, String password){
+        List<User> users = findAll();
+        for (User tempUser : users) {
+            if(tempUser.getUsername() == username){
+                if(tempUser.getPassword() == password)
+                    return true;
+            }
+        }
+        return  false;
+    }
+
+
     public List<User> findAll() {
         List<User> user = this.userRepository.findAll();
         return user;

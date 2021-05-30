@@ -1,5 +1,5 @@
 body {
-    background: #181818;
+    background: black;
     margin: 0;
 }
 
@@ -28,6 +28,35 @@ img {
     text-align: center;
     padding: 0 80px;
 }
+
+.horizontal-align {
+  display: inline-block;
+  vertical-align: top;
+  width: 90%;
+  height: auto;
+  padding: 20px 30px;
+  margin: 20px 5%;
+  box-sizing: border-box;
+  border: 1px solid;
+  font-size: 0;
+}
+.horizontal-align > * {
+  font-size: initial;
+}
+.horizontal-align .item {
+  width: 50%;
+}
+.horizontal-align .item {
+  display: inline-block;
+  vertical-align: top;
+  height: auto;
+  min-height: 100px;
+  padding: 15px 25px;
+  align-items: center;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.7);
+}
+
 form {
     padding: 0 30px;
 }
