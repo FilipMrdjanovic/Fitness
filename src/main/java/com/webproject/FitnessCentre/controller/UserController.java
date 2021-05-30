@@ -1,7 +1,13 @@
 package com.webproject.FitnessCentre.controller;
 
 
+import com.webproject.FitnessCentre.entity.Administrator;
+import com.webproject.FitnessCentre.entity.Member;
+import com.webproject.FitnessCentre.entity.Trainer;
 import com.webproject.FitnessCentre.entity.User;
+import com.webproject.FitnessCentre.service.AdminService;
+import com.webproject.FitnessCentre.service.MemberService;
+import com.webproject.FitnessCentre.service.TrainerService;
 import com.webproject.FitnessCentre.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,6 +21,12 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+    @Autowired
+    private MemberService memberService;
+    @Autowired
+    private TrainerService trainerService;
+    @Autowired
+    private AdminService adminService;
 
     @GetMapping("/")
     public String home() { return "home.html"; }
@@ -35,7 +47,51 @@ public class UserController {
     }
     @PostMapping("/signup")
     public String post_signup(@ModelAttribute User user) {
-        this.userService.save(user);
+        if(user.getRole().equals("MEMBER")){
+            Member member = new Member();
+            member.setId(user.getId());
+            member.setUsername(user.getUsername());
+            member.setPassword(user.getPassword());
+            member.setFirstName(user.getFirstName());
+            member.setLastName(user.getLastName());
+            member.setEmail(user.getEmail());
+            member.setRole(user.getRole());
+            member.setBirthDate(user.getBirthDate());
+            member.setMobileNumber(user.getMobileNumber());
+            member.setActive(user.getActive());
+            this.memberService.save(member);
+        }
+
+        else if(user.getRole().equals("TRAINER")){
+            Trainer trainer = new Trainer();
+            trainer.setId(user.getId());
+            trainer.setUsername(user.getUsername());
+            trainer.setPassword(user.getPassword());
+            trainer.setFirstName(user.getFirstName());
+            trainer.setLastName(user.getLastName());
+            trainer.setEmail(user.getEmail());
+            trainer.setRole(user.getRole());
+            trainer.setBirthDate(user.getBirthDate());
+            trainer.setMobileNumber(user.getMobileNumber());
+            trainer.setActive(user.getActive());
+            trainer.setAllowed(false);
+            trainer.setGrade(5);
+            this.trainerService.save(trainer);
+        }
+        else{
+            Administrator administrator = new Administrator();
+            administrator.setId(user.getId());
+            administrator.setUsername(user.getUsername());
+            administrator.setPassword(user.getPassword());
+            administrator.setFirstName(user.getFirstName());
+            administrator.setLastName(user.getLastName());
+            administrator.setEmail(user.getEmail());
+            administrator.setRole(user.getRole());
+            administrator.setBirthDate(user.getBirthDate());
+            administrator.setMobileNumber(user.getMobileNumber());
+            administrator.setActive(user.getActive());
+            this.adminService.save(administrator);
+        }
         return "redirect:/";
     }
     @GetMapping("/login")
@@ -45,23 +101,21 @@ public class UserController {
         return "login.html";
     }
 
-
-//    @GetMapping("/employees/{id}")
-//    public String getEmployee(@PathVariable("id") Long id, Model model) {
-
     @GetMapping("/login-attempt")
     public String post_login(@ModelAttribute User user) {
         List<User> users = userService.findAll();
         for (User myUser : users) {
             if(user.getUsername().equals(myUser.getUsername())){
                 if(user.getPassword().equals(myUser.getPassword())){
-                    System.out.println(myUser.getRole());
-                    if(myUser.getRole().equals("MEMBER"))
+                    if(myUser.getRole().equals("MEMBER")){
                         return  "redirect:/member";
-                    else if(myUser.getRole().equals("TRAINER"))
+                    }
+                    else if(myUser.getRole().equals("TRAINER")){
                         return  "redirect:/trainer";
-                    else
-                        return  "redirect:/user";
+                    }
+                    else{
+                        return  "redirect:/admin";
+                    }
                 }
             }
         }

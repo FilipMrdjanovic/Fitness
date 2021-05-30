@@ -1,5 +1,7 @@
 INSERT INTO USER (username, first_name, last_name, password, email, birth_date, mobile_number, role, active) VALUES
-	('dcattel0', 'Dillie', 'Cattel', '1jWexXckx7m', 'dcattel0@princeton.edu', '11/30/2020', '385-634-9164', 'MEMBER', true),
+    ('admin', 'Admin', 'Fitness Admin', 'admin', 'admin@admin.admin', '11/30/2020', '385-634-9164', 'ADMIN', true),
+    ('member', 'Member', 'Fitness Member', 'member', 'member@member.member', '11/30/2020', '385-634-9164', 'MEMBER', true),
+    ('trainer', 'Trainer', 'Fitness Trainer', 'trainer', 'trainer@trainer.trainer', '11/30/2020', '385-634-9164', 'TRAINER', true),
 	('svasyukhichev1', 'Shawna', 'Vasyukhichev', 'PX1GbXBkJeF5', 'svasyukhichev1@constantcontact.com', '7/31/2020', '163-173-7238', 'TRAINER', false),
 	('cbaylay2', 'Chrystal', 'Baylay', 'gIjvgtFew', 'cbaylay2@nymag.com', '11/10/2020', '328-117-9579', 'TRAINER', false),
 	('eassad3', 'Earvin', 'Assad', 'ldhf4Sefm44', 'eassad3@moonfruit.com', '8/6/2020', '279-773-4447', 'MEMBER', true),
@@ -63,10 +65,12 @@ INSERT INTO USER (username, first_name, last_name, password, email, birth_date, 
 INSERT INTO TRAINER(id) SELECT ID FROM USER WHERE role='TRAINER';
 
 UPDATE TRAINER SET grade = 5;
+UPDATE TRAINER SET is_allowed = false;
 UPDATE TRAINER SET fitness_id = SELECT ID from FITNESS LIMIT 1;
 
 INSERT INTO MEMBER(id) SELECT ID FROM USER WHERE role='MEMBER';
 
+INSERT INTO ADMINISTRATOR(id) SELECT ID FROM USER WHERE role='ADMIN';
 
 INSERT INTO TRAINING (name, description, type, duration) VALUES
     ('MASTER ABS', 'HOME WORKOUT FOR ABS (6 EXERCISES X 3 SETS)', 'ENDURANCE', 45),

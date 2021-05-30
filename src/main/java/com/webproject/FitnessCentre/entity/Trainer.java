@@ -16,6 +16,13 @@ public class Trainer extends User {
     @OneToMany(mappedBy = "trainer", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Appointment> appointments = new HashSet<>();
 
+    @Column
+    private boolean isAllowed = false;
+
+    private boolean isAllowed() { return isAllowed; }
+
+    public void setAllowed(boolean allowed) { isAllowed = allowed; }
+
     public float getGrade() {
         return grade;
     }

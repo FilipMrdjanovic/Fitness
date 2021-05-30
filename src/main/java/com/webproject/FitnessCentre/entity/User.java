@@ -129,7 +129,7 @@ public class User implements Serializable {
         this.role = role;
     }
 
-    public boolean isActive() {
+    public boolean getActive() {
         return active;
     }
 
