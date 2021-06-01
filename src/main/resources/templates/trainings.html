@@ -8,10 +8,22 @@
   <body>
     <div class="container">
       <h1>TRAININGS</h1>
+      <form class="inline" id="form" name="form" th:action="@{/member/trainings}">
+      <select name="criteria" id="criteria"th:value="${criteria}">
+        <option value="NAME">NAME</option>
+        <option value="DESCRIPTION">DESCRIPTION</option>
+        <option value="TYPE">TYPE</option>
+        <option value="DURATION">DURATION</option>
+      </select>
+      <!--          Criteria:<input type="text" name="criteria" id="criteria" size="50" th:value="${criteria}" />-->
+      Keyword: <input type="text" name="keyword" id="keyword" size="50" th:value="${keyword}" />
+      <input type="submit" />
+      <input type="button" value="Clear" id="btnClear" onclick="clearSearch()" />
+    </form>
       <table id="trainings">
+
         <thead>
           <tr>
-            <th>ID</th>
             <th>NAME</th>
             <th>DESCRIPTION</th>
             <th>TYPE</th>
@@ -20,7 +32,6 @@
         </thead>
         <tbody>
           <tr th:each="training : ${list}">
-            <td th:text="${training.id}"></td>
             <td th:text="${training.name}"></td>
             <td th:text="${training.description}"></td>
             <td th:text="${training.type}"></td>
@@ -29,5 +40,10 @@
         </tbody>
       </table>
     </div>
+    <script type="text/javascript">
+      function clearSearch() {
+          window.location = "[[@{/member/trainings}]]";
+      }
+  </script>
   </body>
 </html>

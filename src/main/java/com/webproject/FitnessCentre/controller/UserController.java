@@ -5,6 +5,7 @@ import com.webproject.FitnessCentre.entity.*;
 import com.webproject.FitnessCentre.repository.TrainingRepository;
 import com.webproject.FitnessCentre.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -37,10 +38,20 @@ public class UserController {
     @GetMapping("/admin")
     public String adminPage() { return "admin.html"; }
 
-    @GetMapping("/member/trainings")
-    public String getTrainings(Model model) {
-        List<Training> trainingList = this.trainingService.findAll();
-        model.addAttribute("list", trainingList);
+//    @GetMapping("/member/trainings")
+//    public String getTrainings(Model model) {
+//        List<Training> trainingList = this.trainingService.findAll();
+//        model.addAttribute("list", trainingList);
+//        return "trainings.html";
+//    }
+
+    @RequestMapping("/member/trainings")
+    public String getTrainings(Model model, @Param("criteria") String criteria, @Param("keyword") String keyword) {
+        List<Training> listProducts = trainingService.findAll(criteria, keyword);
+        model.addAttribute("list", listProducts);
+        model.addAttribute("criteria", criteria);
+        model.addAttribute("keyword", keyword);
+
         return "trainings.html";
     }
 
