@@ -7,10 +7,12 @@ body {
 
 img {
     position: fixed;
+    -o-object-fit: cover;
     object-fit: cover;
     height: auto;
     margin: 0;
     z-index: -1;
+    -webkit-filter: blur(8px);
     filter: blur(8px);
 }
 
@@ -20,9 +22,16 @@ h1 {
 }
 .container {
     min-height: 100vh;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
     flex-direction: column;
     margin: auto;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
     text-align: center;
     z-index: 1;
@@ -33,12 +42,14 @@ h1 {
 .container .combo-box {
     width: 20px;
     padding: 0 3px;
+    display: -ms-grid;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
 }
 table {
     border-spacing: 0;
     background: rgba(0, 0, 0, 0.8);
+    -webkit-box-shadow: 4px 4px 6px -1px rgba(0, 0, 0, 0.65);
     box-shadow: 4px 4px 6px -1px rgba(0, 0, 0, 0.65);
     border-top-right-radius: 20px;
     border-top-left-radius: 20px;
@@ -54,7 +65,12 @@ table {
     border-top-right-radius: 20px;
     border-top-left-radius: 20px;
     display: inline;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-flow: row wrap;
     flex-flow: row wrap;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
 }
 
@@ -94,9 +110,90 @@ th {
     text-align: left;
     padding: 0.5rem 1rem;
 }
+th {
+    cursor: pointer;
+}
 
 tbody tr:nth-child(odd) {
     background-color: #ccc;
+}
+
+.table-ending {
+    width: 1700px;
+    background: #444;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    height: 30px;
+    margin-bottom: 50px;
+}
+input[type="text"] {
+    width: 400px;
+    margin: 10px 0;
+    -webkit-appearance: none;
+    font-weight: 800;
+    color: white;
+    letter-spacing: 3pt;
+    text-align: left;
+    padding: 15px 30px;
+    background: transparent;
+    outline: none;
+    border: none;
+    border-bottom: 2px solid white;
+    -webkit-transition: 0.3s;
+    -o-transition: 0.3s;
+    transition: 0.3s;
+}
+
+select {
+    width: 300px;
+    margin: 10px 30px;
+    -webkit-appearance: none;
+    font-size: 14px;
+    font-weight: 800;
+    color: white;
+    letter-spacing: 3pt;
+    text-transform: uppercase;
+    padding: 15px 30px;
+    background: transparent;
+    outline: none;
+    cursor: pointer;
+    border: 2px solid white;
+    text-align: center;
+    text-align-last: center;
+    -moz-text-align-last: center;
+    -webkit-transition: 0.3s;
+    -o-transition: 0.3s;
+    transition: 0.3s;
+    text-indent: 5px;
+}
+select option {
+    color: black;
+}
+input[type="submit"],
+input[type="button"] {
+    width: 150px;
+    text-transform: uppercase;
+    border: 2px solid white;
+    background: transparent;
+    color: white;
+    margin: 10px;
+    -webkit-transition: 0.3s;
+    -o-transition: 0.3s;
+    transition: 0.3s;
+    padding: 15px 30px;
+    font-weight: 800;
+    letter-spacing: 3pt;
+}
+input[type="submit"] {
+    margin-left: 30px;
+}
+input[type="submit"]:hover,
+input[type="button"]:hover,
+select:hover {
+    border: 2px solid gray;
+}
+input[type="text"]:hover {
+    border-bottom: 2px solid gray;
 }
 
 th {
@@ -110,7 +207,11 @@ th {
     padding: 1rem;
     margin-bottom: 1rem;
     text-align: center;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
     justify-content: center;
 }
 
@@ -118,6 +219,8 @@ th {
     padding: 0;
     margin: 0 2rem;
     list-style-type: none;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
 }
 
@@ -136,4 +239,16 @@ th {
     opacity: 1;
     background: #fff;
     color: #333;
+}
+
+.trainers {
+    width: 600px;
+}
+th {
+    cursor: unset;
+}
+a {
+    text-decoration: none;
+    color: white;
+    text-align: center;
 }

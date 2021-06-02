@@ -16,10 +16,10 @@ public class Trainer extends User {
     @OneToMany(mappedBy = "trainer", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Appointment> appointments = new HashSet<>();
 
-    @Column
-    private boolean isAllowed = false;
+    @Column(name = "is_allowed")
+    public boolean isAllowed;
 
-    private boolean isAllowed() { return isAllowed; }
+    public boolean getAllowed() { return isAllowed; }
 
     public void setAllowed(boolean allowed) { isAllowed = allowed; }
 

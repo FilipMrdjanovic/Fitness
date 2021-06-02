@@ -4,6 +4,7 @@ import com.webproject.FitnessCentre.entity.Training;
 import com.webproject.FitnessCentre.repository.TrainingRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -16,7 +17,7 @@ public class TrainingService {
     private TrainingRepository trainingRepository;
 
     public List<Training> findAll(String criteria, String keyword){
-        List<Training> trainingList = new ArrayList<Training>();
+        List<Training> trainingList = new ArrayList<>();
         if(keyword != null){
             switch (criteria){
                 case "NAME":
@@ -38,8 +39,4 @@ public class TrainingService {
         return this.trainingRepository.findAll();
     }
 
-
-//    public List<Training> findAll() {
-//        return this.trainingRepository.findAll();
-//    }
 }

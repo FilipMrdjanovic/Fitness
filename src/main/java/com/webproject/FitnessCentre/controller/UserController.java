@@ -35,14 +35,14 @@ public class UserController {
     public String memberPage(){ return "member.html"; }
     @GetMapping("/trainer")
     public String trainerPage() { return "trainer.html"; }
-    @GetMapping("/admin")
-    public String adminPage() { return "admin.html"; }
+//    @GetMapping("/admin")
+//    public String adminPage() { return "admin.html"; }
 
-//    @GetMapping("/member/trainings")
-//    public String getTrainings(Model model) {
-//        List<Training> trainingList = this.trainingService.findAll();
-//        model.addAttribute("list", trainingList);
-//        return "trainings.html";
+//    @GetMapping("/admin")
+//    public String getAdmin(Model model) {
+//        List<Trainer> trainerList = this.trainerService.findAll();
+//        model.addAttribute("list", trainerList);
+//        return "admin.html";
 //    }
 
     @RequestMapping("/member/trainings")
@@ -51,16 +51,23 @@ public class UserController {
         model.addAttribute("list", listProducts);
         model.addAttribute("criteria", criteria);
         model.addAttribute("keyword", keyword);
-
         return "trainings.html";
     }
 
+    @RequestMapping("/admin")
+    public String getTrainers(Model model) {
+        List<Trainer> listProducts = trainerService.findAll();
+        model.addAttribute("list", listProducts);
+        return "admin.html";
+    }
 
-//    @RequestMapping("/trainings")
-//    public String findTrainings(Model model) {
-//        model.addAttribute("trainings", this.trainingService.findAll());
-//        return "trainings.html";
-//    }
+    @GetMapping("/allow/{id}")
+    public String allowTrainer(@PathVariable("id") Long id) {
+        Trainer trainer = this.trainerService.findOne(id);
+        trainer.setAllowed(true);
+        this.trainerService.save(trainer);
+        return "redirect:/admin";
+    }
 
     @GetMapping("/signup")
     public String pre_signup(Model model) {
@@ -116,6 +123,7 @@ public class UserController {
         }
         return "redirect:/";
     }
+
     @GetMapping("/login")
     public String pre_login(Model model) {
         User user = new User();
@@ -133,7 +141,11 @@ public class UserController {
                         return  "redirect:/member/trainings";
                     }
                     else if(myUser.getRole().equals("TRAINER")){
-                        return  "redirect:/trainer";
+                        Trainer trainer = this.trainerService.findOne(myUser.getId());
+                        if(!trainer.getAllowed())
+                            return "redirect:/login";
+                        else
+                            return  "redirect:/trainer";
                     }
                     else{
                         return  "redirect:/admin";
@@ -141,7 +153,7 @@ public class UserController {
                 }
             }
         }
-        return  "redirect:/";
+        return  "redirect:/login";
     }
 
 

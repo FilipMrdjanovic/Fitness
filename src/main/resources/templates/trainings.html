@@ -4,6 +4,9 @@
       <title>MEMBER | TRAININGS</title>
       <meta charset="utf-8" />
       <link rel="stylesheet" th:href="@{/css/table.css}" />
+    <style>
+      th{cursor: pointer;}
+    </style>
   </head>
   <body>
     <div class="container">
@@ -15,19 +18,17 @@
         <option value="TYPE">TYPE</option>
         <option value="DURATION">DURATION</option>
       </select>
-      <!--          Criteria:<input type="text" name="criteria" id="criteria" size="50" th:value="${criteria}" />-->
-      Keyword: <input type="text" name="keyword" id="keyword" size="50" th:value="${keyword}" />
-      <input type="submit" />
-      <input type="button" value="Clear" id="btnClear" onclick="clearSearch()" />
+      <input type="text" name="keyword" id="keyword" size="50" th:value="${keyword}" placeholder="SEARCH" />
+      <input type="submit" th:icon="@{/images/search.png}" value="SEARCH"/>
+      <input type="button" value="REFRESH" id="btnClear" onclick="clearSearch()" />
     </form>
       <table id="trainings">
-
         <thead>
           <tr>
-            <th>NAME</th>
-            <th>DESCRIPTION</th>
-            <th>TYPE</th>
-            <th>DURATION</th>
+            <th onclick="sortTable('name')">NAME</th>
+            <th onclick="sortTable('description')">DESCRIPTION</th>
+            <th onclick="sortTable('type')">TYPE</th>
+            <th onclick="sortTable('duration')">DURATION</th>
           </tr>
         </thead>
         <tbody>
@@ -39,11 +40,62 @@
           </tr>
         </tbody>
       </table>
+      <div class="table-ending"></div>
     </div>
     <script type="text/javascript">
       function clearSearch() {
           window.location = "[[@{/member/trainings}]]";
       }
   </script>
+    <script type="text/javascript">
+      function sortTable(element) {
+        var table, rows, switching, i, x, y, shouldSwitch, criteria;
+        switch(element){
+          case "name":
+            criteria = 0;
+          break;
+          case "description":
+            criteria = 1;
+          break;
+          case "type":
+            criteria = 2;
+          break;
+          case "duration":
+            criteria = 3;
+          break;
+        }
+        table = document.getElementById("trainings");
+        switching = true;
+        /*Make a loop that will continue until
+        no switching has been done:*/
+        while (switching) {
+          //start by saying: no switching is done:
+          switching = false;
+          rows = table.rows;
+          /*Loop through all table rows (except the
+          first, which contains table headers):*/
+          for (i = 1; i < (rows.length - 1); i++) {
+            //start by saying there should be no switching:
+            shouldSwitch = false;
+            /*Get the two elements you want to compare,
+            one from current row and one from the next:*/
+            x = rows[i].getElementsByTagName("TD")[criteria];
+            y = rows[i + 1].getElementsByTagName("TD")[criteria];
+            //check if the two rows should switch place:
+            if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+              //if so, mark as a switch and break the loop:
+              shouldSwitch = true;
+              break;
+            }
+          }
+          if (shouldSwitch) {
+            /*If a switch has been marked, make the switch
+            and mark that a switch has been done:*/
+            rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+            switching = true;
+          }
+        }
+      }
+    </script>
   </body>
 </html>

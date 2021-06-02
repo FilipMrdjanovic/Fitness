@@ -13,20 +13,29 @@ h1 {
 
 img {
     position: fixed;
-    object-fit: cover;
+    -o-object-fit: cover;
+       object-fit: cover;
     height: auto;
     margin: 0;
     z-index: -1;
-    filter: blur(8px);
+    -webkit-filter: blur(8px);
+            filter: blur(8px);
 }
 
 .container {
     width: 400px;
     min-height: 100vh;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: column;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
     margin: auto;
-    align-items: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
     text-align: center;
     padding: 0 80px;
 }
@@ -38,7 +47,8 @@ img {
   height: auto;
   padding: 20px 30px;
   margin: 20px 5%;
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   border: 1px solid;
   font-size: 0;
 }
@@ -54,7 +64,9 @@ img {
   height: auto;
   min-height: 100px;
   padding: 15px 25px;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   text-align: center;
   background: rgba(0, 0, 0, 0.7);
 }
@@ -87,6 +99,7 @@ input {
 .container .combo-box {
     width: 460px;
     padding: 0 30px;
+    display: -ms-grid;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
 }
@@ -118,6 +131,8 @@ button {
     background: #5c0000;
     color: #aaa;
     margin: 20px 0;
+    -webkit-transition: 0.3s;
+    -o-transition: 0.3s;
     transition: 0.3s;
     border-radius: 20px;
 }
@@ -141,6 +156,8 @@ button {
     background: #524d3c;
     color: #aaa;
     margin: 20px 0;
+    -webkit-transition: 0.3s;
+    -o-transition: 0.3s;
     transition: 0.3s;
     border-radius: 20px;
 }
