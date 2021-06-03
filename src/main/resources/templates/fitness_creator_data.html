@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>FITNESS | SIGN UP</title>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css?family=Oswald:400,700" rel="stylesheet" type="text/css" />
+        <link rel="stylesheet" th:href="@{/css/form.css}" />
+    </head>
+    <body>
+        <img src="https://wallpapercave.com/wp/wp2482989.jpg" alt="" />
+        <div class="container">
+            <h1>INSERT FITNESS DATA</h1>
+            <div id="modifyForm">
+                <form id="form" name="form" th:action="@{/admin/fitness/data}" th:object="${fitness}" method="post">
+                    <input type="text" name="name" id="name" placeholder="NAME" autocomplete="false" required th:field="*{name}" />
+                    <input type="text" name="address" id="address" placeholder="ADDRESS" autocomplete="false" required th:field="*{address}" />
+                    <input type="text" name="centralNumber" id="centralNumber" placeholder="CENTRAL NUMBER" autocomplete="false" required th:field="*{centralNumber}" />
+                    <input type="text" name="email" id="email" placeholder="EMAIL" autocomplete="false" required class="form-control-material" th:field="*{email}" />
+                    <div class="form-actions">
+                        <button type="submit" class="btn">NEXT</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>

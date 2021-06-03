@@ -65,7 +65,10 @@ INSERT INTO USER (username, first_name, last_name, password, email, birth_date, 
 INSERT INTO TRAINER(id) SELECT ID FROM USER WHERE role='TRAINER';
 
 UPDATE TRAINER SET grade = 5;
-UPDATE TRAINER SET is_allowed = false;
+UPDATE TRAINER SET is_allowed = true;
+UPDATE TRAINER SET is_allowed = false LIMIT 2;
+UPDATE TRAINER SET is_allowed = true LIMIT 1;
+
 UPDATE TRAINER SET fitness_id = SELECT ID from FITNESS LIMIT 1;
 
 INSERT INTO MEMBER(id) SELECT ID FROM USER WHERE role='MEMBER';

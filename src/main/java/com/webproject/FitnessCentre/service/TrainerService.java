@@ -31,6 +31,17 @@ public class TrainerService {
         return allowedTrainers;
     }
 
+    public List<Trainer> findAllAllowed() {
+        List<Trainer> trainers = this.trainerRepository.findAll();
+        List<Trainer> allowedTrainers = new ArrayList<>();
+        for (Trainer trainer : trainers) {
+            if (trainer.getAllowed() && (trainer.getFitness() == null)){
+                allowedTrainers.add(trainer);
+            }
+        }
+        return allowedTrainers;
+    }
+
     public Trainer findOne(Long id) {
         Trainer trainer = this.trainerRepository.getOne(id);
         return trainer;

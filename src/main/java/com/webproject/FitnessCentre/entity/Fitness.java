@@ -10,33 +10,23 @@ public class Fitness implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column
+    @Column(name = "name")
     private String name;
 
-    @Column
+    @Column(name = "address")
     private String address;
 
-    @Column
-    private String centralNumber;
-
-    @Column
+    @Column(name = "email")
     private String email;
+
+    @Column(name = "central_number")
+    private String centralNumber;
 
     @OneToMany(mappedBy = "fitness", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Trainer> trainers = new HashSet<>();
 
     @OneToMany(mappedBy = "fitness", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Hall> halls = new HashSet<>();
-
-    public Fitness(Long id, String name, String address, String centralNumber, String email, Set<Trainer> trainers, Set<Hall> halls) {
-        this.id = id;
-        this.name = name;
-        this.address = address;
-        this.centralNumber = centralNumber;
-        this.email = email;
-        this.trainers = trainers;
-        this.halls = halls;
-    }
 
     public Long getId() {
         return id;

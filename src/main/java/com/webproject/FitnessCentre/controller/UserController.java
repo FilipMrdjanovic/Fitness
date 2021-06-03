@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 @Controller
 public class UserController {
@@ -26,6 +27,8 @@ public class UserController {
     private AdminService adminService;
     @Autowired
     private TrainingService trainingService;
+    @Autowired
+    private FitnessService fitnessService;
 
     @GetMapping("/")
     public String home() { return "home.html"; }
@@ -56,8 +59,8 @@ public class UserController {
 
     @RequestMapping("/admin")
     public String getTrainers(Model model) {
-        List<Trainer> listProducts = trainerService.findAll();
-        model.addAttribute("list", listProducts);
+        List<Trainer> trainers = trainerService.findAll();
+        model.addAttribute("list", trainers);
         return "admin.html";
     }
 
@@ -122,6 +125,22 @@ public class UserController {
             this.adminService.save(administrator);
         }
         return "redirect:/";
+    }
+
+    @GetMapping("/admin/fitness/data")
+    public String pre_fitness_data(Model model) {
+        Fitness fitness = new Fitness();
+        model.addAttribute("fitness", fitness);
+        return "fitness_creator_data.html";
+    }
+
+
+
+    @PostMapping("/admin/fitness/data")
+    public String post_fitness_data(@ModelAttribute Fitness fitness) {
+        this.fitnessService.save(fitness);
+        return "redirect:/admin";
+//        return "redirect:/admin/fitness/"+fitness.getId()+"/trainers";
     }
 
     @GetMapping("/login")

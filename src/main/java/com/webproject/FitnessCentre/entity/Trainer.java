@@ -10,14 +10,14 @@ public class Trainer extends User {
     @Column
     private float grade;
 
+    @Column(name = "is_allowed")
+    public boolean isAllowed;
+
     @ManyToOne(fetch = FetchType.EAGER)
     private Fitness fitness;
 
     @OneToMany(mappedBy = "trainer", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Appointment> appointments = new HashSet<>();
-
-    @Column(name = "is_allowed")
-    public boolean isAllowed;
 
     public boolean getAllowed() { return isAllowed; }
 
