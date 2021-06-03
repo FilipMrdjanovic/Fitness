@@ -6,15 +6,17 @@
     <link rel="stylesheet" th:href="@{/css/table.css}" />
 </head>
 <body>
+<style>
+
+</style>
 <div class="container">
     <h1>ADD TRAINERS TO THE FITNESS CENTRE</h1>
-    <table>
+    <table class="creator">
         <thead>
         <tr>
             <th>FIRST NAME</th>
             <th>LAST NAME</th>
             <th>ALLOW</th>
-            <th>FITNESS</th>
         </tr>
         </thead>
         <tbody>
@@ -22,13 +24,12 @@
             <td th:text="${trainer.firstName}"></td>
             <td th:text="${trainer.lastName}"></td>
             <td><a th:href="${'/admin/fitness/'+fitness.id+'/trainers/' + trainer.id}">ADD TO THE CENTRE</a></td>
-            <td th:text="${trainer.fitness}"></td>
         </tr>
         </tbody>
         <tbody>
         </tbody>
     </table>
-    <div class="trainers table-ending"></div>
+    <div class="creator table-ending"></div>
 </div>
 </body>
 </html>

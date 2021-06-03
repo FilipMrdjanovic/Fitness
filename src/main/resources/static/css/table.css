@@ -126,6 +126,13 @@ tbody tr:nth-child(odd) {
     height: 30px;
     margin-bottom: 50px;
 }
+
+table.creator {
+    width: 600px !important;
+}
+.creator.table-ending {
+    width: 600px;
+}
 input[type="text"] {
     width: 400px;
     margin: 10px 0;
@@ -251,4 +258,8 @@ a {
     text-decoration: none;
     color: white;
     text-align: center;
+}
+
+.creator {
+    width 700px !important;
 }

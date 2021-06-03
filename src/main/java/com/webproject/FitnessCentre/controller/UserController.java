@@ -134,13 +134,31 @@ public class UserController {
         return "fitness_creator_data.html";
     }
 
+    @GetMapping("/admin/fitness/{id}/trainers")
+    public String pre_fitness_data_trainers(@PathVariable("id") Long id, Model model) {
+        Fitness fitness = this.fitnessService.findOne(id);
+        List<Trainer> trainerList = this.trainerService.findAllAllowed();
+        model.addAttribute("list", trainerList);
+        model.addAttribute("fitness",fitness);
+        return "fitness_creator_trainers.html";
+    }
 
+    @GetMapping("/admin/fitness/{id}/trainers/{trainer_id}")
+    public String pre_fitness_data_trainers_added(@PathVariable("id") Long id, @PathVariable("trainer_id") Long trainer_id) {
+        Trainer trainer = this.trainerService.findOne(trainer_id);
+        Fitness fitness = this.fitnessService.findOne(id);
+        Set<Trainer> tempTrainers = fitness.getTrainers();
+        tempTrainers.add(trainer);
+        trainer.setFitness(fitness);
+        this.fitnessService.save(fitness);
+        this.trainerService.save(trainer);
+        return "redirect:/admin/fitness/"+id+"/trainers";
+    }
 
     @PostMapping("/admin/fitness/data")
     public String post_fitness_data(@ModelAttribute Fitness fitness) {
         this.fitnessService.save(fitness);
-        return "redirect:/admin";
-//        return "redirect:/admin/fitness/"+fitness.getId()+"/trainers";
+        return "redirect:/admin/fitness/"+fitness.getId()+"/trainers";
     }
 
     @GetMapping("/login")
