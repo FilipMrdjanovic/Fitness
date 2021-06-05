@@ -38,15 +38,6 @@ public class UserController {
     public String memberPage(){ return "member.html"; }
     @GetMapping("/trainer")
     public String trainerPage() { return "trainer.html"; }
-//    @GetMapping("/admin")
-//    public String adminPage() { return "admin.html"; }
-
-//    @GetMapping("/admin")
-//    public String getAdmin(Model model) {
-//        List<Trainer> trainerList = this.trainerService.findAll();
-//        model.addAttribute("list", trainerList);
-//        return "admin.html";
-//    }
 
     @RequestMapping("/member/trainings")
     public String getTrainings(Model model, @Param("criteria") String criteria, @Param("keyword") String keyword) {
@@ -78,6 +69,7 @@ public class UserController {
         model.addAttribute("user", user);
         return "signup.html";
     }
+
     @PostMapping("/signup")
     public String post_signup(@ModelAttribute User user) {
         if(user.getRole().equals("MEMBER")){
