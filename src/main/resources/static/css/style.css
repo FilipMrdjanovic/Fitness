@@ -53,6 +53,8 @@ body .main {
           transform: translate(-50%, -50%);
   background: rgba(0,0,0,.5);
 }
+
+
 html .main #content,
 body .main #content {
   width: 100%;
@@ -95,5 +97,58 @@ body .main #content a {
 
 .inline > a{
     display: inline-block !important;
-
 }
+
+
+.main-no-bg{
+  background: rgba(0,0,0,0) !important;
+}
+
+.color-transition{
+	animation-name: gradients;
+	animation-duration: 3s;
+	animation-iteration-count: infinite;
+	animation-direction: alternate;
+	animation-timing-function: linear;
+
+    background-image: linear-gradient(to right, #610000, #00a7cf, #efe348, #861a54, #054f7d);
+    background-size: 600%;
+    background-position: 0 0;
+
+	margin-left: 32px;
+	width: 518px;
+	height: 92px;
+	z-index:0;
+}
+
+.color-transition img{
+    margin-left: -263px;
+    margin-top: -3px;
+    width: 530px;
+    height: 100px;
+    position: absolute;
+    z-index:1;
+    filter: blur(1px);
+}
+@keyframes gradients {
+  0% {
+    background-position: 0 0;
+  }
+  25% {
+    background-position: 50% 0;
+  }
+  50% {
+    background-position: 90% 0;
+  }
+  60% {
+    background-position: 60%;
+  }
+  75% {
+    background-position: 40%;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+
+
