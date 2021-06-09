@@ -62,6 +62,14 @@ INSERT INTO USER (username, first_name, last_name, password, email, birth_date, 
 	('esprules1m', 'Ernestine', 'Sprules', '3CbcuDF', 'esprules1m@pinterest.com', '1/11/2021', '357-111-8468', 'MEMBER', true),
 	('dgutowska1n', 'Demeter', 'Gutowska', 'bdZxgMat', 'dgutowska1n@pinterest.com', '10/24/2020', '189-625-1509', 'MEMBER', false);
 
+INSERT INTO FITNESS (name, address, central_number, email) VALUES
+    ('FITNESS CENTRE', 'Bulevar Oslobodjenja 1', '0123456879', 'fitness.centre@centre.com'),
+    ('FITNESS CENTRE', 'Bulevar Oslobodjenja 1', '0123456879', 'fitness.centre@centre.com'),
+    ('FITNESS CENTRE', 'Bulevar Oslobodjenja 1', '0123456879', 'fitness.centre@centre.com'),
+    ('FITNESS CENTRE', 'Bulevar Oslobodjenja 1', '0123456879', 'fitness.centre@centre.com'),
+    ('FITNESS CENTRE', 'Bulevar Oslobodjenja 1', '0123456879', 'fitness.centre@centre.com'),
+    ('FITNESS CENTRE', 'Bulevar Oslobodjenja 1', '0123456879', 'fitness.centre@centre.com');
+
 INSERT INTO TRAINER(id) SELECT ID FROM USER WHERE role='TRAINER';
 
 UPDATE TRAINER SET grade = 5;
@@ -73,7 +81,6 @@ UPDATE TRAINER SET fitness_id = SELECT ID from FITNESS LIMIT 1;
 INSERT INTO MEMBER(id) SELECT ID FROM USER WHERE role='MEMBER';
 
 INSERT INTO ADMINISTRATOR(id) SELECT ID FROM USER WHERE role='ADMIN';
-
 
 insert into TRAINING (name, description, type, duration) values
 	('Lunges', 'consequat in consequat ut nulla sed accumsan', 'Cardio', 49),
@@ -127,28 +134,17 @@ insert into TRAINING (name, description, type, duration) values
 	('Lunges', 'velit eu est congue elementum', 'Weight loss', 95),
 	('Burpees', 'platea dictumst maecenas ut massa', 'Weight loss', 40);
 
+INSERT INTO HALL (capacity, fitness_id) VALUES (50, 1), (60, 4), (50, 3), (50, 1), (50, 2);
 
-
-INSERT INTO FITNESS (name, address, central_number, email) VALUES
-    ('FITNESS CENTRE', 'Bulevar Oslobodjenja 1', '0123456879', 'fitness.centre@centre.com'),
-    ('FITNESS CENTRE', 'Bulevar Oslobodjenja 1', '0123456879', 'fitness.centre@centre.com'),
-    ('FITNESS CENTRE', 'Bulevar Oslobodjenja 1', '0123456879', 'fitness.centre@centre.com'),
-    ('FITNESS CENTRE', 'Bulevar Oslobodjenja 1', '0123456879', 'fitness.centre@centre.com'),
-    ('FITNESS CENTRE', 'Bulevar Oslobodjenja 1', '0123456879', 'fitness.centre@centre.com'),
-    ('FITNESS CENTRE', 'Bulevar Oslobodjenja 1', '0123456879', 'fitness.centre@centre.com');
+INSERT INTO APPOINTMENT(date, price, hall_id, trainer_id, training_id) VALUES
+    ('2014-12-05T03:58:46 -01:00', 1500, (SELECT ID from HALL LIMIT 1), (SELECT ID from TRAINER LIMIT 1), (SELECT ID from TRAINING LIMIT 1));
 
 INSERT INTO GRADE(grade, appointment_id, member_id) VALUES
     (5, (SELECT ID from APPOINTMENT LIMIT 1), (SELECT ID from MEMBER LIMIT 1)),
     (4, (SELECT ID from APPOINTMENT LIMIT 1), (SELECT ID from MEMBER LIMIT 1)),
     (5, (SELECT ID from APPOINTMENT LIMIT 1), (SELECT ID from MEMBER LIMIT 1));
 
-INSERT INTO APPOINTMENT(date, price, hall_id, trainer_id, training_id) VALUES
-    ('2014-12-05T03:58:46 -01:00', 1500, (SELECT ID from HALL LIMIT 1), (SELECT ID from TRAINER LIMIT 1), (SELECT ID from TRAINING LIMIT 1));
-
 INSERT INTO ASSIGNED(member_id, appointment_id) VALUES ((SELECT ID from MEMBER LIMIT 1), (SELECT ID from APPOINTMENT LIMIT 1));
 
 INSERT INTO COMPLETED (member_id, appointment_id) VALUES ((SELECT ID from MEMBER LIMIT 1), (SELECT ID from APPOINTMENT LIMIT 1));
---
-INSERT INTO HALL (capacity, fitness_id) VALUES (50, 1), (60, 4), (50, 3), (50, 1), (50, 2);
-
 

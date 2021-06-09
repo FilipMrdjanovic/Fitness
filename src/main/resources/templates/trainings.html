@@ -3,42 +3,53 @@
   <head>
       <title>MEMBER | TRAININGS</title>
       <meta charset="utf-8" />
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
       <link rel="stylesheet" th:href="@{/css/table.css}" />
   </head>
   <body>
     <img src="https://wallpaperaccess.com/full/1562614.jpg" alt="">
     <div class="container">
       <h1>TRAININGS</h1>
-      <form class="inline" id="form" name="form" th:action="@{/member/trainings}">
-      <select name="criteria" id="criteria"th:value="${criteria}">
-        <option value="NAME">NAME</option>
-        <option value="DESCRIPTION">DESCRIPTION</option>
-        <option value="TYPE">TYPE</option>
-        <option value="DURATION">DURATION</option>
-      </select>
-      <input type="text" name="keyword" id="keyword" size="50" th:value="${keyword}" placeholder="SEARCH" />
-      <input type="submit" th:icon="@{/images/search.png}" value="SEARCH"/>
-      <input type="button" value="REFRESH" id="btnClear" onclick="clearSearch()" />
-    </form>
-      <table id="trainings">
-        <thead>
-          <tr>
-            <th onclick="sortTable('name')">NAME</th>
-            <th onclick="sortTable('description')">DESCRIPTION</th>
-            <th onclick="sortTable('type')">TYPE</th>
-            <th onclick="sortTable('duration')">DURATION</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr th:each="training : ${list}">
-            <td th:text="${training.name}"></td>
-            <td th:text="${training.description}"></td>
-            <td th:text="${training.type}"></td>
-            <td th:text="${training.duration}"></td>
-          </tr>
-        </tbody>
-      </table>
-      <div class="table-ending"></div>
+      <section>
+        <div class="empty">
+          <h1>NOTHING TO SHOW<br>NO TRAINERS AVAILABLE</h1>
+        </div>
+        <div class="tbl-header">
+          <form class="inline" id="form" name="form" th:action="@{/member/trainings}">
+            <select name="criteria" id="criteria"th:value="${criteria}">
+              <option value="NAME">NAME</option>
+              <option value="DESCRIPTION">DESCRIPTION</option>
+              <option value="TYPE">TYPE</option>
+              <option value="DURATION">DURATION</option>
+            </select>
+            <input type="text" name="keyword" id="keyword" size="50" th:value="${keyword}" placeholder="SEARCH" />
+            <input type="submit" th:icon="@{/images/search.png}" value="SEARCH"/>
+            <input type="button" value="REFRESH" id="btnClear" onclick="clearSearch()" />
+          </form>
+          <table class="trainers" name="trainers" cellpadding="0" cellspacing="0" border="0">
+            <thead>
+            <tr>
+              <th onclick="sortTable('name')">NAME</th>
+              <th onclick="sortTable('description')">DESCRIPTION</th>
+              <th onclick="sortTable('type')">TYPE</th>
+              <th onclick="sortTable('duration')">DURATION</th>
+            </tr>
+            </thead>
+          </table>
+        </div>
+        <div class="tbl-content">
+          <table id="trainings" cellpadding="0" cellspacing="0" border="0">
+            <tbody>
+            <tr th:each="training : ${list}">
+              <td th:text="${training.name}"></td>
+              <td th:text="${training.description}"></td>
+              <td th:text="${training.type}"></td>
+              <td th:text="${training.duration}"></td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
     </div>
     <script type="text/javascript">
       function clearSearch() {
@@ -94,6 +105,31 @@
           }
         }
       }
+
+
+                  // '.tbl-content' consumed little space for vertical scrollbar, scrollbar width depend on browser/os/platfrom. Here calculate the scollbar width .
+            $(window)
+                .on("load resize", function (e) {
+                    var scrollWidth = $(".tbl-content").width() - $(".tbl-content table").width();
+                    $(".tbl-header").css({ "padding-right": scrollWidth });
+                })
+                .resize();
+            $(function () {
+                var hide = true;
+
+                $(".tbl-content td").each(function () {
+                    var td_content = $(this).text();
+
+                    if (td_content != "") {
+                        hide = false;
+                    }
+                });
+
+                if (hide) {
+                    $(".tbl-content, .tbl-header").hide();
+                    $(".empty").show();
+                }
+            });
     </script>
   </body>
 </html>
