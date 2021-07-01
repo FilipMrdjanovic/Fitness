@@ -1,8 +1,6 @@
 package com.webproject.FitnessCentre.service;
 
 import com.webproject.FitnessCentre.entity.Trainer;
-import com.webproject.FitnessCentre.entity.Training;
-import com.webproject.FitnessCentre.entity.User;
 import com.webproject.FitnessCentre.repository.TrainerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

@@ -166,18 +166,18 @@ public class UserController {
         for (User myUser : users) {
             if(user.getUsername().equals(myUser.getUsername())){
                 if(user.getPassword().equals(myUser.getPassword())){
-                    if(myUser.getRole().equals("MEMBER")){
-                        return  "redirect:/member/trainings";
-                    }
-                    else if(myUser.getRole().equals("TRAINER")){
-                        Trainer trainer = this.trainerService.findOne(myUser.getId());
-                        if(!trainer.getAllowed())
-                            return "redirect:/login";
-                        else
-                            return  "redirect:/trainer";
-                    }
-                    else{
-                        return  "redirect:/admin";
+                    if(myUser.getActive()) {
+                        if (myUser.getRole().equals("MEMBER")) {
+                            return "redirect:/member/trainings";
+                        } else if (myUser.getRole().equals("TRAINER")) {
+                            Trainer trainer = this.trainerService.findOne(myUser.getId());
+                            if (!trainer.getAllowed())
+                                return "redirect:/login";
+                            else
+                                return "redirect:/trainer";
+                        } else {
+                            return "redirect:/admin";
+                        }
                     }
                 }
             }
