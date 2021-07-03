@@ -10,5 +10,4 @@ public interface TrainingRepository extends JpaRepository<Training,Long> {
     List<Training> findByName(String keyword);
     List<Training> findByDescription(String keyword);
     List<Training> findByType(String keyword);
-    List<Training> findByDuration(int key);
 }

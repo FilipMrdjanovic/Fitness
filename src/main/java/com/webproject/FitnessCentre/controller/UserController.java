@@ -29,6 +29,8 @@ public class UserController {
     private TrainingService trainingService;
     @Autowired
     private FitnessService fitnessService;
+    @Autowired
+    private AppointmentService appointmentService;
 
     @GetMapping("/")
     public String home() { return "home.html"; }
@@ -39,14 +41,28 @@ public class UserController {
     @GetMapping("/trainer")
     public String trainerPage() { return "trainer.html"; }
 
-    @RequestMapping("/member/trainings")
-    public String getTrainings(Model model, @Param("criteria") String criteria, @Param("keyword") String keyword) {
+    @RequestMapping("/member/{id}/trainings")
+    public String getTrainings(Model model, @Param("criteria") String criteria, @Param("keyword") String keyword, @PathVariable("id") Long id) {
+        Member member = memberService.findOne(id);
         List<Training> listProducts = trainingService.findAll(criteria, keyword);
+//        List<Appointment> appointments = appointmentService.findAll();
         model.addAttribute("list", listProducts);
         model.addAttribute("criteria", criteria);
         model.addAttribute("keyword", keyword);
+//        model.addAttribute("appointments", appointments);
+
         return "trainings.html";
     }
+
+//    @RequestMapping("/member/{id}/trainings")
+//    public String getTrainings(Model model, @PathVariable("id") Long id) {
+//        List<Appointment> appointments = appointmentService.findAll();
+//        model.addAttribute("list", appointments);
+//
+//        return "member_appointments.html";
+//    }
+
+
 
     @RequestMapping("/admin")
     public String getTrainers(Model model) {
@@ -61,6 +77,16 @@ public class UserController {
         trainer.setAllowed(true);
         this.trainerService.save(trainer);
         return "redirect:/admin";
+    }
+
+    @GetMapping("/reserve/{trainingId}/{id}")
+    public String reserveTraining(@PathVariable("id") Long trainingId, @PathVariable("id") Long id) {
+        Member member = this.memberService.findOne(id);
+
+//        member.setAssignedTrainings(trainingId);
+
+//        this.memberService.save(member);
+        return "redirect:/member/"+id+"/trainings";
     }
 
     @GetMapping("/signup")
@@ -168,7 +194,7 @@ public class UserController {
                 if(user.getPassword().equals(myUser.getPassword())){
                     if(myUser.getActive()) {
                         if (myUser.getRole().equals("MEMBER")) {
-                            return "redirect:/member/trainings";
+                            return "redirect:/member/"+myUser.getId()+"/trainings";
                         } else if (myUser.getRole().equals("TRAINER")) {
                             Trainer trainer = this.trainerService.findOne(myUser.getId());
                             if (!trainer.getAllowed())

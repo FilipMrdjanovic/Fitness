@@ -11,12 +11,10 @@ public class Appointment implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     @Column
     private String date;
     @Column
     private int price;
-
 
     @ManyToMany(mappedBy = "assignedTrainings")
     private Set<Member> assigned =new HashSet<>();
@@ -35,6 +33,9 @@ public class Appointment implements Serializable {
 
     @OneToMany(mappedBy = "appointment", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Grade> grade = new HashSet<>();
+
+    public Appointment() {
+    }
 
     public Appointment(Long id, String date, int price, Set<Member> assigned, Set<Member> completed, Trainer trainer, Hall hall, Training training, Set<Grade> grade) {
         this.id = id;
@@ -118,5 +119,20 @@ public class Appointment implements Serializable {
 
     public void setGrade(Set<Grade> grade) {
         this.grade = grade;
+    }
+
+    @Override
+    public String toString() {
+        return "Appointment{" +
+                "id=" + id +
+                ", date='" + date + '\'' +
+                ", price=" + price +
+                ", assigned=" + assigned +
+                ", completed=" + completed +
+                ", trainer=" + trainer +
+                ", hall=" + hall +
+                ", training=" + training +
+                ", grade=" + grade +
+                '}';
     }
 }

@@ -23,20 +23,11 @@ public class Training implements Serializable {
     @Column
     private int duration;
 
+//    private int price;
+//    private String date;
+
     @OneToMany(mappedBy = "training", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Appointment> appointments = new HashSet<>();
-
-    @Override
-    public String toString() {
-        return "Training{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", description='" + description + '\'' +
-                ", type='" + type + '\'' +
-                ", duration=" + duration +
-                ", appointments=" + appointments +
-                '}';
-    }
 
     public Long getId() {
         return id;
@@ -85,4 +76,5 @@ public class Training implements Serializable {
     public void setAppointments(Set<Appointment> appointments) {
         this.appointments = appointments;
     }
+
 }

@@ -8,7 +8,6 @@ import java.util.Set;
 @Entity
 public class Member extends User {
 
-
     @ManyToMany
     @JoinTable(name = "assigned",
             joinColumns = @JoinColumn(name = "member_id", referencedColumnName = "id"),

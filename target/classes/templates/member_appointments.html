@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>ADMIN | TRAINERS</title>
+    <meta charset="utf-8" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" th:href="@{/css/table.css}" />
+</head>
+<body>
+<div class="container">
+    <img src="https://cdn.hipwallpaper.com/i/87/14/pzgZcw.jpg" alt="" />
+    <h1>TRAINERS</h1>
+    <h3>CONFIRM TRAINER REGISTRATION</h3>
+    <section>
+        <div class="empty">
+            <h1>NOTHING TO SHOW<br>NO APPOINTMENTS AVAILABLE</h1>
+        </div>
+        <div class="tbl-header">
+            <table id="appointment" class="appointment" name="appointment" cellpadding="0" cellspacing="0" border="0">
+                <thead>
+                <tr>
+                    <th>DATE</th>
+                    <th>PRICE</th>
+                </tr>
+                </thead>
+            </table>
+        </div>
+        <div class="tbl-content">
+            <table cellpadding="0" cellspacing="0" border="0">
+                <tbody>
+                <tr th:each="appointment : ${list}">
+                    <td th:text="${appointment.date}"></td>
+                    <td th:text="${appointment.price}"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+</div>
+<script>
+            // '.tbl-content' consumed little space for vertical scrollbar, scrollbar width depend on browser/os/platfrom. Here calculate the scollbar width .
+            $(window)
+                .on("load resize", function (e) {
+                    var scrollWidth = $(".tbl-content").width() - $(".tbl-content table").width();
+                    $(".tbl-header").css({ "padding-right": scrollWidth });
+                })
+                .resize();
+            $(function () {
+                var hide = true;
+
+                $(".tbl-content td").each(function () {
+                    var td_content = $(this).text();
+
+                    if (td_content != "") {
+                        hide = false;
+                    }
+                });
+
+                if (hide) {
+                    $(".tbl-content, .tbl-header").hide();
+                    $(".empty").show();
+                }
+            });
+        </script>
+</body>
+</html>

@@ -1,0 +1,166 @@
+@import url(https://fonts.googleapis.com/css?family=Quicksand:400,300,700);
+
+body {
+    font-family: "Quicksand", sans-serif;
+    background: black;
+    margin: 0;
+}
+
+h1 {
+    font-size: 20pt;
+    color: white;
+}
+
+img {
+    position: fixed;
+    -o-object-fit: cover;
+       object-fit: cover;
+    height: auto;
+    margin: 0;
+    z-index: -1;
+    -webkit-filter: blur(8px);
+            filter: blur(8px);
+}
+
+.container {
+    width: 400px;
+    min-height: 100vh;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    margin: auto;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    text-align: center;
+    padding: 0 80px;
+}
+
+.horizontal-align {
+  display: inline-block;
+  vertical-align: top;
+  width: 90%;
+  height: auto;
+  padding: 20px 30px;
+  margin: 20px 5%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border: 1px solid;
+  font-size: 0;
+}
+.horizontal-align > * {
+  font-size: initial;
+}
+.horizontal-align .item {
+  width: 50%;
+}
+.horizontal-align .item {
+  display: inline-block;
+  vertical-align: top;
+  height: auto;
+  min-height: 100px;
+  padding: 15px 25px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.7);
+}
+
+form {
+    padding: 0 30px;
+}
+input,
+button {
+    height: 40px;
+    font-size: 14pt;
+    padding: 0 20px;
+}
+
+input {
+    width: 400px;
+    margin: 10px 0;
+    -webkit-appearance: none;
+    font-family: "Dosis", sans-serif;
+    font-weight: 800;
+    color: white;
+    letter-spacing: 3pt;
+    text-align: center;
+    padding: 15px 30px;
+    background: rgba(0, 0, 0, 0.7);
+    outline: none;
+    border: none;
+}
+
+.container .combo-box {
+    width: 460px;
+    padding: 0 30px;
+    display: -ms-grid;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+}
+
+select {
+    width: 100%;
+    margin: 10px 0;
+    -webkit-appearance: none;
+    font-family: "Dosis", sans-serif;
+    font-size: 14pt;
+    font-weight: 800;
+    color: white;
+    letter-spacing: 3pt;
+    text-transform: uppercase;
+    padding: 21.5px 30px;
+    background: rgba(0, 0, 0, 0.7);
+    outline: none;
+    cursor: pointer;
+    border: none;
+    text-align: center;
+    text-align-last: center;
+    -moz-text-align-last: center;
+}
+
+button {
+    width: 300px;
+    text-transform: uppercase;
+    border: none;
+    background: #5c0000;
+    color: #aaa;
+    margin: 20px 0;
+    -webkit-transition: 0.3s;
+    -o-transition: 0.3s;
+    transition: 0.3s;
+    border-radius: 20px;
+}
+button:hover {
+    background: #a10000;
+}
+
+p {
+    font-family: "Roboto", sans-serif;
+    margin: 5px auto;
+    color: #aaa;
+}
+a {
+    text-decoration: none;
+    color: #6e6e6e;
+}
+button {
+    width: 300px;
+    text-transform: uppercase;
+    border: none;
+    background: #524d3c;
+    color: #aaa;
+    margin: 20px 0;
+    -webkit-transition: 0.3s;
+    -o-transition: 0.3s;
+    transition: 0.3s;
+    border-radius: 20px;
+}
+button:hover {
+    background: #877f61;
+}

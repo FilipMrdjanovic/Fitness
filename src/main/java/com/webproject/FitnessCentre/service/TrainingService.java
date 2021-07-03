@@ -1,6 +1,8 @@
 package com.webproject.FitnessCentre.service;
 
+import com.webproject.FitnessCentre.entity.Appointment;
 import com.webproject.FitnessCentre.entity.Training;
+import com.webproject.FitnessCentre.repository.AppointmentRepository;
 import com.webproject.FitnessCentre.repository.TrainingRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +18,9 @@ public class TrainingService {
     @Autowired
     private TrainingRepository trainingRepository;
 
+    @Autowired
+    private AppointmentRepository appointmentRepository;
+
     public List<Training> findAll(String criteria, String keyword){
         List<Training> trainingList = new ArrayList<>();
         if(keyword != null){
@@ -29,9 +34,24 @@ public class TrainingService {
                 case "TYPE":
                     trainingList =  this.trainingRepository.findByType(keyword);
                     break;
-                case "DURATION":
-                    int key=Integer.parseInt(keyword);
-                    trainingList =  this.trainingRepository.findByDuration(key);
+                case "PRICE":
+                    int key = Integer.parseInt(keyword);
+                    List<Appointment> appointments;
+                    List<Training> temp = new ArrayList<>();
+                    appointments = this.appointmentRepository.findByPrice(key);
+                    for (Appointment a: appointments) {
+                        temp.add(this.trainingRepository.getOne(a.getId()));
+                    }
+                    trainingList = temp;
+                    break;
+                case "TIME":
+                    List<Appointment> appointments_time;
+                    List<Training> temp_time = new ArrayList<>();
+                    appointments_time = this.appointmentRepository.findByDate(keyword);
+                    for (Appointment a: appointments_time) {
+                        temp_time.add(this.trainingRepository.getOne(a.getId()));
+                    }
+                    trainingList = temp_time;
                     break;
             }
             return trainingList;
