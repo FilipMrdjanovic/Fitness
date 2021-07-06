@@ -31,6 +31,8 @@ public class UserController {
     private FitnessService fitnessService;
     @Autowired
     private AppointmentService appointmentService;
+    @Autowired
+    private HallService hallService;
 
     @GetMapping("/")
     public String home() { return "home.html"; }
@@ -41,27 +43,27 @@ public class UserController {
     @GetMapping("/trainer")
     public String trainerPage() { return "trainer.html"; }
 
+
+    @RequestMapping("/member/{id}")
+    public String member(Model model, @PathVariable("id") Long id) {
+
+        Member member = this.memberService.findOne(id);
+        model.addAttribute("member", member);
+        return "member.html";
+    }
+
     @RequestMapping("/member/{id}/trainings")
-    public String getTrainings(Model model, @Param("criteria") String criteria, @Param("keyword") String keyword, @PathVariable("id") Long id) {
+    public String getTrainings(Model model, @PathVariable("id") Long id) {
         Member member = memberService.findOne(id);
-        List<Training> listProducts = trainingService.findAll(criteria, keyword);
-//        List<Appointment> appointments = appointmentService.findAll();
+        appointmentService.Create(trainingService.allTrainings());
+        List<Training> listProducts = trainingService.allTrainings();
+//        List<Training> listProducts = trainingService.allUnassignedTrainings(member.getAssignedTrainings());
         model.addAttribute("list", listProducts);
-        model.addAttribute("criteria", criteria);
-        model.addAttribute("keyword", keyword);
-//        model.addAttribute("appointments", appointments);
+        model.addAttribute("appointments", appointmentService.findAll());
+        model.addAttribute("member", member);
 
         return "trainings.html";
     }
-
-//    @RequestMapping("/member/{id}/trainings")
-//    public String getTrainings(Model model, @PathVariable("id") Long id) {
-//        List<Appointment> appointments = appointmentService.findAll();
-//        model.addAttribute("list", appointments);
-//
-//        return "member_appointments.html";
-//    }
-
 
 
     @RequestMapping("/admin")
@@ -80,12 +82,13 @@ public class UserController {
     }
 
     @GetMapping("/reserve/{trainingId}/{id}")
-    public String reserveTraining(@PathVariable("id") Long trainingId, @PathVariable("id") Long id) {
+    public String reserveTraining(@PathVariable("trainingId") Long trainingId, @PathVariable("id") Long id) {
+
         Member member = this.memberService.findOne(id);
-
-//        member.setAssignedTrainings(trainingId);
-
-//        this.memberService.save(member);
+        Set<Appointment> temp = member.getAssignedTrainings();
+        temp.add(appointmentService.findOneByTraining(trainingId));
+        member.setAssignedTrainings(temp);
+        memberService.save(member);
         return "redirect:/member/"+id+"/trainings";
     }
 
@@ -194,7 +197,8 @@ public class UserController {
                 if(user.getPassword().equals(myUser.getPassword())){
                     if(myUser.getActive()) {
                         if (myUser.getRole().equals("MEMBER")) {
-                            return "redirect:/member/"+myUser.getId()+"/trainings";
+//                            return "redirect:/member/"+myUser.getId()+"/trainings";
+                            return "redirect:/member/"+myUser.getId();
                         } else if (myUser.getRole().equals("TRAINER")) {
                             Trainer trainer = this.trainerService.findOne(myUser.getId());
                             if (!trainer.getAllowed())
@@ -211,49 +215,6 @@ public class UserController {
         return  "redirect:/login";
     }
 
-
-
-
-
-
-
-
-//        @PostMapping("/signup")
-//        public String registerUser(@RequestBody User newUser) {
-//            List<User> users = userService.findAll();
-//            for (User user : users) {
-//                if (user.equals(newUser)) {
-//                    System.out.println("User Already exists!");
-//                    return "home.html";
-//                }
-//            }
-//            userService.save(newUser);
-//            return "member.html";
-//        }
-//        @PostMapping("/login")
-//        public String loginUser(@RequestBody User user) {
-//
-//                if (this.userService.checkProfile(user.getUsername(), user.getPassword())) {
-////                    userService.save(user);
-//                    return "member.html";
-//                }
-//
-//            return "home.html";
-//        }
-
-//        @PostMapping("/logout")
-//        public String logUserOut(@Validated @RequestBody User user) {
-//            List<User> users = userService.findAll();
-//            for (User other : users) {
-//                if (other.equals(user)) {
-//                    user.setLoggedIn(false);
-//                    userService.save(user);
-//                    return Status.SUCCESS;
-//                }
-//            }
-//            return Status.FAILURE;
-//        }
-
-    }
+}
 
 

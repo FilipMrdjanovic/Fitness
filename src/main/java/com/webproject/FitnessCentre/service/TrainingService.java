@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class TrainingService {
@@ -21,42 +22,26 @@ public class TrainingService {
     @Autowired
     private AppointmentRepository appointmentRepository;
 
-    public List<Training> findAll(String criteria, String keyword){
-        List<Training> trainingList = new ArrayList<>();
-        if(keyword != null){
-            switch (criteria){
-                case "NAME":
-                    trainingList = this.trainingRepository.findByName(keyword);
-                    break;
-                case "DESCRIPTION":
-                    trainingList =  this.trainingRepository.findByDescription(keyword);
-                    break;
-                case "TYPE":
-                    trainingList =  this.trainingRepository.findByType(keyword);
-                    break;
-                case "PRICE":
-                    int key = Integer.parseInt(keyword);
-                    List<Appointment> appointments;
-                    List<Training> temp = new ArrayList<>();
-                    appointments = this.appointmentRepository.findByPrice(key);
-                    for (Appointment a: appointments) {
-                        temp.add(this.trainingRepository.getOne(a.getId()));
-                    }
-                    trainingList = temp;
-                    break;
-                case "TIME":
-                    List<Appointment> appointments_time;
-                    List<Training> temp_time = new ArrayList<>();
-                    appointments_time = this.appointmentRepository.findByDate(keyword);
-                    for (Appointment a: appointments_time) {
-                        temp_time.add(this.trainingRepository.getOne(a.getId()));
-                    }
-                    trainingList = temp_time;
-                    break;
-            }
-            return trainingList;
-        }
+    public List<Training> allTrainings(){
         return this.trainingRepository.findAll();
+    }
+
+    public List<Training> allUnassignedTrainings(Set<Appointment> appointments){
+        List<Training> temp = allTrainings();
+        if(appointments.isEmpty())
+            return allTrainings();
+        else
+            for (Training t : temp) {
+                for (Appointment a : appointments) {
+                    if (t.getId().equals(a.getTraining().getId()))
+                        temp.remove(t);
+                }
+            }
+        return  temp;
+    }
+
+    public Training findOne(Long id){
+        return this.trainingRepository.getOne(id);
     }
 
 }

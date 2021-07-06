@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 @Service
 public class TrainerService {
@@ -40,6 +41,10 @@ public class TrainerService {
         return allowedTrainers;
     }
 
+    public List<Trainer> allTrainers(){
+        return this.trainerRepository.findAll();
+    }
+
     public Trainer findOne(Long id) {
         Trainer trainer = this.trainerRepository.getOne(id);
         return trainer;
@@ -48,4 +53,17 @@ public class TrainerService {
     public void delete(Long id) {
         this.trainerRepository.deleteById(id);
     }
+
+//    public int getRandomNumberUsingInts(int min, int max) {
+//        Random random = new Random();
+//        return random.ints(min, max)
+//                .findFirst()
+//                .getAsInt();
+//    }
+//
+//    public Trainer randomTrainer(){
+//        List<Trainer> trainers = this.trainerRepository.findAll();
+//        int random = getRandomNumberUsingInts(1,trainers.size());
+//        return trainers.get(random);
+//    }
 }

@@ -4,7 +4,8 @@
       <title>MEMBER | TRAININGS</title>
       <meta charset="utf-8" />
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-      <link rel="stylesheet" th:href="@{/css/table.css}" />
+
+    <link rel="stylesheet" th:href="@{/css/table.css}" />
   </head>
   <body>
     <img src="https://wallpaperaccess.com/full/1562614.jpg" alt="">
@@ -15,27 +16,15 @@
           <h1>NOTHING TO SHOW<br>NO TRAININGS AVAILABLE</h1>
         </div>
         <div class="tbl-header">
-          <form class="inline" id="form" name="form" th:action="@{/member/trainings}">
-            <select name="criteria" id="criteria"th:value="${criteria}">
-              <option value="NAME">NAME</option>
-              <option value="TYPE">TYPE</option>
-              <option value="DESCRIPTION">DESCRIPTION</option>
-              <option value="PRICE">PRICE</option>
-              <option value="TIME">TIME</option>
-            </select>
-            <input type="text" name="keyword" id="keyword" size="50" th:value="${keyword}" placeholder="SEARCH" />
-            <input type="submit" th:icon="@{/images/search.png}" value="SEARCH"/>
-            <input type="button" value="REFRESH" id="btnClear" onclick="clearSearch()" />
-          </form>
-          <table class="trainers" name="trainers" cellpadding="0" cellspacing="0" border="0">
+          <input type="text" name="keyword" id="keyword" size="50" placeholder="SEARCH" />
+          <table class="trainers sortable" name="trainers" cellpadding="0" cellspacing="0" border="0">
             <thead>
             <tr>
-              <th onclick="sortTable('name')">NAME</th>
-              <th onclick="sortTable('type')">TYPE</th>
-              <th onclick="sortTable('description')">DESCRIPTION</th>
-              <th onclick="sortTable('price')">PRICE</th>
-              <th onclick="sortTable('time')">TIME</th>
-              <th>TIME</th>
+              <th>NAME</th>
+              <th>TYPE</th>
+              <th>DESCRIPTION</th>
+              <th onclick="sortTable(0)">PRICE</th>
+              <th onclick="sortTable(1)">TIME</th>
               <th>RESERVATION</th>
             </tr>
             </thead>
@@ -44,101 +33,94 @@
         <div class="tbl-content">
           <table id="trainings" cellpadding="0" cellspacing="0" border="0">
             <tbody>
-            <tr th:each="training : ${list}">
+            <tr th:each="training, a : ${list}" class="item">
               <td th:text="${training.name}"></td>
               <td th:text="${training.type}"></td>
               <td th:text="${training.description}"></td>
-<!--              <td><p th:each="appointment : ${appointments}" th:if="(${appointment.training} == ${training.id})" th:text="${appointment.date}"></p></td>-->
-<!--              <td><p th:each="appointment : ${appointments}" th:if="(${appointment.training} == ${training.id})" th:text="${appointment.price}"></p></td>-->
-<!--              <td class="td-a"><a th:href="${'/reserve/' + training.id + '/' + id}">RESERVE</a></td>-->
+              <td th:text="${appointments[a.index].price}"></td>
+              <td th:text="${appointments[a.index].date}"></td>
+              <td><a th:href="${'/reserve/'+ training.id + '/' + member.id}">REQEST RESERVATION</a></td>
             </tr>
             </tbody>
           </table>
         </div>
       </section>
     </div>
-    <script type="text/javascript">
-      function clearSearch() {
-          window.location = "[[@{/member/trainings}]]";
-      }
-  </script>
-    <script type="text/javascript">
-      function sortTable(element) {
-        var table, rows, switching, i, x, y, shouldSwitch, criteria;
-        switch(element){
-          case "name":
-            criteria = 0;
-          break;
-          case "type":
-            criteria = 1;
-          break;
-          case "description":
-            criteria = 2;
-          break;
-          case "price":
-            criteria = 3;
-          break;      
-          case "time":
-            criteria = 4;
+
+    <script>
+      function sortTable(n) {
+  var table,
+    rows,
+    switching,
+    i,
+    x,
+    y,
+    shouldSwitch,
+    dir,
+    switchcount = 0;
+  table = document.getElementById("trainings");
+  switching = true;
+  //Set the sorting direction to ascending:
+  dir = "asc";
+  /*Make a loop that will continue until
+  no switching has been done:*/
+  while (switching) {
+    //start by saying: no switching is done:
+    switching = false;
+    rows = table.getElementsByTagName("TR");
+    /*Loop through all table rows (except the
+    first, which contains table headers):*/
+    for (i = 0; i < rows.length - 1; i++) { //Change i=0 if you have the header th a separate table.
+      //start by saying there should be no switching:
+      shouldSwitch = false;
+      /*Get the two elements you want to compare,
+      one from current row and one from the next:*/
+      x = rows[i].getElementsByTagName("TD")[n];
+      y = rows[i + 1].getElementsByTagName("TD")[n];
+      /*check if the two rows should switch place,
+      based on the direction, asc or desc:*/
+      if (dir == "asc") {
+        if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+          //if so, mark as a switch and break the loop:
+          shouldSwitch = true;
           break;
         }
-        table = document.getElementById("trainings");
+      } else if (dir == "desc") {
+        if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+          //if so, mark as a switch and break the loop:
+          shouldSwitch = true;
+          break;
+        }
+      }
+    }
+    if (shouldSwitch) {
+      /*If a switch has been marked, make the switch
+      and mark that a switch has been done:*/
+      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+      switching = true;
+      //Each time a switch is done, increase this count by 1:
+      switchcount++;
+    } else {
+      /*If no switching has been done AND the direction is "asc",
+      set the direction to "desc" and run the while loop again.*/
+      if (switchcount == 0 && dir == "asc") {
+        dir = "desc";
         switching = true;
-        /*Make a loop that will continue until
-        no switching has been done:*/
-        while (switching) {
-          //start by saying: no switching is done:
-          switching = false;
-          rows = table.rows;
-          /*Loop through all table rows (except the
-          first, which contains table headers):*/
-          for (i = 1; i < (rows.length - 1); i++) {
-            //start by saying there should be no switching:
-            shouldSwitch = false;
-            /*Get the two elements you want to compare,
-            one from current row and one from the next:*/
-            x = rows[i].getElementsByTagName("TD")[criteria];
-            y = rows[i + 1].getElementsByTagName("TD")[criteria];
-            //check if the two rows should switch place:
-            if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
-              //if so, mark as a switch and break the loop:
-              shouldSwitch = true;
-              break;
-            }
-          }
-          if (shouldSwitch) {
-            /*If a switch has been marked, make the switch
-            and mark that a switch has been done:*/
-            rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-            switching = true;
-          }
-        }
       }
+    }
+  }
+}
 
+$(document).ready(function(){
+  $("#keyword").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#trainings tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
 
-                  // '.tbl-content' consumed little space for vertical scrollbar, scrollbar width depend on browser/os/platfrom. Here calculate the scollbar width .
-            $(window)
-                .on("load resize", function (e) {
-                    var scrollWidth = $(".tbl-content").width() - $(".tbl-content table").width();
-                    $(".tbl-header").css({ "padding-right": scrollWidth });
-                })
-                .resize();
-            $(function () {
-                var hide = true;
-
-                $(".tbl-content td").each(function () {
-                    var td_content = $(this).text();
-
-                    if (td_content != "") {
-                        hide = false;
-                    }
-                });
-
-                if (hide) {
-                    $(".tbl-content, .tbl-header").hide();
-                    $(".empty").show();
-                }
-            });
     </script>
+
   </body>
 </html>

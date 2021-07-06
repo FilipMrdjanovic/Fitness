@@ -8,20 +8,27 @@ import java.util.Set;
 @Entity
 public class Member extends User {
 
+    @Override
+    public String toString() {
+        return "Member{" +
+                "assignedTrainings=" + assignedTrainings +
+                '}';
+    }
+
     @ManyToMany
     @JoinTable(name = "assigned",
             joinColumns = @JoinColumn(name = "member_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "appointment_id", referencedColumnName = "id"))
-    private Set<Appointment> assignedTrainings = new HashSet<>();
+    private Set<Appointment> assignedTrainings;
 
     @ManyToMany
     @JoinTable(name = "completed",
             joinColumns = @JoinColumn(name = "member_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "appointment_id", referencedColumnName = "id"))
-    private Set<Appointment> completedTrainings = new HashSet<>();
+    private Set<Appointment> completedTrainings;
 
     @OneToMany(mappedBy = "member", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<Grade> grade = new HashSet<>();
+    private Set<Grade> grade;
 
     public Set<Appointment> getAssignedTrainings() {
         return assignedTrainings;
@@ -29,6 +36,10 @@ public class Member extends User {
 
     public void setAssignedTrainings(Set<Appointment> assignedTrainings) {
         this.assignedTrainings = assignedTrainings;
+    }
+
+    public void addAssignedTrainings(Appointment assignedTrainings) {
+        this.assignedTrainings.add(assignedTrainings);
     }
 
     public Set<Appointment> getCompletedTrainings() {
