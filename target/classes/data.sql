@@ -21,37 +21,6 @@ INSERT INTO USER (username, first_name, last_name, password, email, birth_date, 
 	('fogbornh', 'Frazer', 'Ogborn', 'HZpg4qeyy', 'fogbornh@4shared.com', '11/23/2020', '697-977-3240', 'MEMBER', false),
 	('bburnyeati', 'Berkeley', 'Burnyeat', 'soFUCyGskC', 'bburnyeati@cam.ac.uk', '11/21/2020', '264-601-8365', 'MEMBER', true),
 	('ubilbyj', 'Udale', 'Bilby', '71ZgZUW', 'ubilbyj@tinyurl.com', '12/27/2020', '237-140-0821', 'TRAINER', false),
-	('esargeantk', 'Eliza', 'Sargeant', '4oksmU8', 'esargeantk@craigslist.org', '8/3/2020', '148-366-9667', 'MEMBER', false),
-	('ekennfordl', 'Erin', 'Kennford', 'A0LIYSSXfHU', 'ekennfordl@kickstarter.com', '12/12/2020', '911-928-6082', 'MEMBER', true),
-	('elittlewoodm', 'Elladine', 'Littlewood', 'tBfhMD9V', 'elittlewoodm@shutterfly.com', '1/14/2021', '241-989-2476', 'MEMBER', true),
-	('aboarn', 'Ado', 'Boar', '52xcUEj', 'aboarn@sina.com.cn', '8/18/2020', '233-151-9644', 'TRAINER', false),
-	('djoddenso', 'Donia', 'Joddens', '84fEJiZ', 'djoddenso@vistaprint.com', '3/17/2021', '295-441-0044', 'MEMBER', false),
-	('fbreachp', 'Freddy', 'Breach', '7hfHMYN', 'fbreachp@webeden.co.uk', '8/5/2020', '357-108-9893', 'MEMBER', true),
-	('keimq', 'Kennith', 'Eim', '5441hoZXn6Jf', 'keimq@seesaa.net', '8/30/2020', '412-112-9895', 'TRAINER', true),
-	('fmacgillacolmr', 'Fiona', 'MacGillacolm', '8Nsqfalt', 'fmacgillacolmr@columbia.edu', '12/28/2020', '768-724-4066', 'TRAINER', true),
-	('dyitzowitzs', 'Darrelle', 'Yitzowitz', 'j6K055PB54', 'dyitzowitzs@examiner.com', '4/14/2021', '537-975-3742', 'TRAINER', true),
-	('gchatert', 'Gussie', 'Chater', 'nljYw4N', 'gchatert@reuters.com', '12/20/2020', '764-593-5684', 'MEMBER', true),
-	('aambrosiniu', 'Aeriela', 'Ambrosini', 'MsxV68ctfK', 'aambrosiniu@cafepress.com', '12/12/2020', '141-817-9908', 'MEMBER', true),
-	('nswaddlev', 'Nonna', 'Swaddle', 'SWG1WnqP', 'nswaddlev@symantec.com', '7/29/2020', '449-357-9365', 'TRAINER', true),
-	('mdowtryw', 'Mia', 'Dowtry', 'jvsSEpw6H', 'mdowtryw@cnbc.com', '11/21/2020', '474-567-0326', 'TRAINER', false),
-	('mlappinx', 'Marv', 'Lappin', '60Pl8dMPVL', 'mlappinx@smugmug.com', '3/20/2021', '930-253-0063', 'MEMBER', false),
-	('ctippiny', 'Coralie', 'Tippin', 'XFAqmZCSA', 'ctippiny@mapquest.com', '7/12/2020', '695-340-0382', 'MEMBER', true),
-	('sdebankez', 'Shepperd', 'de Banke', 'Wbgq8U', 'sdebankez@mozilla.com', '9/26/2020', '659-416-5094', 'TRAINER', false),
-	('bneising10', 'Brana', 'Neising', 'gkWJBpmF3f', 'bneising10@networksolutions.com', '12/11/2020', '404-749-2694', 'MEMBER', true),
-	('torable11', 'Thedrick', 'Orable', 'hWAEy5L', 'torable11@purevolume.com', '10/10/2020', '498-702-5921', 'MEMBER', true),
-	('jsnasel12', 'Jayme', 'Snasel', 'N3vYlxdwOPu', 'jsnasel12@bluehost.com', '3/5/2021', '174-919-0353', 'TRAINER', false),
-	('lmartinot13', 'Lolita', 'Martinot', 'SC0uqi5M0i9', 'lmartinot13@census.gov', '1/7/2021', '654-895-6896', 'MEMBER', true),
-	('cwinpenny14', 'Cyndie', 'Winpenny', 'qFzzDQDbh', 'cwinpenny14@businessinsider.com', '10/18/2020', '699-131-7635', 'MEMBER', true),
-	('ocoddrington15', 'Ophelia', 'Coddrington', 'MBnnFIrBUz', 'ocoddrington15@clickbank.net', '11/21/2020', '188-562-8028', 'TRAINER', true),
-	('clanders16', 'Celesta', 'Landers', 'JrTkmiOdpAJO', 'clanders16@scribd.com', '12/22/2020', '143-473-5175', 'TRAINER', false),
-	('jpenkethman17', 'Joyce', 'Penkethman', 'BwKHAg', 'jpenkethman17@forbes.com', '8/14/2020', '891-645-2285', 'TRAINER', true),
-	('ghordle18', 'Gonzalo', 'Hordle', '72nodKr', 'ghordle18@ihg.com', '10/20/2020', '305-905-6279', 'MEMBER', true),
-	('lbrandolini19', 'Leupold', 'Brandolini', '4b5mxE1', 'lbrandolini19@icq.com', '2/8/2021', '962-577-6019', 'TRAINER', true),
-	('mollivierre1a', 'Mendie', 'Ollivierre', 'biyTtx', 'mollivierre1a@squarespace.com', '11/22/2020', '864-290-3711', 'TRAINER', false),
-	('rshorie1b', 'Robbi', 'Shorie', 'FkSeLaZ7', 'rshorie1b@oracle.com', '11/24/2020', '282-528-7962', 'TRAINER', false),
-	('msize1c', 'Mark', 'Size', 's1E6ps', 'msize1c@toplist.cz', '10/29/2020', '470-603-6465', 'TRAINER', true),
-	('cellingworth1d', 'Colver', 'Ellingworth', 'wXdo6JA6', 'cellingworth1d@twitpic.com', '4/5/2021', '328-983-1658', 'MEMBER', true),
-	('bvowles1e', 'Bobbe', 'Vowles', 'g0hK6LAp3wDU', 'bvowles1e@liveinternet.ru', '9/21/2020', '786-855-6864', 'TRAINER', false),
 	('bmecozzi1f', 'Belva', 'Mecozzi', 's65q3y1s0Lp', 'bmecozzi1f@hud.gov', '4/3/2021', '278-507-1550', 'MEMBER', false),
 	('mpretswell1g', 'Manny', 'Pretswell', 'ReJphHXzW2yl', 'mpretswell1g@de.vu', '3/28/2021', '505-103-5012', 'MEMBER', true),
 	('lgerold1h', 'Lisette', 'Gerold', 'tUj5MKkDqdG', 'lgerold1h@nyu.edu', '8/20/2020', '878-909-3419', 'MEMBER', true),
@@ -75,6 +44,7 @@ INSERT INTO TRAINER(id) SELECT ID FROM USER WHERE role='TRAINER';
 UPDATE TRAINER SET grade = 5;
 UPDATE TRAINER SET is_allowed = true;
 UPDATE TRAINER SET is_allowed = false LIMIT 17;
+UPDATE TRAINER SET is_allowed = true LIMIT 1;
 
 --UPDATE TRAINER SET fitness_id = SELECT ID from FITNESS LIMIT 1;
 
@@ -136,34 +106,8 @@ insert into TRAINING (name, description, type, duration) values
 
 
 INSERT INTO HALL (capacity, fitness_id) VALUES (50, 1), (60, 4), (50, 3), (50, 1), (50, 2);
+INSERT INTO HALL (capacity) VALUES (50), (60), (50), (50), (50),(50), (60), (50), (50), (50),(50), (60), (50), (50), (50),(50), (60), (50), (50), (50),(50), (60), (50), (50), (50);
 
-
-
---INSERT INTO APPOINTMENT(date, price, hall_id, trainer_id, training_id) VALUES
---    ('05.06.2021 20:00', 300, (SELECT ID from HALL LIMIT 1), (SELECT ID from TRAINER LIMIT 1), (SELECT ID from TRAINING WHERE ID = 1)),
---    ('05.06.2021 20:00', 300, (SELECT ID from HALL LIMIT 1), (SELECT ID from TRAINER LIMIT 1), (SELECT ID from TRAINING WHERE ID = 2)),
---    ('05.06.2021 20:00', 300, (SELECT ID from HALL LIMIT 1), (SELECT ID from TRAINER LIMIT 1), (SELECT ID from TRAINING WHERE ID = 3)),
---    ('05.06.2021 20:00', 300, (SELECT ID from HALL LIMIT 1), (SELECT ID from TRAINER LIMIT 1), (SELECT ID from TRAINING WHERE ID = 4)),
---    ('05.06.2021 20:00', 300, (SELECT ID from HALL LIMIT 1), (SELECT ID from TRAINER LIMIT 1), (SELECT ID from TRAINING WHERE ID = 5)),
---    ('05.06.2021 20:00', 300, (SELECT ID from HALL LIMIT 1), (SELECT ID from TRAINER LIMIT 1), (SELECT ID from TRAINING WHERE ID = 6)),
---    ('05.06.2021 20:00', 300, (SELECT ID from HALL LIMIT 1), (SELECT ID from TRAINER LIMIT 1), (SELECT ID from TRAINING WHERE ID = 7)),
---    ('05.06.2021 20:00', 300, (SELECT ID from HALL LIMIT 1), (SELECT ID from TRAINER LIMIT 1), (SELECT ID from TRAINING WHERE ID = 8)),
---    ('05.06.2021 20:00', 300, (SELECT ID from HALL LIMIT 1), (SELECT ID from TRAINER LIMIT 1), (SELECT ID from TRAINING WHERE ID = 9)),
---    ('05.06.2021 20:00', 300, (SELECT ID from HALL LIMIT 1), (SELECT ID from TRAINER LIMIT 1), (SELECT ID from TRAINING WHERE ID = 10)),
---    ('05.06.2021 20:00', 300, (SELECT ID from HALL LIMIT 1), (SELECT ID from TRAINER LIMIT 1), (SELECT ID from TRAINING WHERE ID = 11)),
---    ('05.06.2021 20:00', 300, (SELECT ID from HALL LIMIT 1), (SELECT ID from TRAINER LIMIT 1), (SELECT ID from TRAINING WHERE ID = 12)),
---    ('05.06.2021 20:00', 300, (SELECT ID from HALL LIMIT 1), (SELECT ID from TRAINER LIMIT 1), (SELECT ID from TRAINING WHERE ID = 13)),
---    ('05.06.2021 20:00', 300, (SELECT ID from HALL LIMIT 1), (SELECT ID from TRAINER LIMIT 1), (SELECT ID from TRAINING WHERE ID = 14)),
---    ('05.06.2021 20:00', 300, (SELECT ID from HALL LIMIT 1), (SELECT ID from TRAINER LIMIT 1), (SELECT ID from TRAINING WHERE ID = 15)),
---    ('05.06.2021 20:00', 300, (SELECT ID from HALL LIMIT 1), (SELECT ID from TRAINER LIMIT 1), (SELECT ID from TRAINING WHERE ID = 16)),
---    ('05.06.2021 20:00', 300, (SELECT ID from HALL LIMIT 1), (SELECT ID from TRAINER LIMIT 1), (SELECT ID from TRAINING WHERE ID = 17)),
---    ('05.06.2021 20:00', 300, (SELECT ID from HALL LIMIT 1), (SELECT ID from TRAINER LIMIT 1), (SELECT ID from TRAINING WHERE ID = 18)),
---    ('05.06.2021 20:00', 300, (SELECT ID from HALL LIMIT 1), (SELECT ID from TRAINER LIMIT 1), (SELECT ID from TRAINING WHERE ID = 19)),
---    ('05.06.2021 20:00', 300, (SELECT ID from HALL LIMIT 1), (SELECT ID from TRAINER LIMIT 1), (SELECT ID from TRAINING WHERE ID = 20)),
---    ('05.06.2021 20:00', 300, (SELECT ID from HALL LIMIT 1), (SELECT ID from TRAINER LIMIT 1), (SELECT ID from TRAINING WHERE ID = 21));
-
-
---
 insert into APPOINTMENT (date, price) values ('2/17/2021', 336),('1/7/2021', 264),('11/5/2020', 299),('2/27/2021', 305),('12/8/2020', 279),('3/16/2021', 334),('5/21/2021', 310),('3/26/2021', 328),('8/1/2020', 278),('5/14/2021', 330),('10/28/2020', 343),('11/26/2020', 289),('1/9/2021', 344),('5/31/2021', 300),('12/27/2020', 270),('8/27/2020', 322),('10/14/2020', 297),('4/28/2021', 280),('10/24/2020', 333),('6/3/2021', 263),('9/25/2020', 312),('12/6/2020', 260),('11/15/2020', 344),('4/28/2021', 336),('12/2/2020', 332),('6/21/2021', 282),('12/3/2020', 306),('4/4/2021', 330),('5/5/2021', 268),('6/30/2021', 312),('3/30/2021', 326),('10/30/2020', 255),('4/2/2021', 332),('8/9/2020', 290),('5/19/2021', 307),('8/21/2020', 330),('8/17/2020', 333),('3/9/2021', 293),('8/24/2020', 255),('7/10/2020', 255),('7/22/2020', 343),('8/7/2020', 267),('7/3/2021', 302),('11/22/2020', 266),('5/5/2021', 302),('3/27/2021', 338),('8/24/2020', 264),('1/15/2021', 308),('8/11/2020', 301),('10/2/2020', 276);
 
 
@@ -175,6 +119,19 @@ INSERT INTO GRADE(grade, appointment_id, member_id) VALUES
 INSERT INTO ASSIGNED(member_id, appointment_id) VALUES ((SELECT ID from MEMBER LIMIT 1), (SELECT ID from APPOINTMENT LIMIT 1));
 
 INSERT INTO COMPLETED (member_id, appointment_id) VALUES ((SELECT ID from MEMBER LIMIT 1), (SELECT ID from APPOINTMENT LIMIT 1));
+INSERT INTO COMPLETED (member_id, appointment_id) VALUES ((SELECT ID from MEMBER LIMIT 1 OFFSET 1), (SELECT ID from APPOINTMENT LIMIT 1 OFFSET 1));
+INSERT INTO COMPLETED (member_id, appointment_id) VALUES ((SELECT ID from MEMBER LIMIT 1 OFFSET 2), (SELECT ID from APPOINTMENT LIMIT 1 OFFSET 2));
+INSERT INTO COMPLETED (member_id, appointment_id) VALUES ((SELECT ID from MEMBER LIMIT 1 OFFSET 3), (SELECT ID from APPOINTMENT LIMIT 1 OFFSET 3));
+INSERT INTO COMPLETED (member_id, appointment_id) VALUES ((SELECT ID from MEMBER LIMIT 1 OFFSET 4), (SELECT ID from APPOINTMENT LIMIT 1 OFFSET 4));
+INSERT INTO COMPLETED (member_id, appointment_id) VALUES ((SELECT ID from MEMBER LIMIT 1 OFFSET 5), (SELECT ID from APPOINTMENT LIMIT 1 OFFSET 5));
+INSERT INTO COMPLETED (member_id, appointment_id) VALUES ((SELECT ID from MEMBER LIMIT 1 OFFSET 6), (SELECT ID from APPOINTMENT LIMIT 1 OFFSET 6));
+INSERT INTO COMPLETED (member_id, appointment_id) VALUES ((SELECT ID from MEMBER LIMIT 1 OFFSET 7), (SELECT ID from APPOINTMENT LIMIT 1 OFFSET 7));
+INSERT INTO COMPLETED (member_id, appointment_id) VALUES ((SELECT ID from MEMBER LIMIT 1 OFFSET 8), (SELECT ID from APPOINTMENT LIMIT 1 OFFSET 8));
+INSERT INTO COMPLETED (member_id, appointment_id) VALUES ((SELECT ID from MEMBER LIMIT 1 OFFSET 9), (SELECT ID from APPOINTMENT LIMIT 1 OFFSET 9));
+INSERT INTO COMPLETED (member_id, appointment_id) VALUES ((SELECT ID from MEMBER LIMIT 1 OFFSET 10), (SELECT ID from APPOINTMENT LIMIT 1 OFFSET 10));
+INSERT INTO COMPLETED (member_id, appointment_id) VALUES ((SELECT ID from MEMBER LIMIT 1 OFFSET 11), (SELECT ID from APPOINTMENT LIMIT 1 OFFSET 11));
+INSERT INTO COMPLETED (member_id, appointment_id) VALUES ((SELECT ID from MEMBER LIMIT 1 OFFSET 12), (SELECT ID from APPOINTMENT LIMIT 1 OFFSET 12));
+INSERT INTO COMPLETED (member_id, appointment_id) VALUES ((SELECT ID from MEMBER LIMIT 1 OFFSET 13), (SELECT ID from APPOINTMENT LIMIT 1 OFFSET 13));
+INSERT INTO COMPLETED (member_id, appointment_id) VALUES ((SELECT ID from MEMBER LIMIT 1 OFFSET 14), (SELECT ID from APPOINTMENT LIMIT 1 OFFSET 14));
+INSERT INTO COMPLETED (member_id, appointment_id) VALUES ((SELECT ID from MEMBER LIMIT 1 OFFSET 15), (SELECT ID from APPOINTMENT LIMIT 1 OFFSET 15));
 
---UPDATE APPOINTMENT SET hall_id = (SELECT ID from HALL LIMIT 1);
---UPDATE APPOINTMENT SET trainer_id = (SELECT ID from TRAINER LIMIT 1);

@@ -13,7 +13,7 @@
         <div class="container">
             <h1>INSERT FITNESS DATA</h1>
             <div id="modifyForm">
-                <form id="form" name="form" th:action="@{/admin/fitness/data}" th:object="${fitness}" method="post">
+                <form id="form" name="form" th:action="@{'/admin/fitness/data'}" th:object="${fitness}" method="post">
                     <input type="text" name="name" id="name" placeholder="NAME" autocomplete="false" required th:field="*{name}" />
                     <input type="text" name="address" id="address" placeholder="ADDRESS" autocomplete="false" required th:field="*{address}" />
                     <input type="text" name="centralNumber" id="centralNumber" placeholder="CENTRAL NUMBER" autocomplete="false" required th:field="*{centralNumber}" />

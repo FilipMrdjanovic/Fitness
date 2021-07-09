@@ -1,6 +1,7 @@
 package com.webproject.FitnessCentre.service;
 
 import com.webproject.FitnessCentre.entity.Appointment;
+import com.webproject.FitnessCentre.entity.Member;
 import com.webproject.FitnessCentre.entity.Training;
 import com.webproject.FitnessCentre.repository.AppointmentRepository;
 import com.webproject.FitnessCentre.repository.TrainingRepository;
@@ -26,19 +27,37 @@ public class TrainingService {
         return this.trainingRepository.findAll();
     }
 
-    public List<Training> allUnassignedTrainings(Set<Appointment> appointments){
+    public List<Training> allUnassignedTrainings(Member member) {
         List<Training> temp = allTrainings();
-        if(appointments.isEmpty())
-            return allTrainings();
-        else
-            for (Training t : temp) {
-                for (Appointment a : appointments) {
-                    if (t.getId().equals(a.getTraining().getId()))
-                        temp.remove(t);
-                }
-            }
-        return  temp;
+        Set<Appointment> appointments = member.getAssignedTrainings();
+        for (Appointment a : appointments) {
+            temp.remove(trainingRepository.getOne(a.getTraining().getId()));
+
+        }
+        return temp;
     }
+
+    public List<Training> allSignedTrainings(Member member) {
+        List<Training> temp = new ArrayList<>();
+        Set<Appointment> appointments = member.getAssignedTrainings();
+        for (Appointment a : appointments) {
+            temp.add(trainingRepository.getOne(a.getTraining().getId()));
+
+        }
+        return temp;
+    }
+
+    public List<Training> allCompletedTrainings(Member member) {
+        List<Training> temp = new ArrayList<>();
+        Set<Appointment> appointments = member.getCompletedTrainings();
+        for (Appointment a : appointments) {
+            temp.add(trainingRepository.getOne(a.getTraining().getId()));
+
+        }
+        return temp;
+    }
+
+
 
     public Training findOne(Long id){
         return this.trainingRepository.getOne(id);

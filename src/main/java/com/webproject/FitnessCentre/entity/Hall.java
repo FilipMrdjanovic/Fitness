@@ -20,6 +20,9 @@ public class Hall implements Serializable {
     @OneToMany(mappedBy = "hall", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Appointment> appointment = new HashSet<>();
 
+    public Hall() {
+    }
+
     public Hall(Long id, int capacity, Fitness fitness, Set<Appointment> appointment) {
         this.id = id;
         this.capacity = capacity;

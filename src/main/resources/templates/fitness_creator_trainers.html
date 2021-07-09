@@ -33,12 +33,42 @@
                 <tr th:each="trainer : ${list}" >
                     <td th:text="${trainer.firstName}"></td>
                     <td th:text="${trainer.lastName}"></td>
-                    <td><a th:href="${'/admin/fitness/'+fitness.id+'/trainers/' + trainer.id}">ADD TO THE CENTRE</a></td>
+                    <td><a th:href="${'/admin/' + id + '/fitness/' + fitness.id + '/trainers/' + trainer.id}">ADD TO THE CENTRE</a></td>
                 </tr>
                 </tbody>
             </table>
         </div>
+        <div style="padding:15px;">
+            <a class="button" th:href=" ${'/admin/' + {id} + '/fitness/' + fitness.id + '/halls'}">ADD HALLS</a><br>
+            <a class="button" th:href=" ${'/admin/' + {id} + '/fitness/' + fitness.id + '/halls/edit'}">EDIT HALLS</a><br>
+        </div>
     </section>
+
+    <script>
+            // '.tbl-content' consumed little space for vertical scrollbar, scrollbar width depend on browser/os/platfrom. Here calculate the scollbar width .
+            $(window)
+                .on("load resize", function (e) {
+                    var scrollWidth = $(".tbl-content").width() - $(".tbl-content table").width();
+                    $(".tbl-header").css({ "padding-right": scrollWidth });
+                })
+                .resize();
+            $(function () {
+                var hide = true;
+
+                $(".tbl-content td").each(function () {
+                    var td_content = $(this).text();
+
+                    if (td_content != "") {
+                        hide = false;
+                    }
+                });
+
+                if (hide) {
+                    $(".tbl-content, .tbl-header").hide();
+                    $(".empty").show();
+                }
+            });
+        </script>
 </div>
 </body>
 </html>

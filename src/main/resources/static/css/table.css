@@ -154,7 +154,7 @@ h3 {
     align-items: center;
 }
 
-input[type="text"] {
+input[type="text"], input[type="number"] {
     margin: 10px 0;
     -webkit-appearance: none;
     color: white;

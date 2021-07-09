@@ -1,50 +1,50 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>ADMIN | TRAINERS</title>
+    <title>ADMIN | FITNESS</title>
     <meta charset="utf-8" />
-    <link rel="stylesheet" th:href="@{/css/table.css}" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <link rel="stylesheet" th:href="@{/css/table.css}" />
 </head>
 <body>
-<style>
-
-</style>
 <div class="container">
-    <img src="https://www.citytrainers.com/images/backgrounds/packages/package-2.jpg" alt="">
-    <h1>ADD TRAINERS TO THE FITNESS CENTRE</h1>
+    <img src="https://cdn.hipwallpaper.com/i/87/14/pzgZcw.jpg" alt="" />
+    <h1>ALL FITNESS CENTRES</h1>
     <section>
         <div class="empty">
-            <h1>NOTHING TO SHOW<br>NO TRAINERS AVAILABLE</h1>
+            <h1>NOTHING TO SHOW<br>NO FITNESS CENTRES AVAILABLE</h1>
         </div>
         <div class="tbl-header">
-            <table class="trainers" name="trainers" cellpadding="0" cellspacing="0" border="0">
+            <table id="trainers" class="trainers" name="trainers" cellpadding="0" cellspacing="0" border="0">
                 <thead>
                 <tr>
-                    <th>FIRST NAME</th>
-                    <th>LAST NAME</th>
-                    <th>ALLOW</th>
+                    <th>NAME</th>
+                    <th>ADDRESS</th>
+                    <th>EMAIL</th>
+                    <th>CENTRE NUMBER</th>
+                    <th>CHANGE DATA</th>
+                    <th>DELETE</th>
                 </tr>
                 </thead>
             </table>
         </div>
         <div class="tbl-content">
-            <table id="trainings" cellpadding="0" cellspacing="0" border="0">
+            <table cellpadding="0" cellspacing="0" border="0">
                 <tbody>
-                <tr th:each="trainer : ${list}" >
-                    <td th:text="${trainer.firstName}"></td>
-                    <td th:text="${trainer.lastName}"></td>
-                    <td><a th:href="${'/admin/' + id + '/fitness/' + fitness.id + '/trainers/' + trainer.id}">ADD TO THE CENTRE</a></td>
-                </tr>
+                    <tr th:each="fitness : ${list}">
+                        <td th:text="${fitness.name}"></td>
+                        <td th:text="${fitness.address}"></td>
+                        <td th:text="${fitness.email}"></td>
+                        <td th:text="${fitness.centralNumber}"></td>
+                        <td class="td-a"><a th:href="${'/admin/' + admin.id + '/edit/' + fitness.id}">EDIT</a></td>
+                        <td class="td-a"><a th:href="${'/admin/' + admin.id + '/delete/' + fitness.id}">DELETE</a></td>
+                    </tr>
                 </tbody>
             </table>
         </div>
-        <div style="padding:15px;">
-            <a class="button" th:href=" ${'/admin/' + {id} + '/fitness/' + fitness.id + '/halls'}">ADD HALLS</a><br>
-            <a class="button" th:href=" ${'/admin/' + {id} + '/fitness/' + fitness.id + '/halls/edit'}">EDIT HALLS</a><br>
-        </div>
     </section>
-
-    <script>
+</div>
+<script>
             // '.tbl-content' consumed little space for vertical scrollbar, scrollbar width depend on browser/os/platfrom. Here calculate the scollbar width .
             $(window)
                 .on("load resize", function (e) {
@@ -69,6 +69,5 @@
                 }
             });
         </script>
-</div>
 </body>
 </html>

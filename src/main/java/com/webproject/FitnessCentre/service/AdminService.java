@@ -14,4 +14,6 @@ public class AdminService {
     public Administrator save(Administrator administrator){
         return this.adminRepository.save(administrator);
     }
+
+    public Administrator findOne(Long id){ return this.adminRepository.getOne(id); }
 }

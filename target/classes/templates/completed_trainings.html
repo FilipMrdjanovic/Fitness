@@ -1,53 +1,55 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-  <head>
-      <title>MEMBER | TRAININGS</title>
-      <meta charset="utf-8" />
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<head>
+  <title>MEMBER | APPOINTMENTS</title>
+  <meta charset="utf-8" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-    <link rel="stylesheet" th:href="@{/css/table.css}" />
-  </head>
-  <body>
-    <img src="https://wallpaperaccess.com/full/1562614.jpg" alt="">
-    <div class="container">
-      <h1>TRAININGS</h1>
-      <section>
-        <div class="empty">
-          <h1>NOTHING TO SHOW<br>NO TRAININGS AVAILABLE</h1>
-        </div>
-        <div class="tbl-header">
-          <input type="text" name="keyword" id="keyword" size="50" placeholder="SEARCH" />
-          <table class="trainers sortable" name="trainers" cellpadding="0" cellspacing="0" border="0">
-            <thead>
-            <tr>
-              <th>NAME</th>
-              <th>TYPE</th>
-              <th>DESCRIPTION</th>
-              <th onclick="sortTable(0)">PRICE</th>
-              <th onclick="sortTable(1)">TIME</th>
-              <th>RESERVATION</th>
-            </tr>
-            </thead>
-          </table>
-        </div>
-        <div class="tbl-content">
-          <table id="trainings" cellpadding="0" cellspacing="0" border="0">
-            <tbody>
-            <tr th:each="training, a : ${list}" class="item">
-              <td th:text="${training.name}"></td>
-              <td th:text="${training.type}"></td>
-              <td th:text="${training.description}"></td>
-              <td th:text="${appointments[a.index].price}"></td>
-              <td th:text="${appointments[a.index].date}"></td>
-              <td><a th:href="${'/reserve/'+ training.id + '/' + member.id}">ADD</a></td>
-            </tr>
-            </tbody>
-          </table>
-        </div>
-      </section>
+  <link rel="stylesheet" th:href="@{/css/table.css}" />
+</head>
+<body>
+<img src="https://wallpaperaccess.com/full/1562614.jpg" alt="">
+<div class="container">
+  <h1>ASSIGNED TRAININGS</h1>
+  <section>
+    <div class="empty">
+      <h1>NOTHING TO SHOW<br>NO APPOINTMENTS AVAILABLE</h1>
     </div>
+    <div class="tbl-header">
+      <input type="text" name="keyword" id="keyword" size="50" placeholder="SEARCH" />
+      <table class="trainers sortable" name="trainers" cellpadding="0" cellspacing="0" border="0">
+        <thead>
+        <tr>
+          <th>NAME</th>
+          <th>TYPE</th>
+          <th>DESCRIPTION</th>
+          <th onclick="sortTable(0)">PRICE</th>
+          <th onclick="sortTable(1)">TIME</th>
+          <th>GRADE</th>
+        </tr>
+        </thead>
+      </table>
+    </div>
+    <div class="tbl-content">
+      <table id="trainings" cellpadding="0" cellspacing="0" border="0">
+        <tbody>
+        <tr th:each="training, a : ${list}" class="item">
+          <td th:text="${training.name}"></td>
+          <td th:text="${training.type}"></td>
+          <td th:text="${training.description}"></td>
+          <td th:text="${appointments[a.index].price}"></td>
+          <td th:text="${appointments[a.index].date}"></td>
+          <td></td>
+          <td><label for="grade">GRADE: </label><input type="number" id="grade" name="grade" min="1" max="5">
+<!--            <a th:href="${'/grade/'+ training.id + '/' + member.id }">SEND</a></td>-->
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+</div>
 
-    <script>
+<script>
       function sortTable(n) {
   var table,
     rows,
@@ -146,5 +148,5 @@ $(document).ready(function(){
 
     </script>
 
-  </body>
+</body>
 </html>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
   <head>
-      <title>MEMBER | TRAININGS</title>
+      <title>MEMBER | APPOINTMENTS</title>
       <meta charset="utf-8" />
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
@@ -10,10 +10,10 @@
   <body>
     <img src="https://wallpaperaccess.com/full/1562614.jpg" alt="">
     <div class="container">
-      <h1>TRAININGS</h1>
+      <h1>ASSIGNED TRAININGS</h1>
       <section>
         <div class="empty">
-          <h1>NOTHING TO SHOW<br>NO TRAININGS AVAILABLE</h1>
+          <h1>NOTHING TO SHOW<br>NO APPOINTMENTS AVAILABLE</h1>
         </div>
         <div class="tbl-header">
           <input type="text" name="keyword" id="keyword" size="50" placeholder="SEARCH" />
@@ -25,7 +25,7 @@
               <th>DESCRIPTION</th>
               <th onclick="sortTable(0)">PRICE</th>
               <th onclick="sortTable(1)">TIME</th>
-              <th>RESERVATION</th>
+              <th>REMOVE TRAINING</th>
             </tr>
             </thead>
           </table>
@@ -39,7 +39,7 @@
               <td th:text="${training.description}"></td>
               <td th:text="${appointments[a.index].price}"></td>
               <td th:text="${appointments[a.index].date}"></td>
-              <td><a th:href="${'/reserve/'+ training.id + '/' + member.id}">ADD</a></td>
+              <td><a th:href="${'/remove/'+ training.id + '/' + member.id}">REMOVE</a></td>
             </tr>
             </tbody>
           </table>

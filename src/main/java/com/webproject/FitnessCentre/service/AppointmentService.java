@@ -74,7 +74,12 @@ public class AppointmentService {
     }
 
     public Appointment findOneByTraining(Long id){
-        return this.appointmentRepository.findByTrainingId(id);
+        List<Appointment> appointments = appointmentRepository.findAll();
+        for (Appointment a: appointments) {
+            if(a.getTraining().getId().equals(id))
+                return this.appointmentRepository.findByTrainingId(id);
+        }
+        return null;
     }
 
 }
